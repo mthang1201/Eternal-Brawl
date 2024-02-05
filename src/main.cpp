@@ -160,11 +160,3 @@ void waitUntilKeyPressed()
 //	SDL_Color({66, 30, 15})
 //};
 //const int PALETTE_COUNT = sizeof(PALETTE) / sizeof(SDL_Color);
-
-// #include <bits/stdc++.h>
-// using namespace std;
-
-// int main() {
-// 	cout << 12;
-// 	return 0;
-// }
