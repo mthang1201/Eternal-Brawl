@@ -1,34 +1,16 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		{
-			"type": "cppbuild",
-			"label": "C/C++: g++.exe build active file",
-			"command": "C:/msys64/mingw64/bin/g++.exe",
-			"args": [
-				"-fdiagnostics-color=always",
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-Iinclude",
-                "-Llib",
-                "-lmingw32",
-                "-lSDL2main",
-                "-lSDL2",
-                "-lSDL2_image"
-			],
-			"options": {
-				"cwd": "C:/msys64/mingw64/bin"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compiler: C:/msys64/mingw64/bin/g++.exe"
+	  {
+		"label": "Run PowerShell Script",
+		"type": "shell",
+		"command": "powershell",
+		"args": ["-File", "run.ps1"],
+		"group": {
+		  "kind": "build",
+		  "isDefault": true
 		}
+	  }
 	]
-}
+  }
+  

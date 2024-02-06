@@ -1,20 +1,57 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(Windows) Launch",
-            "type": "cppvsdbg",
+            "name": "C++ Debug",
+            "type": "cppdbg",
             "request": "launch",
-            "program": "enter program name, for example ${workspaceFolder}/a.exe",
+            "program": "${workspaceFolder}/bin/main.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
-            "console": "externalTerminal"
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build with g++",
+            "miDebuggerPath": "C:/msys64/mingw64/bin/g++.exe"
         }
-
+    ],
+    "compounds": [
+        {
+            "name": "Build and Debug",
+            "configurations": ["C++ Debug", "build with g++"]
+        }
+    ],
+    "tasks": [
+        {
+            "label": "build with g++",
+            "type": "shell",
+            "command": "C:/msys64/mingw64/bin/g++.exe",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "-Wall",
+                "-I${workspaceFolder}/include",
+                "-L${workspaceFolder}/lib",
+                "-lmingw32",
+                "-lSDL2main",
+                "-lSDL2",
+                "-lSDL2_image",
+                "${workspaceFolder}/src/test.cpp",
+                "-o",
+                "${workspaceFolder}/bin/test.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
     ]
 }
