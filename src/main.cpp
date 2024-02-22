@@ -5,6 +5,7 @@
 
 #include "renderWindow.hpp"
 #include "entity.hpp"
+#include "utils.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +17,8 @@ int main(int argc, char *argv[])
 
     RenderWindow window("GAME v1.0", 1280, 720);
 
+    std::cout << window.getRefreshRate() << std:: endl;
+
     SDL_Texture* grassTexture = window.loadTexture("res/gfx/ground_grass_1.png");
 
     std::vector<Entity> entities = {Entity(Vector2f(0, 0), grassTexture),
@@ -26,18 +29,45 @@ int main(int argc, char *argv[])
 
     SDL_Event event;
 
+    const float timeStep = 0.01f;
+    float accumulator = 0.0f;
+    float currentTime = utils::hireTimeInSeconds();
+
     while (gameRunning)
     {
-        while (SDL_PollEvent(&event))
+        int startTicks = SDL_GetTicks();
+
+        float newTime = utils::hireTimeInSeconds();
+        float frameTime = newTime - currentTime;
+
+        currentTime = newTime;
+
+        accumulator += frameTime;
+
+        while (accumulator >= timeStep)
         {
-            if (event.type == SDL_QUIT)
-                gameRunning = false;
+            while (SDL_PollEvent(&event))
+            {
+                if (event.type == SDL_QUIT)
+                    gameRunning = false;
+            }
+
+            accumulator -= timeStep;
         }
 
+        const float alpha = accumulator / timeStep;
+
         window.clear();
+        
         for (Entity& e : entities)
             window.render(e);
+        
         window.display();
+
+        int frameTicks = SDL_GetTicks() - startTicks;
+
+        if (frameTicks < 1000 / window.getRefreshRate())
+            SDL_Delay(1000 / window.getRefreshRate() - frameTicks);
     }
     window.cleanUp();
     SDL_Quit();
