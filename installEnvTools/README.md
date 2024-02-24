@@ -11,10 +11,12 @@ Move-Item -Path "C:\code\Game\installEnvTools\SDL_mingw" -Destination "C:\code\S
 code --install-extension "C:\code\Game\installEnvTools\ms-vscode.cpptools-extension-pack-1.3.0.vsix"
 
 ## Install vcpkg (Optional)
+```
 cd "C:\msys64\ucrt64\bin"
 git clone https://github.com/Microsoft/vcpkg.git
 .\vcpkg\bootstrap-vcpkg.bat
 vcpkg install sdl2 sdl2_image sdl2_ttf sdl2_mixer
+```
 
 ## Set environment variables
 ```
