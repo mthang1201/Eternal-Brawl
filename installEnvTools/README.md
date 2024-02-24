@@ -41,7 +41,7 @@ C:/
 ├── msys2/
 │   ├── ucrt64/
 │   │   ├── bin/
-│   │       ├── bin/
+│   │       ├── vcpkg/
 │   └── ...
 ├── code/
     ├── SDL_mingw/
