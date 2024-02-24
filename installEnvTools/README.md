@@ -1,7 +1,7 @@
 ## Clone the project
 `cd C:\; mkdir code; cd code; git clone https://github.com/mthang1201/Game.git`
 
-## Install MSYS2
+## Install MSYS2 and Cmake
 pacman -S --needed base-devel git mingw-w64-ucrt-x86_64-toolchain
 
 ## Move SDL folder
