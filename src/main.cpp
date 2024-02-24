@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     std::cout << window.getRefreshRate() << std:: endl;
 
-    SDL_Texture* grassTexture = window.loadTexture("res/gfx/ground_grass_1.png");
+    SDL_Texture* grassTexture = window.loadTexture("../res/gfx/ground_grass_1.png");
 
     std::vector<Entity> entities = {Entity(Vector2f(0, 0), grassTexture),
                                     Entity(Vector2f(30, 0), grassTexture),
