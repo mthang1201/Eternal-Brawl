@@ -19,14 +19,13 @@ vcpkg install sdl2 sdl2_image sdl2_ttf sdl2_mixer
 ```
 
 ## Set environment variables
-`setx CMAKE_PREFIX_PATH "C:\code\SDL_mingw"`
-
 ```
 setx VCPKG_DEFAULT_BINARY_CACHE "C:\msys64\ucrt64\bin\vcpkg\archives"
 setx VCPKG_DEFAULT_TRIPLET "x64-windows"
 ```
 
 ```
+setx CMAKE_PREFIX_PATH "C:\code\SDL_mingw"
 setx Path "%Path%;C:\msys64\ucrt64\bin"
 setx Path "%Path%;C:\Users\Minh Thang Bui\AppData\Local\Programs\Microsoft VS Code\bin"
 setx Path "%Path%;C:\Program Files\CMake\bin"
