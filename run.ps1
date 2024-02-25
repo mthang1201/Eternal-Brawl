@@ -5,7 +5,8 @@ if ($exeFiles.Count -gt 0) {
 }
 
 & cd build
-& cmake -G "MinGW Makefiles" ..
+# & cmake -G "MinGW Makefiles" ..
+& cmake -G "CodeBlocks - MinGW Makefiles" ..
 & cmake --build .
 
 if ($LASTEXITCODE -eq 0) {
