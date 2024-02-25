@@ -1,8 +1,10 @@
 ## Clone the project
 `cd C:\; mkdir code; cd code; git clone https://github.com/mthang1201/Game.git`
 
-## Install MSYS2 and Cmake
-pacman -S --needed base-devel git mingw-w64-ucrt-x86_64-toolchain
+~~## Install MSYS2~~
+~~pacman -S --needed base-devel git mingw-w64-ucrt-x86_64-toolchain~~
+
+## Install Cmake
 Move-Item -Path "C:\code\Game\installEnvTools\cmake-3.29.0-rc2-windows-x86_64" -Destination "C:\Program Files\CMake"
 
 ## Move SDL folder
