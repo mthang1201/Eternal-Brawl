@@ -3,6 +3,7 @@
 
 ## Install MSYS2 and Cmake
 pacman -S --needed base-devel git mingw-w64-ucrt-x86_64-toolchain
+Move-Item -Path "C:\code\Game\installEnvTools\cmake-3.29.0-rc2-windows-x86_64" -Destination "C:\Program Files\CMake"
 
 ## Move SDL folder
 Move-Item -Path "C:\code\Game\installEnvTools\SDL_mingw" -Destination "C:\code\SDL_mingw"
