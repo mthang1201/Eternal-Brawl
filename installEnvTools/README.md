@@ -32,9 +32,7 @@ setx VCPKG_DEFAULT_TRIPLET "x64-windows"
 
 ```
 setx CMAKE_PREFIX_PATH "C:\code\SDL_mingw"
-setx Path "%Path%;C:\msys64\ucrt64\bin"
-setx Path "%Path%;C:\Users\Minh Thang Bui\AppData\Local\Programs\Microsoft VS Code\bin"
-setx Path "%Path%;C:\Program Files\CMake\bin"
+setx Path "%Path%;C:\msys64\ucrt64\bin;C:\Users\Minh Thang Bui\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\CMake\bin"
 ```
 add /M for system environment variables
 
