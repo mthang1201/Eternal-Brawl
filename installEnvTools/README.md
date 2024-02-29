@@ -1,17 +1,20 @@
+## Allow script execution
+`Set-ExecutionPolicy RemoteSigned`
+
 ## Clone the project
 `cd C:\; mkdir code; cd code; git clone https://github.com/mthang1201/Game.git`
 
 ## ~~Install MSYS2~~
-~~pacman -S --needed base-devel git mingw-w64-ucrt-x86_64-toolchain~~
+~~pacman -S --needed base-devel git gcc make~~
 
 ## Install CMake
-Move-Item -Path "C:\code\Game\installEnvTools\cmake-3.29.0-rc2-windows-x86_64" -Destination "C:\Program Files\CMake"
+`Move-Item -Path "C:\code\Game\installEnvTools\cmake-3.29.0-rc2-windows-x86_64" -Destination "C:\Program Files\CMake"`
 
 ## Move SDL folder
-Move-Item -Path "C:\code\Game\installEnvTools\SDL_mingw" -Destination "C:\code\SDL_mingw"
+`Move-Item -Path "C:\code\Game\installEnvTools\SDL_mingw" -Destination "C:\code\SDL_mingw"`
 
 ## Install extensions for vscode
-code --install-extension "C:\code\Game\installEnvTools\ms-vscode.cpptools-extension-pack-1.3.0.vsix"
+`code --install-extension "C:\code\Game\installEnvTools\ms-vscode.cpptools-extension-pack-1.3.0.vsix"`
 
 ## Install vcpkg (Optional)
 ```
@@ -29,9 +32,7 @@ setx VCPKG_DEFAULT_TRIPLET "x64-windows"
 
 ```
 setx CMAKE_PREFIX_PATH "C:\code\SDL_mingw"
-setx Path "%Path%;C:\msys64\ucrt64\bin"
-setx Path "%Path%;C:\Users\Minh Thang Bui\AppData\Local\Programs\Microsoft VS Code\bin"
-setx Path "%Path%;C:\Program Files\CMake\bin"
+setx Path "%Path%;C:\msys64\usr\bin;C:\Users\Minh Thang Bui\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\CMake\bin"
 ```
 add /M for system environment variables
 
