@@ -1,3 +1,0 @@
-C:/Users/Minh Thang Bui/source/repos/Game/build/CMakeFiles/Game.dir
-C:/Users/Minh Thang Bui/source/repos/Game/build/CMakeFiles/edit_cache.dir
-C:/Users/Minh Thang Bui/source/repos/Game/build/CMakeFiles/rebuild_cache.dir
