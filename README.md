@@ -11,21 +11,16 @@ If you just want to try the game on your Windows machine, go the [Releases](http
 - You may need the [Microsoft Visual C++ Redistributables](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) if you don't have them already installed.
 
 ## Build Instructions
-This is the first project where I use make, so to compile the game yourself you will need [make](https://gnuwin32.sourceforge.net/packages/make.htm).
+This is the first project where I use CMake to support multiple compilers, so to compile the game yourself you will need [CMake](https://cmake.org/overview/).
 - First of all, clone the repository to your PC.
 - Open a terminal window in the root directory of the cloned repository and run this powershell script:
 ```
 ./run
 ```
-You will then find the Game executable in build.
+You will then find the Game executable in bin.
 
 ## Controls
-- Left/Right/Down arrow keys: Move the tetromino
-- Up arrow key: Rotate the tetromino
-- Space: Hard drop tetromino
-- Shift/C: Swap with hold block
-- P: Pause the game
-- Q/Esc: Go back
+- Pending...
 
 ## Features to add
 - Pending...
@@ -33,11 +28,15 @@ You will then find the Game executable in build.
 ## Third party tools
 - [SDL2 framework](https://www.libsdl.org/) to handle all the low-level stuff
 - [SDL_image 2.0](https://www.libsdl.org/projects/SDL_image/) for loading images
+- [SDL_ttf 2.0](https://www.libsdl.org/projects/SDL_ttf/) for rendering fonts
+- [SDL_mixer 2.0](https://www.libsdl.org/projects/SDL_mixer/) for loading sounds
 
 ## Acknowledgements
 [Lazy Foo's SDL tutorials](https://lazyfoo.net/tutorials/SDL/index.php) have been extremely helpful, look into them if you are interested in low-level game programming or just want a framework to handle basic graphics for your C/C++ programs.
 
 [File structure and README.md layout example](https://github.com/mvlassis/pixeltetris)
+
+[An Introduction to Modern CMake](https://www.willusher.io/sdl2%20tutorials/2014/03/06/lesson-0-cmake) is great for learning the basics of CMake and avoiding bad practices.
 
 [Codergopher's tutorial](https://www.youtube.com/playlist?list=PL2RPjWnJduNmXHRYwdtublIPdlqocBoLS) was my initial inspiration for starting this project.
 
