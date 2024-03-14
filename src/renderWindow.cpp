@@ -15,6 +15,8 @@ RenderWindow::RenderWindow(const char* p_title, int p_w, int p_h) : window(NULL)
     }
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    // Virtual machine
+    // renderer = SDL_CreateSoftwareRenderer(SDL_GetWindowSurface(window));
 }
 
 SDL_Texture* RenderWindow::loadTexture(const char* p_filePath)
@@ -68,4 +70,6 @@ void RenderWindow::render(Entity& p_entity)
 void RenderWindow::display()
 {
     SDL_RenderPresent(renderer);
+    // Virtual machine
+    // SDL_UpdateWindowSurface(window);
 }
