@@ -40,6 +40,8 @@ You will then find the Game executable in bin.
 
 [Codergopher's tutorial](https://www.youtube.com/playlist?list=PL2RPjWnJduNmXHRYwdtublIPdlqocBoLS) was my initial inspiration for starting this project.
 
+[SDL Game Development](https://books.google.com.vn/books/about/SDL_Game_Development.html?id=SbmfrHIlhK4C&source=kp_book_description&redir_esc=y) by Shaun Mitchell, 2013.
+
 ## License
 - Still working on...
 <!-- - The source code is licensed under the [MIT License](https://tldrlegal.com/license/mit-license).
