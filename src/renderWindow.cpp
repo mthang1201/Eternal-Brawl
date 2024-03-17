@@ -5,24 +5,24 @@
 #include "renderWindow.hpp"
 #include "entity.hpp"
 
-RenderWindow::RenderWindow(const char* p_title, int p_w, int p_h) : window(NULL), renderer(NULL)
+RenderWindow::RenderWindow(const char* title, int width, int height) : m_pWindow(NULL), m_pRenderer(NULL)
 {
-    window = SDL_CreateWindow(p_title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, p_w, p_h, SDL_WINDOW_SHOWN);
+    m_pWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 
-    if (window == NULL)
+    if (m_pWindow == nullptr)
     {
         std::cout << "Window failed to init. Error: " << SDL_GetError() << std::endl;
     }
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     // Virtual machine
-    // renderer = SDL_CreateSoftwareRenderer(SDL_GetWindowSurface(window));
+    // renderer = SDL_CreateSoftwareRenderer(SDL_GetWindowSurface(m_pWindow));
 }
 
-SDL_Texture* RenderWindow::loadTexture(const char* p_filePath)
+SDL_Texture* RenderWindow::loadTexture(const char* filePath)
 {
     SDL_Texture* texture = NULL;
-    texture = IMG_LoadTexture(renderer, p_filePath);
+    texture = IMG_LoadTexture(m_pRenderer, filePath);
 
     if (texture == NULL)
         std::cout << "Failed to load texture. Error: " << SDL_GetError() << std::endl;
@@ -31,7 +31,7 @@ SDL_Texture* RenderWindow::loadTexture(const char* p_filePath)
 
 int RenderWindow::getRefreshRate()
 {
-    int displayIndex = SDL_GetWindowDisplayIndex(window);
+    int displayIndex = SDL_GetWindowDisplayIndex(m_pWindow);
 
     SDL_DisplayMode mode;
 
@@ -42,34 +42,34 @@ int RenderWindow::getRefreshRate()
 
 void RenderWindow::cleanUp()
 {
-    SDL_DestroyWindow(window);
+    SDL_DestroyWindow(m_pWindow);
 }
 
 void RenderWindow::clear()
 {
-    SDL_RenderClear(renderer);
+    SDL_RenderClear(m_pRenderer);
 }
 
-void RenderWindow::render(Entity& p_entity)
+void RenderWindow::render(Entity& entity)
 {
     SDL_Rect src;
-    src.x = p_entity.getCurrentFrame().x;
-    src.y = p_entity.getCurrentFrame().y;
-    src.w = p_entity.getCurrentFrame().w;
-    src.h = p_entity.getCurrentFrame().h;
+    src.x = entity.getCurrentFrame().x;
+    src.y = entity.getCurrentFrame().y;
+    src.w = entity.getCurrentFrame().w;
+    src.h = entity.getCurrentFrame().h;
     
     SDL_Rect dst;
-    dst.x = p_entity.getPos().x * 4;
-    dst.y = p_entity.getPos().y * 5;
-    dst.w = p_entity.getCurrentFrame().w * 4;
-    dst.h = p_entity.getCurrentFrame().h * 4;
+    dst.x = entity.getPos().m_x * 4;
+    dst.y = entity.getPos().m_y * 5;
+    dst.w = entity.getCurrentFrame().w * 4;
+    dst.h = entity.getCurrentFrame().h * 4;
     
-    SDL_RenderCopy(renderer, p_entity.getTex(), &src, &dst);
+    SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
 }
 
 void RenderWindow::display()
 {
-    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(m_pRenderer);
     // Virtual machine
-    // SDL_UpdateWindowSurface(window);
+    // SDL_UpdateWindowSurface(m_pWindow);
 }

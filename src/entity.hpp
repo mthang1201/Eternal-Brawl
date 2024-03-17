@@ -7,16 +7,16 @@
 class Entity
 {
 public:
-    Entity(Vector2f p_pos, SDL_Texture* p_tex);
+    Entity(Vector2f pos, SDL_Texture* tex);
     Vector2f& getPos()
     {
-        return pos;
+        return m_pos;
     }
     SDL_Texture* getTex();
     SDL_Rect getCurrentFrame();
 private:
-    Vector2f pos;
+    Vector2f m_pos;
 
-    SDL_Rect currentFrame;
-    SDL_Texture* tex;
+    SDL_Rect m_currentFrame;
+    SDL_Texture* m_tex;
 };

@@ -7,6 +7,9 @@
 #include "entity.hpp"
 #include "utils.hpp"
 
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
+
 int main(int argc, char *argv[])
 {
     if (SDL_Init(SDL_INIT_VIDEO) > 0)
@@ -15,7 +18,7 @@ int main(int argc, char *argv[])
     if (!(IMG_Init(IMG_INIT_PNG)))
         std::cout << "IMG_Init has failed. Error: " << SDL_GetError() << std::endl;
 
-    RenderWindow window("GAME v1.0", 1280, 720);
+    RenderWindow window("GAME v1.0", SCREEN_WIDTH, SCREEN_HEIGHT);
 
     std::cout << window.getRefreshRate() << std:: endl;
 
