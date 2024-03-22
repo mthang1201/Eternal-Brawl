@@ -74,6 +74,6 @@ And, voila, you have successfully built the source. Check the Game executable in
 [SDL Game Development](https://books.google.com.vn/books/about/SDL_Game_Development.html?id=SbmfrHIlhK4C&source=kp_book_description&redir_esc=y) by Shaun Mitchell, 2013.
 
 ## License
+- The source code is licensed under the [MIT License](https://tldrlegal.com/license/mit-license).
 - Still working on...
-<!-- - The source code is licensed under the [MIT License](https://tldrlegal.com/license/mit-license).
-- The Munro fonts are licensed under the [SIL Open Font License](http://scripts.sil.org/OFL). -->
+<!-- - The Munro fonts are licensed under the [SIL Open Font License](http://scripts.sil.org/OFL). -->
