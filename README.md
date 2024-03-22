@@ -7,17 +7,40 @@ A game written from scratch in C++ using the SDL2 development library. Apart fro
 <img src="gallery/mainmenu.png" width = "310"> <img src="gallery/options.png" width = "310"> <img src="gallery/pausemenu.png" width = "310"> -->
 
 ## Installation
-If you just want to try the game on your Windows machine, go the [Releases](https://github.com/mthang1201/Game/releases) page and get the latest executable.
+If you just want to try the game on your PC, go the [Releases](https://github.com/mthang1201/Game/releases) page and get the latest executable.
 - You may need the [Microsoft Visual C++ Redistributables](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) if you don't have them already installed.
 
 ## Build Instructions
-This is the first project where I use CMake to support multiple compilers, so to compile the game yourself you will need [CMake](https://cmake.org/overview/).
-- First of all, clone the repository to your PC.
-- Open a terminal window in the root directory of the cloned repository and run this powershell script:
+This is the first C++ SDL2 project where I use CMake to support multiple compilers, so to compile the game yourself you will need [CMake](https://cmake.org/download/) and [MinGW](https://www.mingw-w64.org/downloads/).
+- First of all, clone the repository to your Windows machine.
+```
+git clone https://github.com/mthang1201/Game.git
+```
+Alternatively, you can install the zip file and extract it to a desired location.
+- Secondly, install CMake and MinGW. Remember to install them using the installer, or you may need to add the environment variables manually.
+- Open a terminal window in the root directory of the cloned repository and run this Powershell script:
 ```
 ./run
 ```
-You will then find the Game executable in bin.
+You will then find the Game executable in the bin directory.
+
+NOTE: If the instruction above did not work, you may need to build manually from the source:
+- Open Powershell, and change the directory to the cloned repository.
+- Then, execute these commands:
+```
+cd build
+rm * -rf
+```
+Confirm the deletion of all files and folder in the build directory.
+```
+cmake -G
+```
+This will display several generators such as Unix Makefiles, MinGW Makefiles, Ninja and etc. Choose the one you prefer. However, for this instruction, I will stick to MinGW:
+```
+cmake -G "MinGW Makefiles" ..
+cmake --build .
+```
+And, voila, you have successfully built the source. Check the Game executable in the bin directory.
 
 ## Controls
 - Pending...
@@ -26,10 +49,10 @@ You will then find the Game executable in bin.
 - Pending...
 
 ## Third party tools
-- [SDL2 framework](https://www.libsdl.org/) to handle all the low-level stuff
-- [SDL_image 2.0](https://www.libsdl.org/projects/SDL_image/) for loading images
-- [SDL_ttf 2.0](https://www.libsdl.org/projects/SDL_ttf/) for rendering fonts
-- [SDL_mixer 2.0](https://www.libsdl.org/projects/SDL_mixer/) for loading sounds
+- [SDL 2.30.0](https://github.com/libsdl-org/SDL/releases/tag/release-2.30.0) to handle all the low-level stuff
+- [SDL_image 2.8.2](https://github.com/libsdl-org/SDL_image/releases/tag/release-2.8.2) for loading images
+- [SDL_ttf 2.22.0](https://github.com/libsdl-org/SDL_ttf/releases/tag/release-2.22.0) for rendering fonts
+- [SDL_mixer 2.8.0](https://github.com/libsdl-org/SDL_mixer/releases/tag/release-2.8.0) for loading sounds
 
 ## Acknowledgements
 [Lazy Foo's SDL tutorials](https://lazyfoo.net/tutorials/SDL/index.php) have been extremely helpful, look into them if you are interested in low-level game programming or just want a framework to handle basic graphics for your C/C++ programs.
@@ -40,7 +63,7 @@ You will then find the Game executable in bin.
 
 [Codergopher's tutorial](https://www.youtube.com/playlist?list=PL2RPjWnJduNmXHRYwdtublIPdlqocBoLS) was my initial inspiration for starting this project.
 
-[SDL Game Development](https://books.google.com.vn/books/about/SDL_Game_Development.html?id=SbmfrHIlhK4C&source=kp_book_description&redir_esc=y) was my codebase (Shaun Mitchell, 2013).
+[SDL Game Development](https://books.google.com.vn/books/about/SDL_Game_Development.html?id=SbmfrHIlhK4C&source=kp_book_description&redir_esc=y) by Shaun Mitchell, 2013.
 
 ## License
 - Still working on...
