@@ -5,18 +5,28 @@
 #include "renderWindow.hpp"
 #include "entity.hpp"
 
-RenderWindow::RenderWindow(const char* title, int width, int height) : m_pWindow(NULL), m_pRenderer(NULL)
+RenderWindow *RenderWindow::s_pInstance = nullptr;
+
+bool RenderWindow::init(const char* title, int width, int height)
 {
+    if (SDL_Init(SDL_INIT_VIDEO) > 0)
+        std::cout << "HEY... SDL_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
+
+    if (!(IMG_Init(IMG_INIT_PNG)))
+        std::cout << "IMG_Init has failed. Error: " << SDL_GetError() << std::endl;
+    
     m_pWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 
     if (m_pWindow == nullptr)
     {
         std::cout << "Window failed to init. Error: " << SDL_GetError() << std::endl;
+        return false;
     }
 
     m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     // Virtual machine
     // renderer = SDL_CreateSoftwareRenderer(SDL_GetWindowSurface(m_pWindow));
+    return true;
 }
 
 SDL_Texture* RenderWindow::loadTexture(const char* filePath)
@@ -40,17 +50,19 @@ int RenderWindow::getRefreshRate()
     return mode.refresh_rate;
 }
 
-void RenderWindow::cleanUp()
+void RenderWindow::clean()
 {
     SDL_DestroyWindow(m_pWindow);
+    SDL_DestroyRenderer(m_pRenderer);
 }
 
 void RenderWindow::clear()
 {
+    SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
     SDL_RenderClear(m_pRenderer);
 }
 
-void RenderWindow::render(Entity& entity)
+void RenderWindow::draw(Entity& entity)
 {
     SDL_Rect src;
     src.x = entity.getCurrentFrame().x;
@@ -59,8 +71,8 @@ void RenderWindow::render(Entity& entity)
     src.h = entity.getCurrentFrame().h;
     
     SDL_Rect dst;
-    dst.x = entity.getPos().m_x * 4;
-    dst.y = entity.getPos().m_y * 5;
+    dst.x = entity.getPos().getX() * 4;
+    dst.y = entity.getPos().getY() * 5;
     dst.w = entity.getCurrentFrame().w * 4;
     dst.h = entity.getCurrentFrame().h * 4;
     

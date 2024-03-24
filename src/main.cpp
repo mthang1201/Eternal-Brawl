@@ -1,79 +1,46 @@
 #include <SDL.h>
-#include <SDL_image.h>
-#include <iostream>
-#include <vector>
 
-#include "renderWindow.hpp"
-#include "entity.hpp"
+#include "game.hpp"
 #include "utils.hpp"
-
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 720
 
 int main(int argc, char *argv[])
 {
-    if (SDL_Init(SDL_INIT_VIDEO) > 0)
-        std::cout << "HEY... SDL_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
-
-    if (!(IMG_Init(IMG_INIT_PNG)))
-        std::cout << "IMG_Init has failed. Error: " << SDL_GetError() << std::endl;
-
-    RenderWindow window("GAME v1.0", SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    std::cout << window.getRefreshRate() << std:: endl;
-
-    SDL_Texture* grassTexture = window.loadTexture("../res/gfx/ground_grass_1.png");
-
-    std::vector<Entity> entities = {Entity(Vector2f(0, 0), grassTexture),
-                                    Entity(Vector2f(30, 0), grassTexture),
-                                    Entity(Vector2f(30, 30), grassTexture)};
-    
-    bool gameRunning = true;
-
-    SDL_Event event;
-
     const float timeStep = 0.01f;
     float accumulator = 0.0f;
     float currentTime = utils::hireTimeInSeconds();
 
-    while (gameRunning)
+    if (TheGame::Instance()->init())
     {
-        int startTicks = SDL_GetTicks();
-
-        float newTime = utils::hireTimeInSeconds();
-        float frameTime = newTime - currentTime;
-
-        currentTime = newTime;
-
-        accumulator += frameTime;
-
-        while (accumulator >= timeStep)
+        while (TheGame::Instance()->isRunning())
         {
-            while (SDL_PollEvent(&event))
+            float newTime = utils::hireTimeInSeconds();
+            float frameTime = newTime - currentTime;
+            currentTime = newTime;
+            
+            accumulator += frameTime;
+
+            while (accumulator >= timeStep)
             {
-                if (event.type == SDL_QUIT)
-                    gameRunning = false;
+                TheGame::Instance()->handleEvents();
+
+                accumulator -= timeStep;
             }
+            const float alpha = accumulator / timeStep;
 
-            accumulator -= timeStep;
+            TheGame::Instance()->update();
+            
+            TheGame::Instance()->render();
+            
+            TheGame::Instance()->display();
+
+            int startTicks = SDL_GetTicks();
+            int frameTicks = SDL_GetTicks() - startTicks;
+
+            TheGame::Instance()->pause(frameTicks);
         }
-
-        const float alpha = accumulator / timeStep;
-
-        window.clear();
-        
-        for (Entity& e : entities)
-            window.render(e);
-        
-        window.display();
-
-        int frameTicks = SDL_GetTicks() - startTicks;
-
-        if (frameTicks < 1000 / window.getRefreshRate())
-            SDL_Delay(1000 / window.getRefreshRate() - frameTicks);
     }
-    window.cleanUp();
-    SDL_Quit();
+
+    TheGame::Instance()->clean();
 
     return 0;
 }

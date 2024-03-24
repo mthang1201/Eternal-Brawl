@@ -7,16 +7,30 @@
 class RenderWindow
 {
 public:
-    RenderWindow(const char* title, int width, int height);
-    SDL_Texture* loadTexture(const char* filePath);
-    
+    static RenderWindow* Instance()
+    {
+        if (s_pInstance == 0)
+        {
+            s_pInstance = new RenderWindow();
+            return s_pInstance;
+        }
+        return s_pInstance;
+    }
+
+    bool init(const char* title, int width, int height);
+
+    SDL_Texture *loadTexture(const char *filePath);
     int getRefreshRate();
-    
-    void cleanUp();
+    void clean();
     void clear();
-    void render(Entity& entity);
+    void draw(Entity &entity);
     void display();
+
 private:
-    SDL_Window* m_pWindow;
-    SDL_Renderer* m_pRenderer;
+    RenderWindow() {}
+    static RenderWindow *s_pInstance;
+    SDL_Window *m_pWindow;
+    SDL_Renderer *m_pRenderer;
 };
+
+typedef RenderWindow TheRenderWindow;

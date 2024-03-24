@@ -1,23 +1,20 @@
-#include "entity.hpp"
 #include <SDL.h>
 #include <SDL_image.h>
 
-Entity::Entity(Vector2f pos, SDL_Texture* tex) : m_pos(pos), m_tex(tex)
+#include "entity.hpp"
+#include "vector2f.hpp"
+
+Entity::Entity(Vector2f pos, SDL_Rect currentFrame, SDL_Texture *pTex)
 {
-    m_currentFrame.x = 0;
-    m_currentFrame.y = 0;
-    m_currentFrame.w = 32;
-    m_currentFrame.h = 32;
+    m_pos.setX(pos.getX());
+    m_pos.setY(pos.getY());
+    m_currentFrame.w = currentFrame.w;
+    m_currentFrame.h = currentFrame.h;
+    m_pTex = pTex;
 }
 
-
-
-SDL_Texture* Entity::getTex()
+void Entity::update()
 {
-    return m_tex;
-}
-
-SDL_Rect Entity::getCurrentFrame()
-{
-    return m_currentFrame;
+	m_velocity += m_acceleration;
+	m_pos += m_velocity;
 }

@@ -152,6 +152,54 @@ src/entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/entity.cpp.s
 .PHONY : src/entity.cpp.s
 
+src/game.obj: src/game.cpp.obj
+.PHONY : src/game.obj
+
+# target to build an object file
+src/game.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/game.cpp.obj
+.PHONY : src/game.cpp.obj
+
+src/game.i: src/game.cpp.i
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
+
+src/inputHandler.obj: src/inputHandler.cpp.obj
+.PHONY : src/inputHandler.obj
+
+# target to build an object file
+src/inputHandler.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/inputHandler.cpp.obj
+.PHONY : src/inputHandler.cpp.obj
+
+src/inputHandler.i: src/inputHandler.cpp.i
+.PHONY : src/inputHandler.i
+
+# target to preprocess a source file
+src/inputHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/inputHandler.cpp.i
+.PHONY : src/inputHandler.cpp.i
+
+src/inputHandler.s: src/inputHandler.cpp.s
+.PHONY : src/inputHandler.s
+
+# target to generate assembly for a file
+src/inputHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/inputHandler.cpp.s
+.PHONY : src/inputHandler.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -176,29 +224,29 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/math.obj: src/math.cpp.obj
-.PHONY : src/math.obj
+src/player.obj: src/player.cpp.obj
+.PHONY : src/player.obj
 
 # target to build an object file
-src/math.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/math.cpp.obj
-.PHONY : src/math.cpp.obj
+src/player.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/player.cpp.obj
+.PHONY : src/player.cpp.obj
 
-src/math.i: src/math.cpp.i
-.PHONY : src/math.i
+src/player.i: src/player.cpp.i
+.PHONY : src/player.i
 
 # target to preprocess a source file
-src/math.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/math.cpp.i
-.PHONY : src/math.cpp.i
+src/player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/player.cpp.i
+.PHONY : src/player.cpp.i
 
-src/math.s: src/math.cpp.s
-.PHONY : src/math.s
+src/player.s: src/player.cpp.s
+.PHONY : src/player.s
 
 # target to generate assembly for a file
-src/math.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/math.cpp.s
-.PHONY : src/math.cpp.s
+src/player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/player.cpp.s
+.PHONY : src/player.cpp.s
 
 src/renderWindow.obj: src/renderWindow.cpp.obj
 .PHONY : src/renderWindow.obj
@@ -224,6 +272,30 @@ src/renderWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/renderWindow.cpp.s
 .PHONY : src/renderWindow.cpp.s
 
+src/vector2f.obj: src/vector2f.cpp.obj
+.PHONY : src/vector2f.obj
+
+# target to build an object file
+src/vector2f.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/vector2f.cpp.obj
+.PHONY : src/vector2f.cpp.obj
+
+src/vector2f.i: src/vector2f.cpp.i
+.PHONY : src/vector2f.i
+
+# target to preprocess a source file
+src/vector2f.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/vector2f.cpp.i
+.PHONY : src/vector2f.cpp.i
+
+src/vector2f.s: src/vector2f.cpp.s
+.PHONY : src/vector2f.s
+
+# target to generate assembly for a file
+src/vector2f.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/vector2f.cpp.s
+.PHONY : src/vector2f.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -236,15 +308,24 @@ help:
 	@echo ... src/entity.obj
 	@echo ... src/entity.i
 	@echo ... src/entity.s
+	@echo ... src/game.obj
+	@echo ... src/game.i
+	@echo ... src/game.s
+	@echo ... src/inputHandler.obj
+	@echo ... src/inputHandler.i
+	@echo ... src/inputHandler.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
-	@echo ... src/math.obj
-	@echo ... src/math.i
-	@echo ... src/math.s
+	@echo ... src/player.obj
+	@echo ... src/player.i
+	@echo ... src/player.s
 	@echo ... src/renderWindow.obj
 	@echo ... src/renderWindow.i
 	@echo ... src/renderWindow.s
+	@echo ... src/vector2f.obj
+	@echo ... src/vector2f.i
+	@echo ... src/vector2f.s
 .PHONY : help
 
 

@@ -15,9 +15,12 @@ link_directories(${SDL2_DIR}/lib)
 
 set(SOURCES
     src/main.cpp
+    src/game.cpp
     src/renderWindow.cpp
     src/entity.cpp
-    src/math.cpp
+    src/vector2f.cpp
+    src/inputHandler.cpp
+    src/player.cpp
 )
 
 add_executable(Game ${SOURCES})
