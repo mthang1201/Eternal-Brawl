@@ -1,12 +1,12 @@
 CMakeFiles/Game.dir/src/loaderParams.cpp.obj: \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.cpp \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_main.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_stdinc.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_config.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_platform.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/begin_code.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/close_code.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_main.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_stdinc.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_config.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_platform.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/begin_code.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/close_code.h \
  C:/msys64/ucrt64/include/winsdkver.h \
  C:/msys64/ucrt64/include/winapifamily.h \
  C:/msys64/ucrt64/include/sdkddkver.h \
@@ -22,20 +22,20 @@ CMakeFiles/Game.dir/src/loaderParams.cpp.obj: \
  C:/msys64/ucrt64/include/_mingw_stdarg.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
  C:/msys64/ucrt64/include/stdint.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_assert.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_atomic.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_audio.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_error.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_endian.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_mutex.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_thread.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_assert.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_atomic.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_audio.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_error.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_endian.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_mutex.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_thread.h \
  C:/msys64/ucrt64/include/process.h \
  C:/msys64/ucrt64/include/corecrt_startup.h \
  C:/msys64/ucrt64/include/sys/types.h \
  C:/msys64/ucrt64/include/_mingw_off_t.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_rwops.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_clipboard.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_cpuinfo.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_rwops.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_clipboard.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_cpuinfo.h \
  C:/msys64/ucrt64/include/intrin.h C:/msys64/ucrt64/include/setjmp.h \
  C:/msys64/ucrt64/include/psdk_inc/intrin-impl.h \
  C:/msys64/ucrt64/include/c++/13.1.0/stdlib.h \
@@ -153,43 +153,43 @@ CMakeFiles/Game.dir/src/loaderParams.cpp.obj: \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/ammintrin.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/xopintrin.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/cpuid.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_events.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_video.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_pixels.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_rect.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_surface.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_blendmode.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_keyboard.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_keycode.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_scancode.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_mouse.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_joystick.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_guid.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_gamecontroller.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_sensor.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_quit.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_gesture.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_touch.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_filesystem.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_haptic.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_hidapi.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_hints.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_loadso.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_log.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_messagebox.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_metal.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_power.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_render.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_shape.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_system.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_timer.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_version.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_locale.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_misc.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_image.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL.h \
- C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.hpp \
- C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\vector2f.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_events.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_video.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_pixels.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_rect.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_surface.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_blendmode.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_keyboard.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_keycode.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_scancode.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_mouse.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_joystick.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_guid.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_gamecontroller.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_sensor.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_quit.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_gesture.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_touch.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_filesystem.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_haptic.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_hidapi.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_hints.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_loadso.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_log.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_messagebox.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_metal.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_power.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_render.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_shape.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_system.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_timer.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_version.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_locale.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_misc.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_image.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/loaderParams.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/vector2f.hpp \
  C:/msys64/ucrt64/include/c++/13.1.0/iostream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/13.1.0/ostream \

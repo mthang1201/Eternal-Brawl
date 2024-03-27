@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(Game VERSION 0.1.0)
 
 set(SDL2_DIR ".")
+include_directories(${SDL2_DIR}/include/SDL2)
 include_directories(${SDL2_DIR}/include)
 link_directories(${SDL2_DIR}/lib)
 
@@ -14,14 +15,18 @@ link_directories(${SDL2_DIR}/lib)
 # find_package(SDL2_mixer REQUIRED)
 
 set(SOURCES
+    # GameCore
     src/main.cpp
     src/game.cpp
     src/renderWindow.cpp
-    src/entity.cpp
-    src/vector2f.cpp
     src/inputHandler.cpp
-    src/player.cpp
+    # GameObject
+    src/GameObject/entity.cpp
+    src/GameObject/player.cpp
+    # Utils
+    src/vector2f.cpp
     src/loaderParams.cpp
+    src/loaderAssets.cpp
 )
 
 add_executable(Game ${SOURCES})

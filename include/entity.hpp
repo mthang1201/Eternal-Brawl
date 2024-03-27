@@ -8,9 +8,9 @@ class Entity
 {
 public:
     Entity(const LoaderParams* pParams);
-    virtual void draw()=0;
-    virtual void update()=0;
-    virtual void clean()=0;
+    virtual void draw() = 0;
+    virtual void update() = 0;
+    virtual void clean() = 0;
     virtual Vector2f getPos() { return m_pos; }
     virtual SDL_Rect getCurrentFrame() { return m_currentFrame; }
     virtual SDL_Texture* getTex() { return m_pTex; }

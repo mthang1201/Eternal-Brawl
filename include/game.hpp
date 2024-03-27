@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "entity.hpp"
+#include "loaderAssets.hpp"
 
 class Game
 {
@@ -30,6 +31,7 @@ private:
     Game() {}
     static Game *s_pInstance;
     std::vector<Entity*> m_entities;
+    LoaderAssets m_assets;
     bool m_bGameRunning = true;
 };
 

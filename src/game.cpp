@@ -9,6 +9,7 @@
 #include "player.hpp"
 #include "utils.hpp"
 #include "inputHandler.hpp"
+#include "loaderAssets.hpp"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -19,9 +20,9 @@ bool Game::init()
 {
     if (TheRenderWindow::Instance()->init("GAME v1.0", SCREEN_WIDTH, SCREEN_HEIGHT))
     {
-        SDL_Texture* GROUND_GRASS = TheRenderWindow::Instance()->loadTexture("../res/gfx/ground_grass_1.png");
-        SDL_Texture* HULKING_KNIGHT = TheRenderWindow::Instance()->loadTexture("../res/gfx/hulking_knight.png");
-        m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), {0, 0, 30, 30}, HULKING_KNIGHT)));
+        m_assets.loadTextures();
+        m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), {0, 0, 30, 30}, m_assets.getTexture("hulking_knight"))));
+        // m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), {0, 0, 30, 30}, m_assets.getTexture(HULKING_KNIGHT))));
         // Player ground_grass(Vector2f(30, 0), {0, 0, 30, 30}, GROUND_GRASS);
         // m_entities.push_back(new Player(Vector2f(30, 30), {0, 0, 30, 30}, METAL_KNIGHT));
         // TheRenderWindow::Instance()->draw(ground_grass);

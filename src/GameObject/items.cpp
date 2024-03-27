@@ -1,9 +1,10 @@
 #include "player.hpp"
 #include "entity.hpp"
+#include "loaderParams.hpp"
 #include "vector2f.hpp"
 #include "inputHandler.hpp"
 
-Player::Player(Vector2f pos, SDL_Rect currentFrame, SDL_Texture *pTex) : Entity(pos, currentFrame, pTex)
+Player::Player(const LoaderParams* pParams) : Entity(pParams)
 {
 }
 
