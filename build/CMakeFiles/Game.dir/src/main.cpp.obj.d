@@ -304,4 +304,7 @@ CMakeFiles/Game.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/13.1.0/istream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc \
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL_image.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL.h \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\utils.hpp

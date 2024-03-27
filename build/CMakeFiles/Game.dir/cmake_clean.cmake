@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Game.dir/src/game.cpp.obj.d"
   "CMakeFiles/Game.dir/src/inputHandler.cpp.obj"
   "CMakeFiles/Game.dir/src/inputHandler.cpp.obj.d"
+  "CMakeFiles/Game.dir/src/loaderParams.cpp.obj"
+  "CMakeFiles/Game.dir/src/loaderParams.cpp.obj.d"
   "CMakeFiles/Game.dir/src/main.cpp.obj"
   "CMakeFiles/Game.dir/src/main.cpp.obj.d"
   "CMakeFiles/Game.dir/src/player.cpp.obj"

@@ -300,4 +300,5 @@ CMakeFiles/Game.dir/src/renderWindow.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\renderWindow.hpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\entity.hpp \
- C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\vector2f.hpp
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\vector2f.hpp \
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.hpp

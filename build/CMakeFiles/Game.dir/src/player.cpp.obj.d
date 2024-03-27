@@ -1,6 +1,7 @@
 CMakeFiles/Game.dir/src/player.cpp.obj: \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\player.cpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\player.hpp \
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\entity.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_main.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_stdinc.h \
@@ -187,8 +188,7 @@ CMakeFiles/Game.dir/src/player.cpp.obj: \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_version.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_locale.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_misc.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL_image.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/SDL.h \
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\vector2f.hpp \
  C:/msys64/ucrt64/include/c++/13.1.0/iostream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/13.1.0/ostream \
@@ -299,12 +299,7 @@ CMakeFiles/Game.dir/src/player.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/13.1.0/istream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc \
- C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\entity.hpp \
- C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\vector2f.hpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.hpp \
- C:/msys64/ucrt64/include/c++/13.1.0/vector \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_uninitialized.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_vector.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_bvector.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/vector.tcc \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL_image.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/SDL.h \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\inputHandler.hpp

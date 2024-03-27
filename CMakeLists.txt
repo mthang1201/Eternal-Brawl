@@ -21,6 +21,7 @@ set(SOURCES
     src/vector2f.cpp
     src/inputHandler.cpp
     src/player.cpp
+    src/loaderParams.cpp
 )
 
 add_executable(Game ${SOURCES})

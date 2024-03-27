@@ -200,6 +200,30 @@ src/inputHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/inputHandler.cpp.s
 .PHONY : src/inputHandler.cpp.s
 
+src/loaderParams.obj: src/loaderParams.cpp.obj
+.PHONY : src/loaderParams.obj
+
+# target to build an object file
+src/loaderParams.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/loaderParams.cpp.obj
+.PHONY : src/loaderParams.cpp.obj
+
+src/loaderParams.i: src/loaderParams.cpp.i
+.PHONY : src/loaderParams.i
+
+# target to preprocess a source file
+src/loaderParams.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/loaderParams.cpp.i
+.PHONY : src/loaderParams.cpp.i
+
+src/loaderParams.s: src/loaderParams.cpp.s
+.PHONY : src/loaderParams.s
+
+# target to generate assembly for a file
+src/loaderParams.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/loaderParams.cpp.s
+.PHONY : src/loaderParams.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -314,6 +338,9 @@ help:
 	@echo ... src/inputHandler.obj
 	@echo ... src/inputHandler.i
 	@echo ... src/inputHandler.s
+	@echo ... src/loaderParams.obj
+	@echo ... src/loaderParams.i
+	@echo ... src/loaderParams.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

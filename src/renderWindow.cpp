@@ -10,11 +10,17 @@ RenderWindow *RenderWindow::s_pInstance = nullptr;
 bool RenderWindow::init(const char* title, int width, int height)
 {
     if (SDL_Init(SDL_INIT_VIDEO) > 0)
+    {
         std::cout << "HEY... SDL_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
+        return false;
+    }
 
     if (!(IMG_Init(IMG_INIT_PNG)))
+    {
         std::cout << "IMG_Init has failed. Error: " << SDL_GetError() << std::endl;
-    
+        return false;
+    }
+
     m_pWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 
     if (m_pWindow == nullptr)
@@ -26,15 +32,27 @@ bool RenderWindow::init(const char* title, int width, int height)
     m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     // Virtual machine
     // renderer = SDL_CreateSoftwareRenderer(SDL_GetWindowSurface(m_pWindow));
+    
+    if (m_pRenderer == nullptr)
+    {
+        std::cout << "Renderer failed to init. Error: " << SDL_GetError() << std::endl;
+        return false;
+    }
+
     return true;
 }
 
+// SDL_Texture* RenderWindow::loadAsset()
+// {
+    
+// }
+
 SDL_Texture* RenderWindow::loadTexture(const char* filePath)
 {
-    SDL_Texture* texture = NULL;
+    SDL_Texture* texture = nullptr;
     texture = IMG_LoadTexture(m_pRenderer, filePath);
 
-    if (texture == NULL)
+    if (texture == nullptr)
         std::cout << "Failed to load texture. Error: " << SDL_GetError() << std::endl;
     return texture;
 }

@@ -1,6 +1,4 @@
-#include <SDL.h>
-#include <SDL_image.h>
-#include <iostream>
+#pragma once
 
 #include "entity.hpp"
 #include "loaderParams.hpp"
@@ -8,7 +6,7 @@
 class Player : public Entity
 {
 public:
-    Player(Vector2f pos, SDL_Rect currentFrame, SDL_Texture *pTex);
+    Player(const LoaderParams* pParams);
 
     virtual void draw();
     virtual void update();

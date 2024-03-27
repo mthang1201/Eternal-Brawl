@@ -2,11 +2,12 @@
 #include <SDL.h>
 
 #include "vector2f.hpp"
+#include "loaderParams.hpp"
 
 class Entity
 {
 public:
-    Entity(Vector2f pos, SDL_Rect currentFrame, SDL_Texture *pTex);
+    Entity(const LoaderParams* pParams);
     virtual void draw()=0;
     virtual void update()=0;
     virtual void clean()=0;

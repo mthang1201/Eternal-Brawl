@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 
 class Vector2f

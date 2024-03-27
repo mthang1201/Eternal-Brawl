@@ -306,6 +306,8 @@ CMakeFiles/Game.dir/src/game.cpp.obj: \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\game.hpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\entity.hpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\vector2f.hpp \
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.hpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\renderWindow.hpp \
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\player.hpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\utils.hpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\inputHandler.hpp

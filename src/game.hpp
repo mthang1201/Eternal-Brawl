@@ -1,3 +1,4 @@
+#pragma once
 #include <SDL.h>
 #include <vector>
 
@@ -23,12 +24,12 @@ public:
     void display();
     void pause(int &frameTicks);
     void clean();
-    void quit();
+    void quit() { m_bGameRunning = false; }
 
 private:
     Game() {}
     static Game *s_pInstance;
-    std::vector<Entity> m_entities;
+    std::vector<Entity*> m_entities;
     bool m_bGameRunning = true;
 };
 

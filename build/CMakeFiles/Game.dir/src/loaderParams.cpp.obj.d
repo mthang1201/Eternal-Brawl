@@ -1,5 +1,5 @@
-CMakeFiles/Game.dir/src/entity.cpp.obj: \
- C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\entity.cpp \
+CMakeFiles/Game.dir/src/loaderParams.cpp.obj: \
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.cpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_main.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_stdinc.h \
@@ -188,7 +188,7 @@ CMakeFiles/Game.dir/src/entity.cpp.obj: \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_misc.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL_image.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL.h \
- C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\entity.hpp \
+ C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.hpp \
  C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\vector2f.hpp \
  C:/msys64/ucrt64/include/c++/13.1.0/iostream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/requires_hosted.h \
@@ -299,5 +299,4 @@ CMakeFiles/Game.dir/src/entity.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/basic_ios.tcc \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/13.1.0/istream \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc \
- C:\Users\Minh\ Thang\ Bui\source\repos\Game\src\loaderParams.hpp
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc

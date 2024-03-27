@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
             TheGame::Instance()->pause(frameTicks);
         }
     }
-
+    
     TheGame::Instance()->clean();
 
     return 0;
