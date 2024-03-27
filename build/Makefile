@@ -152,6 +152,30 @@ src/GameObject/entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameObject/entity.cpp.s
 .PHONY : src/GameObject/entity.cpp.s
 
+src/GameObject/item.obj: src/GameObject/item.cpp.obj
+.PHONY : src/GameObject/item.obj
+
+# target to build an object file
+src/GameObject/item.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameObject/item.cpp.obj
+.PHONY : src/GameObject/item.cpp.obj
+
+src/GameObject/item.i: src/GameObject/item.cpp.i
+.PHONY : src/GameObject/item.i
+
+# target to preprocess a source file
+src/GameObject/item.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameObject/item.cpp.i
+.PHONY : src/GameObject/item.cpp.i
+
+src/GameObject/item.s: src/GameObject/item.cpp.s
+.PHONY : src/GameObject/item.s
+
+# target to generate assembly for a file
+src/GameObject/item.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameObject/item.cpp.s
+.PHONY : src/GameObject/item.cpp.s
+
 src/GameObject/player.obj: src/GameObject/player.cpp.obj
 .PHONY : src/GameObject/player.obj
 
@@ -356,6 +380,9 @@ help:
 	@echo ... src/GameObject/entity.obj
 	@echo ... src/GameObject/entity.i
 	@echo ... src/GameObject/entity.s
+	@echo ... src/GameObject/item.obj
+	@echo ... src/GameObject/item.i
+	@echo ... src/GameObject/item.s
 	@echo ... src/GameObject/player.obj
 	@echo ... src/GameObject/player.i
 	@echo ... src/GameObject/player.s

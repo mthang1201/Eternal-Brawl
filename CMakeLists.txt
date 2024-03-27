@@ -23,6 +23,7 @@ set(SOURCES
     # GameObject
     src/GameObject/entity.cpp
     src/GameObject/player.cpp
+    src/GameObject/item.cpp
     # Utils
     src/vector2f.cpp
     src/loaderParams.cpp

@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "C:/Users/Minh Thang Bui/source/repos/Game/bin/libGame.dll.a"
   "CMakeFiles/Game.dir/src/GameObject/entity.cpp.obj"
   "CMakeFiles/Game.dir/src/GameObject/entity.cpp.obj.d"
+  "CMakeFiles/Game.dir/src/GameObject/item.cpp.obj"
+  "CMakeFiles/Game.dir/src/GameObject/item.cpp.obj.d"
   "CMakeFiles/Game.dir/src/GameObject/player.cpp.obj"
   "CMakeFiles/Game.dir/src/GameObject/player.cpp.obj.d"
   "CMakeFiles/Game.dir/src/game.cpp.obj"

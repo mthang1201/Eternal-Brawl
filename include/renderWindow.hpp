@@ -24,6 +24,7 @@ public:
     void clean();
     void clear();
     void draw(Entity &entity);
+    void drawFrame(Entity &entity);
     void display();
 
 private:

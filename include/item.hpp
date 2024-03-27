@@ -5,10 +5,10 @@
 #include "entity.hpp"
 #include "loaderParams.hpp"
 
-class Items : public Entity
+class Item : public Entity
 {
 public:
-    Items(const LoaderParams* pParams);
+    Item(const LoaderParams* pParams);
 
     virtual void draw();
     virtual void update();

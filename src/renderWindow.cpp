@@ -89,10 +89,27 @@ void RenderWindow::draw(Entity& entity)
     src.h = entity.getCurrentFrame().h;
     
     SDL_Rect dst;
-    dst.x = entity.getPos().getX() * 4;
-    dst.y = entity.getPos().getY() * 5;
-    dst.w = entity.getCurrentFrame().w * 4;
-    dst.h = entity.getCurrentFrame().h * 4;
+    dst.x = entity.getPos().getX();
+    dst.y = entity.getPos().getY();
+    dst.w = entity.getCurrentFrame().w;
+    dst.h = entity.getCurrentFrame().h;
+    
+    SDL_RenderCopy(m_pRenderer, entity.getTex(), NULL, &dst);
+}
+
+void RenderWindow::drawFrame(Entity& entity)
+{
+    SDL_Rect src;
+    src.x = entity.getCurrentFrame().x;
+    src.y = entity.getCurrentFrame().y;
+    src.w = entity.getCurrentFrame().w;
+    src.h = entity.getCurrentFrame().h;
+    
+    SDL_Rect dst;
+    dst.x = entity.getPos().getX();
+    dst.y = entity.getPos().getY();
+    dst.w = entity.getCurrentFrame().w;
+    dst.h = entity.getCurrentFrame().h;
     
     SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
 }

@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/entity.cpp" "CMakeFiles/Game.dir/src/GameObject/entity.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameObject/entity.cpp.obj.d"
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/item.cpp" "CMakeFiles/Game.dir/src/GameObject/item.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameObject/item.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/player.cpp" "CMakeFiles/Game.dir/src/GameObject/player.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameObject/player.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/game.cpp" "CMakeFiles/Game.dir/src/game.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/game.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/inputHandler.cpp" "CMakeFiles/Game.dir/src/inputHandler.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/inputHandler.cpp.obj.d"
