@@ -7,19 +7,17 @@ void InputHandler::update()
 {
     while (SDL_PollEvent(&m_event))
     {
-        switch (m_event.type)
+        if (m_event.type == SDL_QUIT || (m_event.type == SDL_KEYDOWN && m_event.key.keysym.sym == SDLK_ESCAPE))
         {
-            case SDL_QUIT:
-                TheGame::Instance()->quit();
-                break;
-            case SDL_KEYDOWN:
-                onKeyDown();
-                break;
-            case SDL_KEYUP:
-                onKeyUp();
-                break;
-            default:
-                break;
+            TheGame::Instance()->quit();
+        }
+        if (m_event.type == SDL_KEYDOWN)
+        {
+            onKeyDown();
+        }
+        if (m_event.type == SDL_KEYUP)
+        {
+            onKeyUp();
         }
     }
 }
@@ -35,18 +33,18 @@ void InputHandler::onKeyUp()
 
 bool InputHandler::isKeyDown(SDL_Scancode key)
 {
-	if (m_keystates != 0)
-	{
-		if (m_keystates[key] == 1)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	return false;
+    if (m_keystates != 0)
+    {
+        if (m_keystates[key] == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    return false;
 }
 
 void InputHandler::clean()

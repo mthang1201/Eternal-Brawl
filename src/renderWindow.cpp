@@ -21,6 +21,12 @@ bool RenderWindow::init(const char* title, int width, int height)
         return false;
     }
 
+    if (!(IMG_Init(IMG_INIT_JPG)))
+    {
+        std::cout << "IMG_Init has failed. Error: " << SDL_GetError() << std::endl;
+        return false;
+    }
+
     m_pWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 
     if (m_pWindow == nullptr)
@@ -108,10 +114,11 @@ void RenderWindow::drawFrame(Entity& entity)
     SDL_Rect dst;
     dst.x = entity.getPos().getX();
     dst.y = entity.getPos().getY();
-    dst.w = entity.getCurrentFrame().w;
-    dst.h = entity.getCurrentFrame().h;
+    dst.w = entity.getCurrentFrame().w * 4;
+    dst.h = entity.getCurrentFrame().h * 4;
     
-    SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
+    if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+    else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
 }
 
 void RenderWindow::display()
