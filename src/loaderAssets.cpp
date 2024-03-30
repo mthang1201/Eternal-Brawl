@@ -15,6 +15,12 @@ LoaderAssets::LoaderAssets()
 
 void LoaderAssets::loadTextures()
 {
+    m_textures["playbutton"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/button.png");
+    m_textures["exitbutton"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/exit.png");
+    
+    m_textures["mainbutton"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/main.png");
+    m_textures["resumebutton"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/resume.png");
+    
     m_textures["ground_grass"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/ground_grass_1.png");
     m_textures["sky"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/skye_0.png");
     m_textures["hulking_knight"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/hulking_knight.png");

@@ -315,8 +315,12 @@ CMakeFiles/Game.dir/src/game.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_map.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_multimap.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/erase_if.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/gameStateMachine.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/gameState.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/renderWindow.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/player.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/item.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/utils.hpp \
- C:/Users/MINHTH~1/source/repos/Game/./include/inputHandler.hpp
+ C:/Users/MINHTH~1/source/repos/Game/./include/inputHandler.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/menuState.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/playState.hpp

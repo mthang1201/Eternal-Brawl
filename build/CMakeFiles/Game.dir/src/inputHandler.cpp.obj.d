@@ -187,7 +187,6 @@ CMakeFiles/Game.dir/src/inputHandler.cpp.obj: \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_version.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_locale.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_misc.h \
- C:/Users/MINHTH~1/source/repos/Game/./include/game.hpp \
  C:/msys64/ucrt64/include/c++/13.1.0/vector \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_algobase.h \
@@ -235,7 +234,6 @@ CMakeFiles/Game.dir/src/inputHandler.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/uses_allocator.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/uses_allocator_args.h \
  C:/msys64/ucrt64/include/c++/13.1.0/tuple \
- C:/Users/MINHTH~1/source/repos/Game/./include/entity.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/vector2f.hpp \
  C:/msys64/ucrt64/include/c++/13.1.0/iostream \
  C:/msys64/ucrt64/include/c++/13.1.0/ostream \
@@ -305,6 +303,8 @@ CMakeFiles/Game.dir/src/inputHandler.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/13.1.0/istream \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/istream.tcc \
+ C:/Users/MINHTH~1/source/repos/Game/./include/game.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/entity.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/loaderParams.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_image.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL.h \
@@ -315,4 +315,6 @@ CMakeFiles/Game.dir/src/inputHandler.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/node_handle.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_map.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_multimap.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/erase_if.h
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/erase_if.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/gameStateMachine.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/gameState.hpp

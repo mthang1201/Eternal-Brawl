@@ -128,6 +128,30 @@ Game/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/build
 .PHONY : Game/fast
 
+src/GameObject/enemy.obj: src/GameObject/enemy.cpp.obj
+.PHONY : src/GameObject/enemy.obj
+
+# target to build an object file
+src/GameObject/enemy.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameObject/enemy.cpp.obj
+.PHONY : src/GameObject/enemy.cpp.obj
+
+src/GameObject/enemy.i: src/GameObject/enemy.cpp.i
+.PHONY : src/GameObject/enemy.i
+
+# target to preprocess a source file
+src/GameObject/enemy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameObject/enemy.cpp.i
+.PHONY : src/GameObject/enemy.cpp.i
+
+src/GameObject/enemy.s: src/GameObject/enemy.cpp.s
+.PHONY : src/GameObject/enemy.s
+
+# target to generate assembly for a file
+src/GameObject/enemy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameObject/enemy.cpp.s
+.PHONY : src/GameObject/enemy.cpp.s
+
 src/GameObject/entity.obj: src/GameObject/entity.cpp.obj
 .PHONY : src/GameObject/entity.obj
 
@@ -199,6 +223,174 @@ src/GameObject/player.s: src/GameObject/player.cpp.s
 src/GameObject/player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameObject/player.cpp.s
 .PHONY : src/GameObject/player.cpp.s
+
+src/GameState/gameOverState.obj: src/GameState/gameOverState.cpp.obj
+.PHONY : src/GameState/gameOverState.obj
+
+# target to build an object file
+src/GameState/gameOverState.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/gameOverState.cpp.obj
+.PHONY : src/GameState/gameOverState.cpp.obj
+
+src/GameState/gameOverState.i: src/GameState/gameOverState.cpp.i
+.PHONY : src/GameState/gameOverState.i
+
+# target to preprocess a source file
+src/GameState/gameOverState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/gameOverState.cpp.i
+.PHONY : src/GameState/gameOverState.cpp.i
+
+src/GameState/gameOverState.s: src/GameState/gameOverState.cpp.s
+.PHONY : src/GameState/gameOverState.s
+
+# target to generate assembly for a file
+src/GameState/gameOverState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/gameOverState.cpp.s
+.PHONY : src/GameState/gameOverState.cpp.s
+
+src/GameState/gameStateMachine.obj: src/GameState/gameStateMachine.cpp.obj
+.PHONY : src/GameState/gameStateMachine.obj
+
+# target to build an object file
+src/GameState/gameStateMachine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/gameStateMachine.cpp.obj
+.PHONY : src/GameState/gameStateMachine.cpp.obj
+
+src/GameState/gameStateMachine.i: src/GameState/gameStateMachine.cpp.i
+.PHONY : src/GameState/gameStateMachine.i
+
+# target to preprocess a source file
+src/GameState/gameStateMachine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/gameStateMachine.cpp.i
+.PHONY : src/GameState/gameStateMachine.cpp.i
+
+src/GameState/gameStateMachine.s: src/GameState/gameStateMachine.cpp.s
+.PHONY : src/GameState/gameStateMachine.s
+
+# target to generate assembly for a file
+src/GameState/gameStateMachine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/gameStateMachine.cpp.s
+.PHONY : src/GameState/gameStateMachine.cpp.s
+
+src/GameState/menuButton.obj: src/GameState/menuButton.cpp.obj
+.PHONY : src/GameState/menuButton.obj
+
+# target to build an object file
+src/GameState/menuButton.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/menuButton.cpp.obj
+.PHONY : src/GameState/menuButton.cpp.obj
+
+src/GameState/menuButton.i: src/GameState/menuButton.cpp.i
+.PHONY : src/GameState/menuButton.i
+
+# target to preprocess a source file
+src/GameState/menuButton.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/menuButton.cpp.i
+.PHONY : src/GameState/menuButton.cpp.i
+
+src/GameState/menuButton.s: src/GameState/menuButton.cpp.s
+.PHONY : src/GameState/menuButton.s
+
+# target to generate assembly for a file
+src/GameState/menuButton.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/menuButton.cpp.s
+.PHONY : src/GameState/menuButton.cpp.s
+
+src/GameState/menuState.obj: src/GameState/menuState.cpp.obj
+.PHONY : src/GameState/menuState.obj
+
+# target to build an object file
+src/GameState/menuState.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/menuState.cpp.obj
+.PHONY : src/GameState/menuState.cpp.obj
+
+src/GameState/menuState.i: src/GameState/menuState.cpp.i
+.PHONY : src/GameState/menuState.i
+
+# target to preprocess a source file
+src/GameState/menuState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/menuState.cpp.i
+.PHONY : src/GameState/menuState.cpp.i
+
+src/GameState/menuState.s: src/GameState/menuState.cpp.s
+.PHONY : src/GameState/menuState.s
+
+# target to generate assembly for a file
+src/GameState/menuState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/menuState.cpp.s
+.PHONY : src/GameState/menuState.cpp.s
+
+src/GameState/pauseState.obj: src/GameState/pauseState.cpp.obj
+.PHONY : src/GameState/pauseState.obj
+
+# target to build an object file
+src/GameState/pauseState.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/pauseState.cpp.obj
+.PHONY : src/GameState/pauseState.cpp.obj
+
+src/GameState/pauseState.i: src/GameState/pauseState.cpp.i
+.PHONY : src/GameState/pauseState.i
+
+# target to preprocess a source file
+src/GameState/pauseState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/pauseState.cpp.i
+.PHONY : src/GameState/pauseState.cpp.i
+
+src/GameState/pauseState.s: src/GameState/pauseState.cpp.s
+.PHONY : src/GameState/pauseState.s
+
+# target to generate assembly for a file
+src/GameState/pauseState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/pauseState.cpp.s
+.PHONY : src/GameState/pauseState.cpp.s
+
+src/GameState/playState.obj: src/GameState/playState.cpp.obj
+.PHONY : src/GameState/playState.obj
+
+# target to build an object file
+src/GameState/playState.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/playState.cpp.obj
+.PHONY : src/GameState/playState.cpp.obj
+
+src/GameState/playState.i: src/GameState/playState.cpp.i
+.PHONY : src/GameState/playState.i
+
+# target to preprocess a source file
+src/GameState/playState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/playState.cpp.i
+.PHONY : src/GameState/playState.cpp.i
+
+src/GameState/playState.s: src/GameState/playState.cpp.s
+.PHONY : src/GameState/playState.s
+
+# target to generate assembly for a file
+src/GameState/playState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/GameState/playState.cpp.s
+.PHONY : src/GameState/playState.cpp.s
+
+src/animatedGraphic.obj: src/animatedGraphic.cpp.obj
+.PHONY : src/animatedGraphic.obj
+
+# target to build an object file
+src/animatedGraphic.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/animatedGraphic.cpp.obj
+.PHONY : src/animatedGraphic.cpp.obj
+
+src/animatedGraphic.i: src/animatedGraphic.cpp.i
+.PHONY : src/animatedGraphic.i
+
+# target to preprocess a source file
+src/animatedGraphic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/animatedGraphic.cpp.i
+.PHONY : src/animatedGraphic.cpp.i
+
+src/animatedGraphic.s: src/animatedGraphic.cpp.s
+.PHONY : src/animatedGraphic.s
+
+# target to generate assembly for a file
+src/animatedGraphic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Game.dir\build.make CMakeFiles/Game.dir/src/animatedGraphic.cpp.s
+.PHONY : src/animatedGraphic.cpp.s
 
 src/game.obj: src/game.cpp.obj
 .PHONY : src/game.obj
@@ -377,6 +569,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Game
+	@echo ... src/GameObject/enemy.obj
+	@echo ... src/GameObject/enemy.i
+	@echo ... src/GameObject/enemy.s
 	@echo ... src/GameObject/entity.obj
 	@echo ... src/GameObject/entity.i
 	@echo ... src/GameObject/entity.s
@@ -386,6 +581,27 @@ help:
 	@echo ... src/GameObject/player.obj
 	@echo ... src/GameObject/player.i
 	@echo ... src/GameObject/player.s
+	@echo ... src/GameState/gameOverState.obj
+	@echo ... src/GameState/gameOverState.i
+	@echo ... src/GameState/gameOverState.s
+	@echo ... src/GameState/gameStateMachine.obj
+	@echo ... src/GameState/gameStateMachine.i
+	@echo ... src/GameState/gameStateMachine.s
+	@echo ... src/GameState/menuButton.obj
+	@echo ... src/GameState/menuButton.i
+	@echo ... src/GameState/menuButton.s
+	@echo ... src/GameState/menuState.obj
+	@echo ... src/GameState/menuState.i
+	@echo ... src/GameState/menuState.s
+	@echo ... src/GameState/pauseState.obj
+	@echo ... src/GameState/pauseState.i
+	@echo ... src/GameState/pauseState.s
+	@echo ... src/GameState/playState.obj
+	@echo ... src/GameState/playState.i
+	@echo ... src/GameState/playState.s
+	@echo ... src/animatedGraphic.obj
+	@echo ... src/animatedGraphic.i
+	@echo ... src/animatedGraphic.s
 	@echo ... src/game.obj
 	@echo ... src/game.i
 	@echo ... src/game.s

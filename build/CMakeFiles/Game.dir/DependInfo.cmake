@@ -8,9 +8,17 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/enemy.cpp" "CMakeFiles/Game.dir/src/GameObject/enemy.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameObject/enemy.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/entity.cpp" "CMakeFiles/Game.dir/src/GameObject/entity.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameObject/entity.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/item.cpp" "CMakeFiles/Game.dir/src/GameObject/item.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameObject/item.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/player.cpp" "CMakeFiles/Game.dir/src/GameObject/player.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameObject/player.cpp.obj.d"
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/gameOverState.cpp" "CMakeFiles/Game.dir/src/GameState/gameOverState.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameState/gameOverState.cpp.obj.d"
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/gameStateMachine.cpp" "CMakeFiles/Game.dir/src/GameState/gameStateMachine.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameState/gameStateMachine.cpp.obj.d"
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/menuButton.cpp" "CMakeFiles/Game.dir/src/GameState/menuButton.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameState/menuButton.cpp.obj.d"
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/menuState.cpp" "CMakeFiles/Game.dir/src/GameState/menuState.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameState/menuState.cpp.obj.d"
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/pauseState.cpp" "CMakeFiles/Game.dir/src/GameState/pauseState.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameState/pauseState.cpp.obj.d"
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/playState.cpp" "CMakeFiles/Game.dir/src/GameState/playState.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/GameState/playState.cpp.obj.d"
+  "C:/Users/Minh Thang Bui/source/repos/Game/src/animatedGraphic.cpp" "CMakeFiles/Game.dir/src/animatedGraphic.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/animatedGraphic.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/game.cpp" "CMakeFiles/Game.dir/src/game.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/game.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/inputHandler.cpp" "CMakeFiles/Game.dir/src/inputHandler.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/inputHandler.cpp.obj.d"
   "C:/Users/Minh Thang Bui/source/repos/Game/src/loaderAssets.cpp" "CMakeFiles/Game.dir/src/loaderAssets.cpp.obj" "gcc" "CMakeFiles/Game.dir/src/loaderAssets.cpp.obj.d"

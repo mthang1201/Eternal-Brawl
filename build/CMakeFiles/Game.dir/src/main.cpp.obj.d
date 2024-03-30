@@ -315,4 +315,6 @@ CMakeFiles/Game.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_map.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_multimap.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/erase_if.h \
+ C:/Users/MINHTH~1/source/repos/Game/./include/gameStateMachine.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/gameState.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/utils.hpp

@@ -4,6 +4,7 @@
 
 #include "entity.hpp"
 #include "loaderAssets.hpp"
+#include "gameStateMachine.hpp"
 
 class Game
 {
@@ -26,13 +27,17 @@ public:
     void pause(int &frameTicks);
     void clean();
     void quit() { m_bGameRunning = false; }
+    LoaderAssets *getAssets() { return m_pAssets; }
+    GameStateMachine *getStateMachine() { return m_pGameStateMachine; }
 
 private:
     Game() {}
     static Game *s_pInstance;
-    std::vector<Entity*> m_entities;
-    LoaderAssets* m_assets;
+    std::vector<Entity *> m_entities;
+    LoaderAssets *m_pAssets;
     bool m_bGameRunning = true;
+
+    GameStateMachine *m_pGameStateMachine;
 };
 
 typedef Game TheGame;

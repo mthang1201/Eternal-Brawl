@@ -23,11 +23,20 @@ set(SOURCES
     # GameObject
     src/GameObject/entity.cpp
     src/GameObject/player.cpp
+    src/GameObject/enemy.cpp
     src/GameObject/item.cpp
+    # GameState
+    src/GameState/gameStateMachine.cpp
+    src/GameState/menuState.cpp
+    src/GameState/menuButton.cpp
+    src/GameState/playState.cpp
+    src/GameState/pauseState.cpp
+    src/GameState/gameOverstate.cpp
     # Utils
     src/vector2f.cpp
     src/loaderParams.cpp
     src/loaderAssets.cpp
+    src/animatedGraphic.cpp
 )
 
 add_executable(Game ${SOURCES})
