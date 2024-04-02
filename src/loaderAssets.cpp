@@ -8,23 +8,47 @@
 
 LoaderAssets::LoaderAssets()
 {
-    // loadTextures();
+    loadTextures();
     // loadSounds();
     // loadFonts();
 }
 
+LoaderAssets::~LoaderAssets()
+{
+    for (auto &pair : m_textures)
+    {
+        SDL_DestroyTexture(pair.second);
+    }
+}
+
 void LoaderAssets::loadTextures()
 {
-    m_textures["playbutton"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/button.png");
-    m_textures["exitbutton"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/exit.png");
-    
-    m_textures["mainbutton"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/main.png");
-    m_textures["resumebutton"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/resume.png");
-    
-    m_textures["ground_grass"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/ground_grass_1.png");
-    m_textures["sky"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/skye_0.png");
-    m_textures["hulking_knight"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/hulking_knight.png");
-    m_textures["mrHoang"] = TheRenderWindow::Instance()->loadTexture("../res/gfx/hoang.jpg");
+    m_textures.push_back({TextureType::PLAY_BUTTON, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/button.png")});
+    m_textures.push_back({TextureType::EXIT_BUTTON, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/exit.png")});
+
+    m_textures.push_back({TextureType::MAIN_BUTTON, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/main.png")});
+    m_textures.push_back({TextureType::RESUME_BUTTON, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/resume.png")});
+    m_textures.push_back({TextureType::GAME_OVER_TEXT, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/gameover.png")});
+
+    m_textures.push_back({TextureType::GROUND_GRASS, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/ground_grass_1.png")});
+    m_textures.push_back({TextureType::SKY, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/skye_0.png")});
+    m_textures.push_back({TextureType::HULKING_KNIGHT, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/hulking_knight.png")});
+    m_textures.push_back({TextureType::MR_HOANG, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/hoang.jpg")});
+
+    m_textures.push_back({TextureType::GOKU_IDLE, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/1.png")});
+    m_textures.push_back({TextureType::GOKU_MOVEMENT, TheRenderWindow::Instance()->loadTexture("C:/Users/Minh Thang Bui/source/repos/Game/res/2.png")});
+}
+
+SDL_Texture *LoaderAssets::getTexture(const TextureType &name)
+{
+    for (const auto &pair : m_textures)
+    {
+        if (pair.first == name)
+        {
+            return pair.second;
+        }
+    }
+    return nullptr;
 }
 
 // void LoaderAssets::loadSounds()

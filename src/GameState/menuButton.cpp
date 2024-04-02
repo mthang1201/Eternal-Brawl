@@ -33,11 +33,15 @@ void MenuButton::update()
 	// {
 	// 	m_currentFrame.x = MOUSE_OUT;
 	// }
-	m_currentFrame.x = 300 * int(((SDL_GetTicks() / 100) % 3));
 
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A))
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
 	{
+		m_currentFrame.x = 400;
 		m_callback();
+	}
+	else if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+	{
+		
 	}
 }
 

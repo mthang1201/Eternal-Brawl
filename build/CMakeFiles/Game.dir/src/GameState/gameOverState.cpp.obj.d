@@ -309,14 +309,8 @@ CMakeFiles/Game.dir/src/GameState/gameOverState.cpp.obj: \
  C:/Users/MINHTH~1/source/repos/Game/./include/playState.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/game.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/loaderAssets.hpp \
- C:/msys64/ucrt64/include/c++/13.1.0/map \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_tree.h \
- C:/msys64/ucrt64/include/c++/13.1.0/ext/aligned_buffer.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/node_handle.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_map.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_multimap.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/erase_if.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/gameStateMachine.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/renderWindow.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/animatedGraphic.hpp \
- C:/Users/MINHTH~1/source/repos/Game/./include/menuButton.hpp
+ C:/Users/MINHTH~1/source/repos/Game/./include/menuButton.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/item.hpp

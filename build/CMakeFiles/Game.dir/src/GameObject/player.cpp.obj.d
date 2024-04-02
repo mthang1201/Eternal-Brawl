@@ -307,4 +307,8 @@ CMakeFiles/Game.dir/src/GameObject/player.cpp.obj: \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_uninitialized.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_vector.h \
  C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_bvector.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/vector.tcc
+ C:/msys64/ucrt64/include/c++/13.1.0/bits/vector.tcc \
+ C:/Users/MINHTH~1/source/repos/Game/./include/game.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/loaderAssets.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/gameStateMachine.hpp \
+ C:/Users/MINHTH~1/source/repos/Game/./include/gameState.hpp

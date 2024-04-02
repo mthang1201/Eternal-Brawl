@@ -48,11 +48,6 @@ bool RenderWindow::init(const char* title, int width, int height)
     return true;
 }
 
-// SDL_Texture* RenderWindow::loadAsset()
-// {
-    
-// }
-
 SDL_Texture* RenderWindow::loadTexture(const char* filePath)
 {
     SDL_Texture* texture = nullptr;
@@ -114,8 +109,8 @@ void RenderWindow::drawFrame(Entity& entity)
     SDL_Rect dst;
     dst.x = entity.getPos().getX();
     dst.y = entity.getPos().getY();
-    dst.w = entity.getCurrentFrame().w * 4;
-    dst.h = entity.getCurrentFrame().h * 4;
+    dst.w = entity.getCurrentFrame().w;
+    dst.h = entity.getCurrentFrame().h;
     
     if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
     else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);

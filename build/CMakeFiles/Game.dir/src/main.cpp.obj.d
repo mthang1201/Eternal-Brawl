@@ -308,13 +308,6 @@ CMakeFiles/Game.dir/src/main.cpp.obj: \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL_image.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/SDL2/SDL.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/loaderAssets.hpp \
- C:/msys64/ucrt64/include/c++/13.1.0/map \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_tree.h \
- C:/msys64/ucrt64/include/c++/13.1.0/ext/aligned_buffer.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/node_handle.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_map.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/stl_multimap.h \
- C:/msys64/ucrt64/include/c++/13.1.0/bits/erase_if.h \
  C:/Users/MINHTH~1/source/repos/Game/./include/gameStateMachine.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/gameState.hpp \
  C:/Users/MINHTH~1/source/repos/Game/./include/utils.hpp

@@ -1,0 +1,110 @@
+[
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\main.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\main.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/main.cpp",
+  "output": "CMakeFiles/Game.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\game.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\game.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/game.cpp",
+  "output": "CMakeFiles/Game.dir/src/game.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\renderWindow.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\renderWindow.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/renderWindow.cpp",
+  "output": "CMakeFiles/Game.dir/src/renderWindow.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\inputHandler.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\inputHandler.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/inputHandler.cpp",
+  "output": "CMakeFiles/Game.dir/src/inputHandler.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameObject\\entity.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameObject\\entity.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/entity.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameObject/entity.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameObject\\player.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameObject\\player.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/player.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameObject/player.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameObject\\enemy.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameObject\\enemy.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/enemy.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameObject/enemy.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameObject\\item.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameObject\\item.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameObject/item.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameObject/item.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameState\\gameStateMachine.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameState\\gameStateMachine.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/gameStateMachine.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameState/gameStateMachine.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameState\\menuState.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameState\\menuState.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/menuState.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameState/menuState.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameState\\menuButton.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameState\\menuButton.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/menuButton.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameState/menuButton.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameState\\playState.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameState\\playState.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/playState.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameState/playState.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameState\\pauseState.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameState\\pauseState.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/pauseState.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameState/pauseState.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\GameState\\gameOverState.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\GameState\\gameOverState.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/GameState/gameOverState.cpp",
+  "output": "CMakeFiles/Game.dir/src/GameState/gameOverState.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\vector2f.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\vector2f.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/vector2f.cpp",
+  "output": "CMakeFiles/Game.dir/src/vector2f.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\loaderParams.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\loaderParams.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/loaderParams.cpp",
+  "output": "CMakeFiles/Game.dir/src/loaderParams.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\loaderAssets.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\loaderAssets.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/loaderAssets.cpp",
+  "output": "CMakeFiles/Game.dir/src/loaderAssets.cpp.obj"
+},
+{
+  "directory": "C:/Users/Minh Thang Bui/source/repos/Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Game.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Game.dir\\src\\animatedGraphic.cpp.obj -c \"C:\\Users\\Minh Thang Bui\\source\\repos\\Game\\src\\animatedGraphic.cpp\"",
+  "file": "C:/Users/Minh Thang Bui/source/repos/Game/src/animatedGraphic.cpp",
+  "output": "CMakeFiles/Game.dir/src/animatedGraphic.cpp.obj"
+}
+]

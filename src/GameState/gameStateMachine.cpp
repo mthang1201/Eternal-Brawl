@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "gameStateMachine.hpp"
 
 void GameStateMachine::pushState(GameState* pState)
@@ -14,6 +16,10 @@ void GameStateMachine::popState()
 		{	
 			delete m_gameStates.back();
 			m_gameStates.pop_back();
+		}
+		else if (!m_gameStates.back()->onExit())
+		{
+			std::cerr << "Error: Failed to exit game state\n";
 		}
 	}
 }

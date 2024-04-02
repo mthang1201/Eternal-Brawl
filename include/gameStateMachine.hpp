@@ -13,6 +13,8 @@ public:
     void update();
     void render();
 
+    std::vector<GameState *> getGameStates() { return m_gameStates; }
+
 private:
     std::vector<GameState *> m_gameStates;
 };
