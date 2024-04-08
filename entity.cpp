@@ -9,6 +9,8 @@ Entity::Entity(const LoaderParams* pParams)
 {
     m_pos.setX(pParams->getPos().getX());
     m_pos.setY(pParams->getPos().getY());
+    m_currentFrame.x = pParams->getCurrentFrame().x;
+    m_currentFrame.y = pParams->getCurrentFrame().y;
     m_currentFrame.w = pParams->getCurrentFrame().w;
     m_currentFrame.h = pParams->getCurrentFrame().h;
     m_pTex = pParams->getTex();

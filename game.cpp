@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "game.hpp"
-#include "renderWindow.hpp"
+#include "resourceManager.hpp"
 #include "entity.hpp"
 #include "player.hpp"
 #include "item.hpp"
@@ -21,8 +21,9 @@ Game *Game::s_pInstance = nullptr;
 
 bool Game::init()
 {
-    if (TheRenderWindow::Instance()->init("Mythical Combat: Endless Encounter", SCREEN_WIDTH, SCREEN_HEIGHT))
+    if (TheResourceManager::Instance()->init("Eternal Brawl", SCREEN_WIDTH, SCREEN_HEIGHT))
     {
+        std::cout << "Refresh Rate: " << TheResourceManager::Instance()->getRefreshRate() << std::endl;
         m_pAssets = new LoaderAssets();
         m_pGameStateMachine = new GameStateMachine();
         m_pGameStateMachine->changeState(new MenuState());
@@ -35,10 +36,10 @@ bool Game::init()
 void Game::handleEvents()
 {
     TheInputHandler::Instance()->update();
-    // if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
-    // {
-    //     m_pGameStateMachine->changeState(new PlayState());
-    // }
+     /*if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+     {
+         m_pGameStateMachine->changeState(new PlayState());
+     }*/
 }
 
 void Game::update()
@@ -48,19 +49,19 @@ void Game::update()
 
 void Game::render()
 {
-    TheRenderWindow::Instance()->clear();
+    TheResourceManager::Instance()->clear();
     m_pGameStateMachine->render();
 }
 
 void Game::display()
 {
-    TheRenderWindow::Instance()->display();
+    TheResourceManager::Instance()->display();
 }
 
 void Game::pause(int &frameTicks)
 {
-    if (frameTicks < 1000 / TheRenderWindow::Instance()->getRefreshRate())
-        SDL_Delay(1000 / TheRenderWindow::Instance()->getRefreshRate() - frameTicks);
+    if (frameTicks < 1000 / TheResourceManager::Instance()->getRefreshRate())
+        SDL_Delay(1000 / TheResourceManager::Instance()->getRefreshRate() - frameTicks);
 }
 
 void Game::clean()
@@ -71,6 +72,6 @@ void Game::clean()
         m_pGameStateMachine->popState();
     }
     delete m_pGameStateMachine;
-    TheRenderWindow::Instance()->clean();
+    TheResourceManager::Instance()->clean();
     SDL_Quit();
 }

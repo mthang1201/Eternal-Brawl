@@ -13,5 +13,4 @@ public:
 
 private:
     int m_animSpeed;
-    int m_numFrames = 60;
 };

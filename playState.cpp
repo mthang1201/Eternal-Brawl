@@ -4,7 +4,7 @@
 #include "pauseState.hpp"
 #include "gameOverState.hpp"
 #include "game.hpp"
-#include "renderWindow.hpp"
+#include "resourceManager.hpp"
 #include "inputHandler.hpp"
 #include "entity.hpp"
 #include "player.hpp"
@@ -26,25 +26,23 @@ void PlayState::update()
 		m_entities[i]->update();
 	}
 
-	// if (checkCollision(dynamic_cast<Entity *>(m_entities[0]), dynamic_cast<Entity *>(m_entities[1])))
-	// {
-	// 	TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
-	// }
+	if (checkCollision(dynamic_cast<Entity*>(m_entities[14]), dynamic_cast<Entity*>(m_entities[15])))
+	{
+		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
+	}
 }
 
 void PlayState::render()
 {
-	// for (std::vector<Entity *>::size_type i = 0; i < m_entities.size(); i++)
-	// {
-	//     TheRenderWindow::Instance()->drawFrame(*m_entities[i]);
-	// }
-	for (int i = 0; i < 13; i++)
+	for (int i = 0; i <= 13; i++)
 	{
-		TheRenderWindow::Instance()->draw(*m_entities[i]);
+		TheResourceManager::Instance()->draw(*m_entities[i]);
 	}
-	TheRenderWindow::Instance()->draw(*m_entities[13]);
-	TheRenderWindow::Instance()->drawFrame(*m_entities[14]);
-	// TheRenderWindow::Instance()->drawFrame(*m_entities[15]);
+
+	TheResourceManager::Instance()->drawPlayer(*m_entities[14]);
+	TheResourceManager::Instance()->drawEnemy1(*m_entities[15]);
+	TheResourceManager::Instance()->drawEnemy2(*m_entities[16]);
+	TheResourceManager::Instance()->drawEnemy2(*m_entities[17]);
 }
 
 bool PlayState::onEnter()
@@ -52,12 +50,14 @@ bool PlayState::onEnter()
 	for (int i = 0; i < 13; i++)
 	{
 		float x = (i <= 10) ? (i * 100) : (1000 + 100 * (i - 10));
-		m_entities.push_back(new Item(new LoaderParams(Vector2f(x, 620), {0, 0, 100, 100}, TheGame::Instance()->getAssets()->getTexture(TextureType::GROUND_GRASS))));
+		m_entities.push_back(new Item(new LoaderParams(Vector2f(x, 620), { 0, 0, 100, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GROUND_GRASS))));
 	}
-	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), {0, 0, 1280, 620}, TheGame::Instance()->getAssets()->getTexture(TextureType::SKY))));
+	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 620 }, TheGame::Instance()->getAssets()->getTexture(TextureType::SKY))));
 
-	m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), {0, 0, 48, 58}, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE))));
-	// m_entities.push_back(new Enemy(new LoaderParams(Vector2f(0, 0), {10, 10, 130, 205}, TheGame::Instance()->getAssets()->getTexture(TextureType::MR_HOANG))));
+	m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 48, 58 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE))));
+	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(700, 495), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::HULKING_KNIGHT))));
+	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(500, 200), { 0, 0, 130, 205 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MR_HOANG))));
+	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 130, 205 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MR_HOANG))));
 
 	std::cout << "entering PlayState\n";
 	return true;
@@ -70,19 +70,19 @@ bool PlayState::onExit()
 		delete m_entities.back();
 		m_entities.pop_back();
 
-		// Check if deletion was successful
-		/*if (!m_entities.empty() && m_entities.back() != nullptr)
-		{
-			std::cerr << "Error: Failed to delete entity\n";
-			return false;
-		}*/
+	}
+
+	if (!m_entities.empty() && m_entities.back() != nullptr)
+	{
+		std::cerr << "Error: Failed to delete entity\n";
+		return false;
 	}
 
 	std::cout << "exiting PlayState\n";
 	return true;
 }
 
-bool PlayState::checkCollision(Entity *p1, Entity *p2)
+bool PlayState::checkCollision(Entity* p1, Entity* p2)
 {
 	float leftA, leftB;
 	float rightA, rightB;

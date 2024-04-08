@@ -5,7 +5,7 @@
 #include "menuState.hpp"
 #include "playState.hpp"
 #include "game.hpp"
-#include "renderWindow.hpp"
+#include "resourceManager.hpp"
 #include "animatedGraphic.hpp"
 #include "menuButton.hpp"
 #include "item.hpp"
@@ -24,15 +24,15 @@ void GameOverState::render()
 {
 	for (int i = 0; i < (int)m_entities.size(); i++)
 	{
-		TheRenderWindow::Instance()->drawFrame(*m_entities[i]);
+		TheResourceManager::Instance()->drawFrame(*m_entities[i]);
 	}
 }
 
 bool GameOverState::onEnter()
 {
-	// m_entities.push_back(new AnimatedGraphic(new LoaderParams(Vector2f(200, 100), {0, 0, 190, 30}, TheGame::Instance()->getAssets()->getTexture(TextureType::GAME_OVER_TEXT)), 2));
-	m_entities.push_back(new Item(new LoaderParams(Vector2f(200, 200), {0, 0, 200, 80}, TheGame::Instance()->getAssets()->getTexture(TextureType::MAIN_BUTTON))));
-	m_entities.push_back(new Item(new LoaderParams(Vector2f(200, 300), {0, 0, 200, 80}, TheGame::Instance()->getAssets()->getTexture(TextureType::RESUME_BUTTON))));
+	m_entities.push_back(new AnimatedGraphic(new LoaderParams(Vector2f(200, 100), { 0, 0, 190, 30 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GAME_OVER_TEXT)), 2));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(500, 100), { 0, 0, 200, 80 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MAIN_BUTTON)), s_gameOverToMain));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(500, 300), { 0, 0, 200, 80 }, TheGame::Instance()->getAssets()->getTexture(TextureType::RESTART_BUTTON)), s_restartPlay));
 	std::cout << "entering PauseState\n";
 
 	return true;
@@ -42,18 +42,18 @@ bool GameOverState::onEnter()
 bool GameOverState::onExit()
 {
 	while (!m_entities.empty())
-    {
-        delete m_entities.back();
-        m_entities.pop_back();
+	{
+		delete m_entities.back();
+		m_entities.pop_back();
 
-        // Check if deletion was successful
-        if (!m_entities.empty() && m_entities.back() != nullptr)
-        {
-            std::cerr << "Error: Failed to delete entity\n";
-            return false;
-        }
-    }
-	
+	}
+
+	if (!m_entities.empty() && m_entities.back() != nullptr)
+	{
+		std::cerr << "Error: Failed to delete entity\n";
+		return false;
+	}
+
 	std::cout << "exiting GameOverState" << std::endl;
 	return true;
 }

@@ -149,7 +149,7 @@
     <ClCompile Include="..\pauseState.cpp" />
     <ClCompile Include="..\player.cpp" />
     <ClCompile Include="..\playState.cpp" />
-    <ClCompile Include="..\renderWindow.cpp" />
+    <ClCompile Include="..\resourceManager.cpp" />
     <ClCompile Include="..\vector2f.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,7 +169,7 @@
     <ClInclude Include="..\pauseState.hpp" />
     <ClInclude Include="..\player.hpp" />
     <ClInclude Include="..\playState.hpp" />
-    <ClInclude Include="..\renderWindow.hpp" />
+    <ClInclude Include="..\resourceManager.hpp" />
     <ClInclude Include="..\utils.hpp" />
     <ClInclude Include="..\vector2f.hpp" />
   </ItemGroup>

@@ -17,10 +17,10 @@ void GameStateMachine::popState()
 			delete m_gameStates.back();
 			m_gameStates.pop_back();
 		}
-		/*else if (!m_gameStates.back()->onExit())
+		else
 		{
 			std::cerr << "Error: Failed to exit game state\n";
-		}*/
+		}
 	}
 }
 

@@ -7,6 +7,7 @@ enum class TextureType {
     PLAY_BUTTON,
     EXIT_BUTTON,
     MAIN_BUTTON,
+    RESTART_BUTTON,
     RESUME_BUTTON,
     GAME_OVER_TEXT,
     GROUND_GRASS,
@@ -14,7 +15,9 @@ enum class TextureType {
     HULKING_KNIGHT,
     MR_HOANG,
     GOKU_IDLE,
-    GOKU_MOVEMENT
+    GOKU_MOVEMENT,
+    GOKU_JUMPING,
+    GOKU_FALLING
 };
 
 class LoaderAssets

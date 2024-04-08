@@ -2,12 +2,12 @@
 #include <SDL_image.h>
 #include <iostream>
 
-#include "renderWindow.hpp"
+#include "resourceManager.hpp"
 #include "entity.hpp"
 
-RenderWindow *RenderWindow::s_pInstance = nullptr;
+ResourceManager *ResourceManager::s_pInstance = nullptr;
 
-bool RenderWindow::init(const char* title, int width, int height)
+bool ResourceManager::init(const char* title, int width, int height)
 {
     if (SDL_Init(SDL_INIT_VIDEO) > 0)
     {
@@ -48,7 +48,7 @@ bool RenderWindow::init(const char* title, int width, int height)
     return true;
 }
 
-SDL_Texture* RenderWindow::loadTexture(const char* filePath)
+SDL_Texture* ResourceManager::loadTexture(const char* filePath)
 {
     SDL_Texture* texture = nullptr;
     texture = IMG_LoadTexture(m_pRenderer, filePath);
@@ -58,7 +58,7 @@ SDL_Texture* RenderWindow::loadTexture(const char* filePath)
     return texture;
 }
 
-int RenderWindow::getRefreshRate()
+int ResourceManager::getRefreshRate()
 {
     int displayIndex = SDL_GetWindowDisplayIndex(m_pWindow);
 
@@ -69,19 +69,19 @@ int RenderWindow::getRefreshRate()
     return mode.refresh_rate;
 }
 
-void RenderWindow::clean()
+void ResourceManager::clean()
 {
     SDL_DestroyWindow(m_pWindow);
     SDL_DestroyRenderer(m_pRenderer);
 }
 
-void RenderWindow::clear()
+void ResourceManager::clear()
 {
     SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
     SDL_RenderClear(m_pRenderer);
 }
 
-void RenderWindow::draw(Entity& entity)
+void ResourceManager::draw(Entity& entity)
 {
     SDL_Rect src;
     src.x = entity.getCurrentFrame().x;
@@ -98,11 +98,11 @@ void RenderWindow::draw(Entity& entity)
     SDL_RenderCopy(m_pRenderer, entity.getTex(), NULL, &dst);
 }
 
-void RenderWindow::drawFrame(Entity& entity)
+void ResourceManager::drawFrame(Entity& entity)
 {
     SDL_Rect src;
-    src.x = entity.getCurrentFrame().x;
-    src.y = entity.getCurrentFrame().y;
+    src.x = entity.getCurrentFrame().w * entity.getCurrentFrame().x;
+    src.y = entity.getCurrentFrame().h * entity.getCurrentFrame().y;
     src.w = entity.getCurrentFrame().w;
     src.h = entity.getCurrentFrame().h;
     
@@ -116,7 +116,61 @@ void RenderWindow::drawFrame(Entity& entity)
     else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
 }
 
-void RenderWindow::display()
+void ResourceManager::drawPlayer(Entity& entity)
+{
+    SDL_Rect src;
+    src.x = entity.getCurrentFrame().w * entity.getCurrentFrame().x;
+    src.y = entity.getCurrentFrame().h * entity.getCurrentFrame().y;
+    src.w = entity.getCurrentFrame().w;
+    src.h = entity.getCurrentFrame().h;
+
+    SDL_Rect dst;
+    dst.x = entity.getPos().getX();
+    dst.y = entity.getPos().getY();
+    dst.w = entity.getCurrentFrame().w * 2;
+    dst.h = entity.getCurrentFrame().h * 2;
+
+    if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+    else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
+}
+
+void ResourceManager::drawEnemy1(Entity& entity)
+{
+    SDL_Rect src;
+    src.x = entity.getCurrentFrame().w * entity.getCurrentFrame().x;
+    src.y = entity.getCurrentFrame().h * entity.getCurrentFrame().y;
+    src.w = entity.getCurrentFrame().w;
+    src.h = entity.getCurrentFrame().h;
+
+    SDL_Rect dst;
+    dst.x = entity.getPos().getX();
+    dst.y = entity.getPos().getY();
+    dst.w = entity.getCurrentFrame().w * 3;
+    dst.h = entity.getCurrentFrame().h * 3;
+
+    if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+    else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
+}
+
+void ResourceManager::drawEnemy2(Entity& entity)
+{
+    SDL_Rect src;
+    src.x = entity.getCurrentFrame().w * entity.getCurrentFrame().x;
+    src.y = entity.getCurrentFrame().h * entity.getCurrentFrame().y;
+    src.w = entity.getCurrentFrame().w;
+    src.h = entity.getCurrentFrame().h;
+
+    SDL_Rect dst;
+    dst.x = entity.getPos().getX();
+    dst.y = entity.getPos().getY();
+    dst.w = entity.getCurrentFrame().w;
+    dst.h = entity.getCurrentFrame().h;
+
+    if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+    else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
+}
+
+void ResourceManager::display()
 {
     SDL_RenderPresent(m_pRenderer);
     // Virtual machine
