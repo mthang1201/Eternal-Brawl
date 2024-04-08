@@ -26,7 +26,7 @@ bool Game::init()
         std::cout << "Refresh Rate: " << TheResourceManager::Instance()->getRefreshRate() << std::endl;
         m_pAssets = new LoaderAssets();
         m_pGameStateMachine = new GameStateMachine();
-        m_pGameStateMachine->changeState(new MenuState());
+        m_pGameStateMachine->pushState(new MenuState());
 
         return true;
     }
@@ -36,10 +36,6 @@ bool Game::init()
 void Game::handleEvents()
 {
     TheInputHandler::Instance()->update();
-     /*if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
-     {
-         m_pGameStateMachine->changeState(new PlayState());
-     }*/
 }
 
 void Game::update()
