@@ -24,7 +24,7 @@ void Player::update()
 
 	handleInput();
 
-	m_currentFrame.x = int(((SDL_GetTicks() / 120) % 6));
+	m_currentFrame.x = int(((SDL_GetTicks() / 120) % 2));
 	changeStates();
 
 	Entity::update();
@@ -82,26 +82,26 @@ void Player::changeStates()
 {
 	if (m_state == PlayerState::IDLE)
 	{
-		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE);
-		m_currentFrame.w = 48;
-		m_currentFrame.h = 58;
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_IDLE);
+		m_currentFrame.w = 64;
+		m_currentFrame.h = 64;
 	}
 	else if (m_state == PlayerState::MOVING)
 	{
-		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_MOVEMENT);
-		m_currentFrame.w = 48;
-		m_currentFrame.h = 58;
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN);
+		m_currentFrame.w = 64;
+		m_currentFrame.h = 64;
 	}
 	else if (m_state == PlayerState::JUMPING)
 	{
-		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_JUMPING);
-		m_currentFrame.w = 44;
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_JUMP);
+		m_currentFrame.w = 64;
 		m_currentFrame.h = 64;
 	}
 	else if (m_state == PlayerState::FALLING)
 	{
 		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_FALLING);
-		m_currentFrame.w = 44;
+		m_currentFrame.w = 64;
 		m_currentFrame.h = 64;
 	}
 }

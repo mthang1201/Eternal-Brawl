@@ -54,7 +54,8 @@ bool PlayState::onEnter()
 	}
 	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 620 }, TheGame::Instance()->getAssets()->getTexture(TextureType::SKY))));
 
-	m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 48, 58 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE))));
+	//m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 48, 58 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE))));
+	m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_IDLE)))); 
 	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(700, 495), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::HULKING_KNIGHT))));
 	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(500, 200), { 0, 0, 130, 205 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MR_HOANG))));
 	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 130, 205 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MR_HOANG))));
