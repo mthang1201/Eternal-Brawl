@@ -180,8 +180,8 @@ void ResourceManager::drawEnemy1(Enemy& enemy)
     SDL_Rect dst;
     dst.x = enemy.getPos().getX();
     dst.y = enemy.getPos().getY();
-    dst.w = enemy.getCurrentFrame().w * 4;
-    dst.h = enemy.getCurrentFrame().h * 4;
+    dst.w = enemy.getCurrentFrame().w;
+    dst.h = enemy.getCurrentFrame().h;
 
     SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
     SDL_RenderDrawRect(m_pRenderer, &dst);

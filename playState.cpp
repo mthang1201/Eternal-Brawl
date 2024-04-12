@@ -61,8 +61,8 @@ void PlayState::render()
 	else
 		TheResourceManager::Instance()->drawPlayer(*m_player);
 	TheResourceManager::Instance()->drawEnemy1(*m_enemy1);
-	TheResourceManager::Instance()->drawEnemy2(*m_enemy2);
-	TheResourceManager::Instance()->drawEnemy2(*m_enemy3);
+	//TheResourceManager::Instance()->drawEnemy2(*m_enemy2);
+	//TheResourceManager::Instance()->drawEnemy2(*m_enemy3);
 }
 
 bool PlayState::onEnter()
@@ -82,9 +82,9 @@ bool PlayState::onEnter()
 	}*/
 
 	m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE)));
-	m_enemy1 = new Enemy(new LoaderParams(Vector2f(500, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN)));
+	m_enemy1 = new Enemy(new LoaderParams(Vector2f(500, 395), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN)));
 	m_enemy2 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH)));
-	m_enemy3 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH)));
+	m_enemy3 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH)));
 
 	std::cout << "entering PlayState\n";
 	return true;

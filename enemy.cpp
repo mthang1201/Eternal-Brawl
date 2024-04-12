@@ -17,12 +17,12 @@ void Enemy::update()
 {
 	if (m_currentFrame.w == 64) m_currentFrame.x = int(((SDL_GetTicks() / 120) % 5));
 
-	if (m_pos.getX() < 0)
+	if (m_pos.getX() < 500)
 	{
 		m_velocity.setX(3);
 		m_bFlip = false;
 	}
-	else if (m_pos.getX() > 720)
+	else if (m_pos.getX() > 900)
 	{
 		m_velocity.setX(-3);
 		m_bFlip = true;
