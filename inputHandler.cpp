@@ -51,11 +51,12 @@ void InputHandler::clean()
 
 void InputHandler::onKeyDown()
 {
-    m_keystates = SDL_GetKeyboardState(0);
+    m_keystates = SDL_GetKeyboardState(NULL);
 }
 
 void InputHandler::onKeyUp()
 {
+    m_keystates = SDL_GetKeyboardState(NULL);
 }
 
 bool InputHandler::isKeyDown(SDL_Scancode key)
@@ -72,6 +73,10 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
         }
     }
     return false;
+}
+
+bool InputHandler::isKeyUp(SDL_Scancode key)
+{
 }
 
 bool InputHandler::getMouseButtonState(int buttonNumber)

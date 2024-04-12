@@ -127,8 +127,8 @@ void ResourceManager::drawPlayer(Entity& entity)
     SDL_Rect dst;
     dst.x = entity.getPos().getX();
     dst.y = entity.getPos().getY();
-    dst.w = entity.getCurrentFrame().w * 4;
-    dst.h = entity.getCurrentFrame().h * 4;
+    dst.w = entity.getCurrentFrame().w * 2;
+    dst.h = entity.getCurrentFrame().h * 2;
 
     if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
     else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);

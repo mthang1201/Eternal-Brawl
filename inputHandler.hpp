@@ -4,6 +4,8 @@
 
 #include "vector2f.hpp"
 
+#define KEYBOARD_SIZE 282
+
 enum mouse_buttons
 {
 	LEFT = 0,
@@ -27,6 +29,9 @@ public:
     void clean();
 
     bool isKeyDown(SDL_Scancode key);
+    bool isKeyUp(SDL_Scancode key);
+    bool isKeyPressed(SDL_Scancode key);
+
     bool getMouseButtonState(int buttonNumber);
     Vector2f *getMousePosition();
 
@@ -43,8 +48,10 @@ private:
     SDL_Event m_event;
     std::vector<bool> m_mouseButtonStates;
     Vector2f *m_mousePosition;
-    const Uint8 *m_keystates;
 
+    const Uint8 *m_keystates;
+    bool m_keyDown[KEYBOARD_SIZE];
+    bool m_keyUp[KEYBOARD_SIZE];
 };
 
 typedef InputHandler TheInputHandler;
