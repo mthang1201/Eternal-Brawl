@@ -26,7 +26,18 @@ void PlayState::update()
 		m_entities[i]->update();
 	}
 
-	if (checkCollision(dynamic_cast<Entity*>(m_entities[14]), dynamic_cast<Entity*>(m_entities[15])))
+	m_player->update();
+	m_enemy1->update();
+	m_enemy2->update();
+	m_enemy3->update();
+
+
+	if (checkCollision(dynamic_cast<Player*>(m_player), dynamic_cast<Enemy*>(m_enemy1)))
+	{
+		m_player->healthPoints -= 100;
+	}
+	
+	if (m_player->getObjectState() == "DEATH" && !m_player->inAction)
 	{
 		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
 	}
@@ -34,31 +45,46 @@ void PlayState::update()
 
 void PlayState::render()
 {
-	for (int i = 0; i <= 13; i++)
+	for (int i = 0; i <= 0; i++)
 	{
 		TheResourceManager::Instance()->draw(*m_entities[i]);
 	}
 
-	TheResourceManager::Instance()->drawPlayer(*m_entities[14]);
-	TheResourceManager::Instance()->drawEnemy1(*m_entities[15]);
-	TheResourceManager::Instance()->drawEnemy2(*m_entities[16]);
-	TheResourceManager::Instance()->drawEnemy2(*m_entities[17]);
+
+	SDL_Rect rect1 = { 100, 100, 100, 100 };
+	TheResourceManager::Instance()->drawRect(rect1);
+
+
+
+	if (m_player->getObjectState() == "KI")
+		TheResourceManager::Instance()->drawPlayerKI(*m_player);
+	else
+		TheResourceManager::Instance()->drawPlayer(*m_player);
+	TheResourceManager::Instance()->drawEnemy1(*m_enemy1);
+	TheResourceManager::Instance()->drawEnemy2(*m_enemy2);
+	TheResourceManager::Instance()->drawEnemy2(*m_enemy3);
 }
 
 bool PlayState::onEnter()
 {
-	for (int i = 0; i < 13; i++)
+	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 720 }, TheGame::Instance()->getAssets()->getTexture(TextureType::BACKGROUND))));
+	/*for (int i = 350; i < 470; i += 6)
+	{
+		m_entities.push_back(new Item(new LoaderParams(Vector2f(50, i), { 0, 0, 6, 6 }, TheGame::Instance()->getAssets()->getTexture(TextureType::TILED_LEFT))));
+	}*/
+	//m_entities.push_back(new Item(new LoaderParams(Vector2f(120, 300), { 0, 0, 19, 720 }, TheGame::Instance()->getAssets()->getTexture(TextureType::LEFT_WALL))));
+	//m_entities.push_back(new Item(new LoaderParams(Vector2f(140, 300), { 0, 0, 83, 73 }, TheGame::Instance()->getAssets()->getTexture(TextureType::EXIT_DOOR_ROOF))));
+	
+	/*for (int i = 0; i < 13; i++)
 	{
 		float x = (i <= 10) ? (i * 100) : (1000 + 100 * (i - 10));
 		m_entities.push_back(new Item(new LoaderParams(Vector2f(x, 620), { 0, 0, 100, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GROUND_GRASS))));
-	}
-	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 620 }, TheGame::Instance()->getAssets()->getTexture(TextureType::SKY))));
+	}*/
 
-	//m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 48, 58 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE))));
-	m_entities.push_back(new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE))));
-	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(700, 495), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::HULKING_KNIGHT))));
-	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(500, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN))));
-	m_entities.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH))));
+	m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE)));
+	m_enemy1 = new Enemy(new LoaderParams(Vector2f(500, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN)));
+	m_enemy2 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH)));
+	m_enemy3 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH)));
 
 	std::cout << "entering PlayState\n";
 	return true;
@@ -83,7 +109,7 @@ bool PlayState::onExit()
 	return true;
 }
 
-bool PlayState::checkCollision(Entity* p1, Entity* p2)
+bool PlayState::checkCollision(Player* p1, Enemy* p2)
 {
 	float leftA, leftB;
 	float rightA, rightB;

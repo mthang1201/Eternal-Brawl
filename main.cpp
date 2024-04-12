@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-    const float timeStep = 0.01f;
+    const float timeStep = 1.0f / 30.0f;
     float accumulator = 0.0f;
     float currentTime = utils::hireTimeInSeconds();
 

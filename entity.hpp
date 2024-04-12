@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include <string>
 
 #include "vector2f.hpp"
 #include "loaderParams.hpp"
@@ -15,6 +16,7 @@ public:
     virtual SDL_Rect getCurrentFrame() { return m_currentFrame; }
     virtual SDL_Texture* getTex() { return m_pTex; }
     virtual bool getFlip() { return m_bFlip; }
+    virtual std::string getObjectState() { return ""; }
 protected:
     Vector2f m_pos;
     Vector2f m_velocity;

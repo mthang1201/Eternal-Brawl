@@ -12,12 +12,20 @@ enum class TextureType {
     GAME_OVER_TEXT,
     GROUND_GRASS,
     SKY,
+    BACKGROUND,
+    TILED_LEFT,
+    TILED_RIGHT,
+    TILED_UP,
+    TILED_DOWN,
+    GARBAGE,
+    LEFT_WALL,
+    EXIT_DOOR_ROOF,
 
     HULKING_KNIGHT,
     MR_HOANG,
 
     GOKU_IDLE,
-    GOKU_IDLE2,
+    GOKU_FLYING_IDLE,
 
     GOKU_KI,
     GOKU_TRANSFORM_01,

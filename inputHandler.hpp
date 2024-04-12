@@ -29,8 +29,6 @@ public:
     void clean();
 
     bool isKeyDown(SDL_Scancode key);
-    bool isKeyUp(SDL_Scancode key);
-    bool isKeyPressed(SDL_Scancode key);
 
     bool getMouseButtonState(int buttonNumber);
     Vector2f *getMousePosition();

@@ -4,6 +4,8 @@
 
 #include "resourceManager.hpp"
 #include "entity.hpp"
+#include "player.hpp"
+#include "enemy.hpp"
 
 ResourceManager *ResourceManager::s_pInstance = nullptr;
 
@@ -116,58 +118,99 @@ void ResourceManager::drawFrame(Entity& entity)
     else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
 }
 
-void ResourceManager::drawPlayer(Entity& entity)
+void ResourceManager::drawRect(SDL_Rect rect)
 {
-    SDL_Rect src;
-    src.x = entity.getCurrentFrame().w * entity.getCurrentFrame().x;
-    src.y = entity.getCurrentFrame().h * entity.getCurrentFrame().y;
-    src.w = entity.getCurrentFrame().w;
-    src.h = entity.getCurrentFrame().h;
-
-    SDL_Rect dst;
-    dst.x = entity.getPos().getX();
-    dst.y = entity.getPos().getY();
-    dst.w = entity.getCurrentFrame().w * 2;
-    dst.h = entity.getCurrentFrame().h * 2;
-
-    if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
-    else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+    SDL_RenderDrawRect(m_pRenderer, &rect);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 }
 
-void ResourceManager::drawEnemy1(Entity& entity)
+void ResourceManager::drawPlayer(Player& player)
 {
     SDL_Rect src;
-    src.x = entity.getCurrentFrame().w * entity.getCurrentFrame().x;
-    src.y = entity.getCurrentFrame().h * entity.getCurrentFrame().y;
-    src.w = entity.getCurrentFrame().w;
-    src.h = entity.getCurrentFrame().h;
+    src.x = player.getCurrentFrame().w * player.getCurrentFrame().x;
+    src.y = player.getCurrentFrame().h * player.getCurrentFrame().y;
+    src.w = player.getCurrentFrame().w;
+    src.h = player.getCurrentFrame().h;
 
     SDL_Rect dst;
-    dst.x = entity.getPos().getX();
-    dst.y = entity.getPos().getY();
-    dst.w = entity.getCurrentFrame().w * 3;
-    dst.h = entity.getCurrentFrame().h * 3;
+    dst.x = player.getPos().getX();
+    dst.y = player.getPos().getY();
+    dst.w = player.getCurrentFrame().w * 0.75;
+    dst.h = player.getCurrentFrame().h * 0.75;
 
-    if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
-    else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+    SDL_RenderDrawRect(m_pRenderer, &dst);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+
+    if (player.getFlip()) SDL_RenderCopyEx(m_pRenderer, player.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+    else SDL_RenderCopy(m_pRenderer, player.getTex(), &src, &dst);
 }
 
-void ResourceManager::drawEnemy2(Entity& entity)
+void ResourceManager::drawPlayerKI(Player& player)
 {
     SDL_Rect src;
-    src.x = entity.getCurrentFrame().w * entity.getCurrentFrame().x;
-    src.y = entity.getCurrentFrame().h * entity.getCurrentFrame().y;
-    src.w = entity.getCurrentFrame().w;
-    src.h = entity.getCurrentFrame().h;
+    src.x = player.getCurrentFrame().w * player.getCurrentFrame().x;
+    src.y = player.getCurrentFrame().h * player.getCurrentFrame().y;
+    src.w = player.getCurrentFrame().w;
+    src.h = player.getCurrentFrame().h;
 
     SDL_Rect dst;
-    dst.x = entity.getPos().getX();
-    dst.y = entity.getPos().getY();
-    dst.w = entity.getCurrentFrame().w;
-    dst.h = entity.getCurrentFrame().h;
+    dst.x = player.getPos().getX() + 10;
+    dst.y = player.getPos().getY() - 90;
+    dst.w = player.getCurrentFrame().w;
+    dst.h = player.getCurrentFrame().h;
 
-    if (entity.getFlip()) SDL_RenderCopyEx(m_pRenderer, entity.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
-    else SDL_RenderCopy(m_pRenderer, entity.getTex(), &src, &dst);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+    SDL_RenderDrawRect(m_pRenderer, &dst);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+
+    if (player.getFlip()) SDL_RenderCopyEx(m_pRenderer, player.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+    else SDL_RenderCopy(m_pRenderer, player.getTex(), &src, &dst);
+}
+
+void ResourceManager::drawEnemy1(Enemy& enemy)
+{
+    SDL_Rect src;
+    src.x = enemy.getCurrentFrame().w * enemy.getCurrentFrame().x;
+    src.y = enemy.getCurrentFrame().h * enemy.getCurrentFrame().y;
+    src.w = enemy.getCurrentFrame().w;
+    src.h = enemy.getCurrentFrame().h;
+
+    SDL_Rect dst;
+    dst.x = enemy.getPos().getX();
+    dst.y = enemy.getPos().getY();
+    dst.w = enemy.getCurrentFrame().w * 4;
+    dst.h = enemy.getCurrentFrame().h * 4;
+
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+    SDL_RenderDrawRect(m_pRenderer, &dst);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+
+    if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+    else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);
+}
+
+void ResourceManager::drawEnemy2(Enemy& enemy)
+{
+    SDL_Rect src;
+    src.x = enemy.getCurrentFrame().w * enemy.getCurrentFrame().x;
+    src.y = enemy.getCurrentFrame().h * enemy.getCurrentFrame().y;
+    src.w = enemy.getCurrentFrame().w;
+    src.h = enemy.getCurrentFrame().h;
+
+    SDL_Rect dst;
+    dst.x = enemy.getPos().getX();
+    dst.y = enemy.getPos().getY();
+    dst.w = enemy.getCurrentFrame().w * 4;
+    dst.h = enemy.getCurrentFrame().h * 4;
+
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+    SDL_RenderDrawRect(m_pRenderer, &dst);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+
+    if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+    else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);
 }
 
 void ResourceManager::display()

@@ -3,6 +3,8 @@
 #include <vector>
 
 #include "entity.hpp"
+#include "player.hpp"
+#include "enemy.hpp"
 #include "gameState.hpp"
 
 class GameObject;
@@ -19,9 +21,12 @@ public:
 	virtual std::string getStateID() const { return s_playID; }
 
 	// function to check collisions
-	bool checkCollision(Entity *p1, Entity *p2);
+	bool checkCollision(Player* p1, Enemy* p2);
 
 private:
 	static const std::string s_playID;
-	std::vector<Entity *> m_entities;
+	std::vector<Entity*> m_entities;
+	Player* m_player;
+	Enemy* m_enemy1, * m_enemy2, * m_enemy3;
+	std::vector<Enemy*> m_enemies;
 };

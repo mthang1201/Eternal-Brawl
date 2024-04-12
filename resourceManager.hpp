@@ -3,6 +3,8 @@
 #include <SDL_image.h>
 
 #include "entity.hpp"
+#include "player.hpp"
+#include "enemy.hpp"
 
 class ResourceManager
 {
@@ -25,9 +27,11 @@ public:
 	void clear();
 	void draw(Entity& entity);
 	void drawFrame(Entity& entity);
-	void drawPlayer(Entity& entity);
-	void drawEnemy1(Entity& entity);
-	void drawEnemy2(Entity& entity);
+	void drawRect(SDL_Rect rect);
+	void drawPlayer(Player& player);
+	void drawPlayerKI(Player& player);
+	void drawEnemy1(Enemy& enemy);
+	void drawEnemy2(Enemy& enemy);
 	void display();
 
 private:
