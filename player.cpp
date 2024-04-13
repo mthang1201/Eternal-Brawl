@@ -17,7 +17,7 @@ const Uint32 MAX_ACTION_TIME = 1000;
 int comboStep = 0; // Track the current combo step
 Uint32 lastKeyPressTime = 0; // Track the time of the last key press
 
-Player::Player(const LoaderParams* pParams) : Entity(pParams)
+Player::Player(const LoaderParams* pParams) : Entity(pParams), m_state(), m_interactWithEnemy()
 {
 	healthPoints = 300;
 	frameTime = SDL_GetTicks();
@@ -83,12 +83,12 @@ void Player::checkCollision()
 	if (m_pos.getX() < 0 || m_pos.getX() > 1280 - m_currentFrame.w)
 	{
 		m_velocity.setX(0);
-		m_pos.setX((m_pos.getX() < 0) ? (m_pos.getX() + 1) : (m_pos.getX() - 10));
+		m_pos.setX((m_pos.getX() < 0) ? (m_pos.getX() + moveSpeed) : (m_pos.getX() - moveSpeed));
 	}
 	if (m_pos.getY() < 0 || m_pos.getY() > 720 - m_currentFrame.h)
 	{
 		m_velocity.setY(0);
-		m_pos.setY((m_pos.getY() < 0) ? (m_pos.getY() + 1) : (m_pos.getY() - 10));
+		m_pos.setY((m_pos.getY() < 0) ? (m_pos.getY() + moveSpeed) : (m_pos.getY() - moveSpeed));
 	}
 }
 
@@ -98,23 +98,23 @@ void Player::handleInput()
 	{
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
 		{
-			m_velocity.setY(-5);
+			m_velocity.setY(-moveSpeed);
 			m_state = PlayerState::FLYING_UP;
 		}
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
 		{
-			m_velocity.setY(5);
+			m_velocity.setY(moveSpeed);
 			m_state = PlayerState::FLYING_DOWN;
 		}
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 		{
-			m_velocity.setX(5);
+			m_velocity.setX(moveSpeed);
 			m_bFlip = false;
 			m_state = PlayerState::FLYING_HORIZONTAL;
 		}
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 		{
-			m_velocity.setX(-5);
+			m_velocity.setX(-moveSpeed);
 			m_bFlip = true;
 			m_state = PlayerState::FLYING_HORIZONTAL;
 		}

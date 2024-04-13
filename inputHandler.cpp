@@ -6,7 +6,7 @@ InputHandler* InputHandler::s_pInstance = nullptr;
 
 Vector2f* m_mouseposition = 0;
 
-InputHandler::InputHandler()
+InputHandler::InputHandler() : m_event(), m_keystates(nullptr)
 {
 	for (int i = 0; i < 3; i++)
 	{

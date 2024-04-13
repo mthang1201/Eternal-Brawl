@@ -9,7 +9,8 @@
 LoaderAssets::LoaderAssets()
 {
 	loadTextures();
-	// loadSounds();
+	loadMusics();
+	//loadSounds();
 	// loadFonts();
 }
 
@@ -19,6 +20,14 @@ LoaderAssets::~LoaderAssets()
 	{
 		SDL_DestroyTexture(pair.second);
 	}
+	for (auto& pair : m_musics)
+	{
+		Mix_FreeMusic(pair.second);
+	}
+	/*for (auto& pair : m_sounds)
+	{
+		Mix_FreeChunk(pair.second);
+	}*/
 }
 
 void LoaderAssets::loadTextures()
@@ -55,7 +64,7 @@ void LoaderAssets::loadTextures()
 
 	m_textures.push_back({ TextureType::GOKU_FLYING_IDLE, TheResourceManager::Instance()->loadTexture("res/goku_flying_idle.png") });
 	m_textures.push_back({ TextureType::GOKU_IDLE, TheResourceManager::Instance()->loadTexture("res/goku_idle.png") });
-	
+
 	m_textures.push_back({ TextureType::GOKU_KI, TheResourceManager::Instance()->loadTexture("res/goku_ki.png") });
 	m_textures.push_back({ TextureType::GOKU_TRANSFORM_01, TheResourceManager::Instance()->loadTexture("res/goku_transform/goku_transform_01.png") });
 	m_textures.push_back({ TextureType::GOKU_TRANSFORM_02, TheResourceManager::Instance()->loadTexture("res/goku_transform/goku_transform_02.png") });
@@ -64,19 +73,19 @@ void LoaderAssets::loadTextures()
 	m_textures.push_back({ TextureType::GOKU_TELEPORT, TheResourceManager::Instance()->loadTexture("res/goku_teleport.png") });
 	m_textures.push_back({ TextureType::GOKU_JUMPING, TheResourceManager::Instance()->loadTexture("res/3.png") });
 	m_textures.push_back({ TextureType::GOKU_FALLING, TheResourceManager::Instance()->loadTexture("res/3.png") });
-	
+
 	m_textures.push_back({ TextureType::GOKU_FLYING_HORIZONTAL, TheResourceManager::Instance()->loadTexture("res/goku_flying_horizontal.png") });
 	m_textures.push_back({ TextureType::GOKU_FLYING_UP, TheResourceManager::Instance()->loadTexture("res/goku_flying_up.png") });
 	m_textures.push_back({ TextureType::GOKU_FLYING_DOWN, TheResourceManager::Instance()->loadTexture("res/goku_flying_down.png") });
 	m_textures.push_back({ TextureType::GOKU_LANDING, TheResourceManager::Instance()->loadTexture("res/goku_landing.png") });
-	
+
 	m_textures.push_back({ TextureType::GOKU_ATTACK, TheResourceManager::Instance()->loadTexture("res/goku_attack.png") });
 	m_textures.push_back({ TextureType::GOKU_HEAVY_ATTACK, TheResourceManager::Instance()->loadTexture("res/goku_heavy_attack.png") });
 	m_textures.push_back({ TextureType::GOKU_FLYING_ATTACK, TheResourceManager::Instance()->loadTexture("res/goku_flying_attack.png") });
 	m_textures.push_back({ TextureType::GOKU_KICK, TheResourceManager::Instance()->loadTexture("res/goku_kick.png") });
 	m_textures.push_back({ TextureType::GOKU_DEFEND, TheResourceManager::Instance()->loadTexture("res/goku_defend.png") });
 	m_textures.push_back({ TextureType::GOKU_FLYING_DEFEND, TheResourceManager::Instance()->loadTexture("res/goku_flying_defend.png") });
-	
+
 	m_textures.push_back({ TextureType::GOKU_KNOCKBACK, TheResourceManager::Instance()->loadTexture("res/goku_knockback.png") });
 	m_textures.push_back({ TextureType::GOKU_DEATH, TheResourceManager::Instance()->loadTexture("res/goku_death.png") });
 
@@ -94,6 +103,18 @@ void LoaderAssets::loadTextures()
 	m_textures.push_back({ TextureType::VAGABOND_DEATH, TheResourceManager::Instance()->loadTexture("res/vagabond/vagabond-death.png") });
 }
 
+void LoaderAssets::loadMusics()
+{
+	m_musics.push_back({ MusicType::ALLEY, TheResourceManager::Instance()->loadMusic("res/music/Alley.mp3") });
+	m_musics.push_back({ MusicType::DOWNTOWN, TheResourceManager::Instance()->loadMusic("res/music/Downtown.mp3") });
+	m_musics.push_back({ MusicType::HEROES_BATTLE, TheResourceManager::Instance()->loadMusic("res/music/HeroesBattle.mp3") });
+}
+
+void LoaderAssets::loadSounds()
+{
+	m_sounds.push_back({ SoundType::GOKU_ATTACK, TheResourceManager::Instance()->loadSound("res/button.png") });
+}
+
 SDL_Texture* LoaderAssets::getTexture(const TextureType& name)
 {
 	for (const auto& pair : m_textures)
@@ -106,10 +127,29 @@ SDL_Texture* LoaderAssets::getTexture(const TextureType& name)
 	return nullptr;
 }
 
-// void LoaderAssets::loadSounds()
-// {
-//     m_sounds["game_over"] = TheResourceManager::Instance()->loadSound("path_to_game_over_sound");
-// }
+Mix_Music* LoaderAssets::getMusic(const MusicType& name)
+{
+	for (const auto& pair : m_musics)
+	{
+		if (pair.first == name)
+		{
+			return pair.second;
+		}
+	}
+	return nullptr;
+}
+
+Mix_Chunk* LoaderAssets::getSound(const SoundType& name)
+{
+	for (const auto& pair : m_sounds)
+	{
+		if (pair.first == name)
+		{
+			return pair.second;
+		}
+	}
+	return nullptr;
+}
 
 // void LoaderAssets::loadFonts()
 // {

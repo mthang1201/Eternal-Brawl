@@ -1,4 +1,5 @@
 #pragma once
+#include <SDL_mixer.h>
 
 #include "entity.hpp"
 
@@ -10,4 +11,5 @@ public:
     virtual void draw();
     virtual void update();
     virtual void clean();
+    virtual Mix_Chunk* getSound() { return m_pSound; }
 };

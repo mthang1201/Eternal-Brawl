@@ -29,8 +29,11 @@ void MenuState::render()
 
 bool MenuState::onEnter()
 {
-	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 100), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::PLAY_BUTTON)), s_menuToPlay));
-	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 300), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::EXIT_BUTTON)), s_exitFromMenu));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 100), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::PLAY_BUTTON), nullptr), s_menuToPlay));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 300), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::EXIT_BUTTON), nullptr), s_exitFromMenu));
+	
+	TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::ALLEY), -1);
+	
 	std::cout << "entering MenuState\n";
 
 	return true;
@@ -49,6 +52,8 @@ bool MenuState::onExit()
 		std::cerr << "Error: Failed to delete entity\n";
 		return false;
 	}
+
+	Mix_HaltMusic();
 
 	std::cout << "exiting MenuState\n";
 	return true;

@@ -14,6 +14,7 @@ Entity::Entity(const LoaderParams* pParams)
     m_currentFrame.w = pParams->getCurrentFrame().w;
     m_currentFrame.h = pParams->getCurrentFrame().h;
     m_pTex = pParams->getTex();
+    m_pSound = pParams->getSound();
 }
 
 void Entity::update()

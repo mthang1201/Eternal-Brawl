@@ -63,11 +63,15 @@ void PlayState::render()
 	TheResourceManager::Instance()->drawEnemy1(*m_enemy1);
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy2);
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy3);
+
+
+	//TheResourceManager::Instance()->playSound(m_player->getSound(), 1);
+	//TheResourceManager::Instance()->playSound(m_enemy1->getSound(), 1);
 }
 
 bool PlayState::onEnter()
 {
-	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 720 }, TheGame::Instance()->getAssets()->getTexture(TextureType::BACKGROUND))));
+	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 720 }, TheGame::Instance()->getAssets()->getTexture(TextureType::BACKGROUND), nullptr)));
 	/*for (int i = 350; i < 470; i += 6)
 	{
 		m_entities.push_back(new Item(new LoaderParams(Vector2f(50, i), { 0, 0, 6, 6 }, TheGame::Instance()->getAssets()->getTexture(TextureType::TILED_LEFT))));
@@ -81,10 +85,12 @@ bool PlayState::onEnter()
 		m_entities.push_back(new Item(new LoaderParams(Vector2f(x, 620), { 0, 0, 100, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GROUND_GRASS))));
 	}*/
 
-	m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE)));
-	m_enemy1 = new Enemy(new LoaderParams(Vector2f(500, 395), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN)));
-	m_enemy2 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH)));
-	m_enemy3 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH)));
+	m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
+	m_enemy1 = new Enemy(new LoaderParams(Vector2f(500, 395), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr));
+	m_enemy2 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr));
+	m_enemy3 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr));
+
+	TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::HEROES_BATTLE), -1);
 
 	std::cout << "entering PlayState\n";
 	return true;
@@ -104,6 +110,8 @@ bool PlayState::onExit()
 		std::cerr << "Error: Failed to delete entity\n";
 		return false;
 	}
+
+	Mix_HaltMusic();
 
 	std::cout << "exiting PlayState\n";
 	return true;

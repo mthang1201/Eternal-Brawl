@@ -2,7 +2,7 @@
 #include "inputHandler.hpp"
 #include "vector2f.hpp"
 
-MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()) : Entity(pParams), m_callback(callback)
+MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()) : Entity(pParams), m_callback(callback), m_bReleased(false)
 {
 	m_currentFrame.x = MOUSE_OUT; // start at frame 0
 }

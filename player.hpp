@@ -1,4 +1,5 @@
 #pragma once
+#include <SDL_mixer.h>
 #include <string>
 
 #include "entity.hpp"
@@ -46,6 +47,8 @@ public:
     virtual void update();
     virtual void clean();
     virtual std::string getObjectState();
+    virtual Mix_Chunk* getSound() { return m_pSound; }
+
     int healthPoints;
     bool inAction = false;
 private:
@@ -61,6 +64,9 @@ private:
 
     PlayerState m_state;
     PlayerState m_interactWithEnemy;
+
+    float moveSpeed = 5;
+
     int kickCount = 0;
     
     int attackTime;

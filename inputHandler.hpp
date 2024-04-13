@@ -48,8 +48,6 @@ private:
     Vector2f *m_mousePosition;
 
     const Uint8 *m_keystates;
-    bool m_keyDown[KEYBOARD_SIZE];
-    bool m_keyUp[KEYBOARD_SIZE];
 };
 
 typedef InputHandler TheInputHandler;

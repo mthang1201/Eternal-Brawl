@@ -31,7 +31,7 @@ public:
     GameStateMachine *getStateMachine() { return m_pGameStateMachine; }
 
 private:
-    Game() {}
+    Game();
     static Game *s_pInstance;
     std::vector<Entity *> m_entities;
     LoaderAssets *m_pAssets;

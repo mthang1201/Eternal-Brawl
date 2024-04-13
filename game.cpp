@@ -19,6 +19,10 @@
 
 Game *Game::s_pInstance = nullptr;
 
+Game::Game() : m_pAssets(nullptr), m_pGameStateMachine(nullptr)
+{
+}
+
 bool Game::init()
 {
     if (TheResourceManager::Instance()->init("Eternal Brawl", SCREEN_WIDTH, SCREEN_HEIGHT))
