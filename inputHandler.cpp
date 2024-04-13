@@ -19,31 +19,28 @@ void InputHandler::update()
 {
 	while (SDL_PollEvent(&m_event))
 	{
-		if (m_event.key.repeat == 0)
+		switch (m_event.type)
 		{
-			switch (m_event.type)
-			{
-			case SDL_QUIT:
-				TheGame::Instance()->quit();
-				break;
-			case SDL_KEYDOWN:
-				onKeyDown();
-				break;
-			case SDL_KEYUP:
-				onKeyUp();
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				onMouseButtonDown();
-				break;
-			case SDL_MOUSEBUTTONUP:
-				onMouseButtonUp();
-				break;
-			case SDL_MOUSEMOTION:
-				onMouseMotion();
-				break;
-			default:
-				break;
-			}
+		case SDL_QUIT:
+			TheGame::Instance()->quit();
+			break;
+		case SDL_KEYDOWN:
+			onKeyDown();
+			break;
+		case SDL_KEYUP:
+			onKeyUp();
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			onMouseButtonDown();
+			break;
+		case SDL_MOUSEBUTTONUP:
+			onMouseButtonUp();
+			break;
+		case SDL_MOUSEMOTION:
+			onMouseMotion();
+			break;
+		default:
+			break;
 		}
 	}
 }

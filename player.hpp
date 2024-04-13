@@ -46,6 +46,7 @@ public:
     virtual void draw();
     virtual void update();
     virtual void clean();
+    virtual void collision() {}
     virtual std::string getObjectState();
     virtual Mix_Chunk* getSound() { return m_pSound; }
 
@@ -53,27 +54,43 @@ public:
     bool inAction = false;
 private:
     void checkCollision();
+    bool checkCollideTile(Vector2f pos);
     void handleInput();
-    void changeStates();
+    void handleMovement(Vector2f velocity);
+    void handleAnimation();
 
     void goku_on_ground();
     void goku_in_air();
     void goku_kick();
-    
+    void doDyingAnimation();
 
 
     PlayerState m_state;
     PlayerState m_interactWithEnemy;
 
-    float moveSpeed = 5;
+    float m_moveSpeed = 5;
 
     int kickCount = 0;
-    
-    int attackTime;
-    int heavyAttackTime;
-    int kickTime;
+    int idleCounter = 0, walkCounter = 0, jumpCounter = 0, fallingCounter = 0, deathCounter = 0;
+
+    bool grounded = false, running = false, idling = true, jumping = false, falling = true, dead = false, beingHit = false;
+
+    int m_attackTime;
+    int m_heavyAttackTime;
+    int m_kickTime;
+    int m_dyingTime;
+    int m_dyingCounter;
+
     int frameTime;
     int startTime;
+
+    bool m_bRunning;
+    bool m_bFlying;
+    bool m_bMoveRight;
+    bool m_bMoveLeft;
+    /*bool m_bMoveLeft;
+    bool m_bMoveLeft;
+    bool m_bMoveLeft;*/
 
     bool inputLocked1 = false, inputLocked2 = false, inputLocked3 = false;
     

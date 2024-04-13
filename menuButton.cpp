@@ -1,6 +1,7 @@
 #include "menuButton.hpp"
 #include "inputHandler.hpp"
 #include "vector2f.hpp"
+#include "resourceManager.hpp"
 
 MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()) : Entity(pParams), m_callback(callback), m_bReleased(false)
 {
@@ -20,6 +21,8 @@ void MenuButton::update()
 		if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
 		{
 			m_currentFrame.x = CLICKED;
+			//TheResourceManager::Instance()->playSound(m_pSound, 0);
+			TheResourceManager::Instance()->playSound(TheResourceManager::Instance()->loadSound("res/sound/MenuOK.wav"), 0);
 			m_callback();
 			m_bReleased = false;
 		}

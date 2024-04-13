@@ -150,10 +150,12 @@
     <ClCompile Include="..\player.cpp" />
     <ClCompile Include="..\playState.cpp" />
     <ClCompile Include="..\resourceManager.cpp" />
+    <ClCompile Include="..\tileLayer.cpp" />
     <ClCompile Include="..\vector2f.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\animatedGraphic.hpp" />
+    <ClInclude Include="..\collisionManager.hpp" />
     <ClInclude Include="..\enemy.hpp" />
     <ClInclude Include="..\entity.hpp" />
     <ClInclude Include="..\game.hpp" />
@@ -170,6 +172,7 @@
     <ClInclude Include="..\player.hpp" />
     <ClInclude Include="..\playState.hpp" />
     <ClInclude Include="..\resourceManager.hpp" />
+    <ClInclude Include="..\tileLayer.hpp" />
     <ClInclude Include="..\utils.hpp" />
     <ClInclude Include="..\vector2f.hpp" />
   </ItemGroup>

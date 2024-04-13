@@ -76,6 +76,8 @@ enum class MusicType {
 };
 
 enum class SoundType {
+	MENU_OK,
+
 	GOKU_ATTACK,
 	GOKU_KI,
 };

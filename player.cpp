@@ -21,11 +21,11 @@ Player::Player(const LoaderParams* pParams) : Entity(pParams), m_state(), m_inte
 {
 	healthPoints = 300;
 	frameTime = SDL_GetTicks();
-    startTime = SDL_GetTicks();
+	startTime = SDL_GetTicks();
 	//jumpTime = SDL_GetTicks();
-	attackTime = SDL_GetTicks();
-	heavyAttackTime = SDL_GetTicks();
-	kickTime = SDL_GetTicks();
+	m_attackTime = SDL_GetTicks();
+	m_heavyAttackTime = SDL_GetTicks();
+	m_kickTime = SDL_GetTicks();
 	//transformTime = SDL_GetTicks();
 	//throwingObjectTime = SDL_GetTicks();
 }
@@ -36,6 +36,69 @@ void Player::draw()
 
 void Player::update()
 {
+	//if (!m_bDying)
+	//{
+	//	// fell off the edge
+	//	if (m_pos.m_y + m_height >= 470)
+	//	{
+	//		collision();
+	//	}
+
+	//	// get the player input
+	//	handleInput();
+	//	if (m_bMoveLeft)
+	//	{
+	//		if (m_bRunning)
+	//		{
+	//			m_velocity.m_x = -5;
+	//		}
+	//		else
+	//		{
+	//			m_velocity.m_x = -2;
+	//		}
+	//	}
+
+	//	else if (m_bMoveRight)
+	//	{
+	//		if (m_bRunning)
+	//		{
+	//			m_velocity.m_x = 5;
+	//		}
+	//		else
+	//		{
+	//			m_velocity.m_x = 2;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		m_velocity.m_x = 0;
+	//	}
+
+	//	// if we are higher than the jump height set jumping to false
+	//	if (m_pos.m_y < m_lastSafePos.m_y - m_jumpHeight)
+	//	{
+	//		m_bJumping = false;
+	//	}
+	//	if (!m_bJumping)
+	//	{
+	//		m_velocity.m_y = 5;
+	//	}
+	//	else
+	//	{
+	//		m_velocity.m_y = -5;
+	//	}
+	//	handleMovement(m_velocity);
+	//}
+	//else
+	//{
+	//	m_velocity.m_x = 0;
+	//	if (m_dyingCounter == m_dyingTime)
+	//	{
+	//		ressurect();
+	//	}
+	//	m_dyingCounter++;
+	//	m_velocity.m_y = 5;
+	//}
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 
@@ -60,9 +123,10 @@ void Player::update()
 
 	handleInput();
 
-	changeStates();
-	
+	handleAnimation();
+
 	checkCollision();
+	//checkCollideTile()
 
 	Entity::update();
 }
@@ -83,13 +147,18 @@ void Player::checkCollision()
 	if (m_pos.getX() < 0 || m_pos.getX() > 1280 - m_currentFrame.w)
 	{
 		m_velocity.setX(0);
-		m_pos.setX((m_pos.getX() < 0) ? (m_pos.getX() + moveSpeed) : (m_pos.getX() - moveSpeed));
+		m_pos.setX((m_pos.getX() < 0) ? (m_pos.getX() + m_moveSpeed) : (m_pos.getX() - m_moveSpeed));
 	}
 	if (m_pos.getY() < 0 || m_pos.getY() > 720 - m_currentFrame.h)
 	{
 		m_velocity.setY(0);
-		m_pos.setY((m_pos.getY() < 0) ? (m_pos.getY() + moveSpeed) : (m_pos.getY() - moveSpeed));
+		m_pos.setY((m_pos.getY() < 0) ? (m_pos.getY() + m_moveSpeed) : (m_pos.getY() - m_moveSpeed));
 	}
+}
+
+bool Player::checkCollideTile(Vector2f pos)
+{
+	return false;
 }
 
 void Player::handleInput()
@@ -98,23 +167,23 @@ void Player::handleInput()
 	{
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
 		{
-			m_velocity.setY(-moveSpeed);
+			m_velocity.setY(-m_moveSpeed);
 			m_state = PlayerState::FLYING_UP;
 		}
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN))
 		{
-			m_velocity.setY(moveSpeed);
+			m_velocity.setY(m_moveSpeed);
 			m_state = PlayerState::FLYING_DOWN;
 		}
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
 		{
-			m_velocity.setX(moveSpeed);
+			m_velocity.setX(m_moveSpeed);
 			m_bFlip = false;
 			m_state = PlayerState::FLYING_HORIZONTAL;
 		}
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT))
 		{
-			m_velocity.setX(-moveSpeed);
+			m_velocity.setX(-m_moveSpeed);
 			m_bFlip = true;
 			m_state = PlayerState::FLYING_HORIZONTAL;
 		}
@@ -145,7 +214,7 @@ void Player::handleInput()
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
 		{
 			//if (!zKeyCurrentlyPressed) {
-				m_state = PlayerState::ATTACK;
+			m_state = PlayerState::ATTACK;
 			//}
 		}
 		/*else
@@ -157,7 +226,7 @@ void Player::handleInput()
 		{
 
 			//if (!xKeyCurrentlyPressed) {
-				m_state = PlayerState::KICK;
+			m_state = PlayerState::KICK;
 			//}
 		}
 		/*else
@@ -195,7 +264,38 @@ void Player::handleInput()
 	}
 }
 
-void Player::changeStates()
+void Player::handleMovement(Vector2f velocity)
+{
+	Vector2f newPos = Vector2f(m_pos.getX(), m_pos.getY());
+	newPos.setX(m_pos.getX() + velocity.getX());
+	// check if the new x position would collide with a tile
+	if (!checkCollideTile(newPos))
+	{
+		// no collision, add to the actual x position
+		m_pos.setX(newPos.getX());
+	}
+	else
+	{
+		m_velocity.setX(0);
+	}
+
+	// get the current position after x movement
+	newPos = Vector2f(m_pos.getX(), m_pos.getY());
+	// add velocity to y position
+	newPos.setY(m_pos.getY() + velocity.getY());
+	// check if new y position would collide with a tile
+	if (!checkCollideTile(newPos))
+	{
+		// no collision, add to the actual x position
+		m_pos.setY(newPos.getY());
+	}
+	else
+	{
+		// collision, stop y movement
+		m_velocity.setY(0);
+	}
+}
+void Player::handleAnimation()
 {
 	if (m_state == PlayerState::IDLE)
 	{
@@ -274,7 +374,7 @@ void Player::changeStates()
 		m_currentFrame.w = 64;
 		m_currentFrame.h = 64;
 
-		heavyAttackTime = SDL_GetTicks();
+		m_heavyAttackTime = SDL_GetTicks();
 	}
 	else if (m_state == PlayerState::FLYING_ATTACK)
 	{
@@ -313,7 +413,7 @@ void Player::changeStates()
 
 		m_currentFrame.w = 64;
 		m_currentFrame.h = 128;
-		}
+	}
 	else if (m_state == PlayerState::KNOCKBACK)
 	{
 		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_KNOCKBACK);
@@ -352,7 +452,7 @@ void Player::goku_kick()
 
 	//if (timeElapsed < COMBO_RESET_TIME) {
 		//lastKeyPressTime = currentTime;
-		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 12));
+	m_currentFrame.x = int(((SDL_GetTicks() / 120) % 12));
 	//}
 	/*else
 	{
@@ -366,4 +466,14 @@ void Player::goku_kick()
 
 	xKeyCurrentlyPressed = true;
 	inAction = true;
+}
+
+void Player::doDyingAnimation()
+{
+	m_currentFrame.x = int(((SDL_GetTicks() / (1000 / 3)) % m_numFrames));
+	if (m_dyingCounter == m_dyingTime)
+	{
+		m_bDead = true;
+	}
+	m_dyingCounter++;
 }

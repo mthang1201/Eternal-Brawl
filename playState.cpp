@@ -27,12 +27,13 @@ void PlayState::update()
 	}
 
 	m_player->update();
-	m_enemy1->update();
-	m_enemy2->update();
-	m_enemy3->update();
 
+	for (int i = 0; i < (int)m_entities.size(); i++)
+	{
+		m_enemies[i]->update();
+	}
 
-	if (checkCollision(dynamic_cast<Player*>(m_player), dynamic_cast<Enemy*>(m_enemy1)))
+	if (checkCollision(dynamic_cast<Player*>(m_player), dynamic_cast<Enemy*>(m_enemies[0])))
 	{
 		m_player->healthPoints -= 100;
 	}
@@ -60,7 +61,11 @@ void PlayState::render()
 		TheResourceManager::Instance()->drawPlayerKI(*m_player);
 	else
 		TheResourceManager::Instance()->drawPlayer(*m_player);
-	TheResourceManager::Instance()->drawEnemy1(*m_enemy1);
+
+	for (int i = 0; i < (int)m_enemies.size(); i++)
+	{
+		TheResourceManager::Instance()->drawEnemy1(*m_enemies[i]);
+	}
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy2);
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy3);
 
@@ -86,11 +91,12 @@ bool PlayState::onEnter()
 	}*/
 
 	m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
-	m_enemy1 = new Enemy(new LoaderParams(Vector2f(500, 395), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr));
-	m_enemy2 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr));
-	m_enemy3 = new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(500, 395), {0, 0, 64, 64}, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr)));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr)));
 
-	TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::HEROES_BATTLE), -1);
+	//TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::HEROES_BATTLE), -1);
+	TheResourceManager::Instance()->playMusic(TheResourceManager::Instance()->loadMusic("res/music/HeroesBattle.mp3"), -1);
 
 	std::cout << "entering PlayState\n";
 	return true;

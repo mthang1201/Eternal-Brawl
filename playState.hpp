@@ -27,6 +27,6 @@ private:
 	static const std::string s_playID;
 	std::vector<Entity*> m_entities;
 	Player* m_player;
-	Enemy* m_enemy1, * m_enemy2, * m_enemy3;
+	//Enemy* m_enemy1, * m_enemy2, * m_enemy3;
 	std::vector<Enemy*> m_enemies;
 };

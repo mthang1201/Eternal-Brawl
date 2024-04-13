@@ -10,7 +10,7 @@ LoaderAssets::LoaderAssets()
 {
 	loadTextures();
 	loadMusics();
-	//loadSounds();
+	loadSounds();
 	// loadFonts();
 }
 
@@ -24,10 +24,10 @@ LoaderAssets::~LoaderAssets()
 	{
 		Mix_FreeMusic(pair.second);
 	}
-	/*for (auto& pair : m_sounds)
+	for (auto& pair : m_sounds)
 	{
 		Mix_FreeChunk(pair.second);
-	}*/
+	}
 }
 
 void LoaderAssets::loadTextures()
@@ -112,7 +112,7 @@ void LoaderAssets::loadMusics()
 
 void LoaderAssets::loadSounds()
 {
-	m_sounds.push_back({ SoundType::GOKU_ATTACK, TheResourceManager::Instance()->loadSound("res/button.png") });
+	m_sounds.push_back({ SoundType::MENU_OK, TheResourceManager::Instance()->loadSound("res/sound/MenuOK.wav") });
 }
 
 SDL_Texture* LoaderAssets::getTexture(const TextureType& name)
