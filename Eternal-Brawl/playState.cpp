@@ -33,9 +33,13 @@ void PlayState::update()
 		m_enemies[i]->update();
 	}
 
-	if (checkCollision(dynamic_cast<Player*>(m_player), dynamic_cast<Enemy*>(m_enemies[0])))
+	static bool check;
+	check = checkCollision(dynamic_cast<Player*>(m_player), dynamic_cast<Enemy*>(m_enemies[0]));
+	//if (checkCollision(dynamic_cast<Player*>(m_player), dynamic_cast<Enemy*>(m_enemies[0])))
+	if (check)
 	{
 		m_player->healthPoints -= 100;
+		check = false;
 	}
 	
 	if (m_player->getObjectState() == "DEATH" && !m_player->inAction)
@@ -92,11 +96,11 @@ bool PlayState::onEnter()
 
 	m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
 	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(500, 395), {0, 0, 64, 64}, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
-	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr)));
-	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr)));
+	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr)));
+	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr)));
 
 	//TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::HEROES_BATTLE), -1);
-	TheResourceManager::Instance()->playMusic(TheResourceManager::Instance()->loadMusic("res/music/HeroesBattle.mp3"), -1);
+	//TheResourceManager::Instance()->playMusic(TheResourceManager::Instance()->loadMusic("res/music/HeroesBattle.mp3"), -1);
 
 	std::cout << "entering PlayState\n";
 	return true;

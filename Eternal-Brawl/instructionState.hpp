@@ -5,7 +5,7 @@
 #include "gameState.hpp"
 #include "entity.hpp"
 
-class MenuState : public GameState
+class InstructionState : public GameState
 {
 public:
 	virtual void update();
@@ -14,14 +14,13 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 
-	virtual std::string getStateID() const { return s_menuID; }
+	virtual std::string getStateID() const { return s_instructionID; }
 
 private:
-	static void s_menuToPlay();
-	static void s_exitFromMenu();
+	static void s_resumeMenu();
 
-	static const std::string s_menuID;
-	std::vector<Entity *> m_entities;
+	static const std::string s_instructionID;
+	std::vector<Entity*> m_entities;
 
 	// typedef void (*Callback)();
 	// virtual void setCallbacks(const std::vector<Callback> &callbacks) = 0;

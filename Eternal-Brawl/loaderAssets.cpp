@@ -33,34 +33,25 @@ LoaderAssets::~LoaderAssets()
 void LoaderAssets::loadTextures()
 {
 	m_textures.push_back({ TextureType::PLAY_BUTTON, TheResourceManager::Instance()->loadTexture("res/button.png") });
+	//m_textures.push_back({ TextureType::INSTRUCTION_BUTTON, TheResourceManager::Instance()->loadTexture("res/instruction.png") });
 	m_textures.push_back({ TextureType::EXIT_BUTTON, TheResourceManager::Instance()->loadTexture("res/exit.png") });
-
 	m_textures.push_back({ TextureType::MAIN_BUTTON, TheResourceManager::Instance()->loadTexture("res/main.png") });
 	m_textures.push_back({ TextureType::RESTART_BUTTON, TheResourceManager::Instance()->loadTexture("res/restart.png") });
 	m_textures.push_back({ TextureType::RESUME_BUTTON, TheResourceManager::Instance()->loadTexture("res/resume.png") });
 	m_textures.push_back({ TextureType::GAME_OVER_TEXT, TheResourceManager::Instance()->loadTexture("res/gameover.png") });
 
-	m_textures.push_back({ TextureType::GROUND_GRASS, TheResourceManager::Instance()->loadTexture("res/ground_grass_1.png") });
-	m_textures.push_back({ TextureType::SKY, TheResourceManager::Instance()->loadTexture("res/skye_0.png") });
-
+	//m_textures.push_back({ TextureType::GROUND_GRASS, TheResourceManager::Instance()->loadTexture("res/ground_grass_1.png") });
+	//m_textures.push_back({ TextureType::SKY, TheResourceManager::Instance()->loadTexture("res/skye_0.png") });
 	m_textures.push_back({ TextureType::BACKGROUND, TheResourceManager::Instance()->loadTexture("res/city/background.png") });
-	m_textures.push_back({ TextureType::TILED_LEFT, TheResourceManager::Instance()->loadTexture("res/city/tiled_left.png") });
+	/*m_textures.push_back({ TextureType::TILED_LEFT, TheResourceManager::Instance()->loadTexture("res/city/tiled_left.png") });
 	m_textures.push_back({ TextureType::TILED_RIGHT, TheResourceManager::Instance()->loadTexture("res/city/tiled_right.png") });
 	m_textures.push_back({ TextureType::TILED_UP, TheResourceManager::Instance()->loadTexture("res/city/tiled_up.png") });
 	m_textures.push_back({ TextureType::TILED_DOWN, TheResourceManager::Instance()->loadTexture("res/city/tiled_down.png") });
 	m_textures.push_back({ TextureType::GARBAGE, TheResourceManager::Instance()->loadTexture("res/city/garbage.png") });
 	m_textures.push_back({ TextureType::LEFT_WALL, TheResourceManager::Instance()->loadTexture("res/city/leftWall.png") });
-	m_textures.push_back({ TextureType::EXIT_DOOR_ROOF, TheResourceManager::Instance()->loadTexture("res/city/exitDoorRoof.png") });
-
-
-	m_textures.push_back({ TextureType::HULKING_KNIGHT, TheResourceManager::Instance()->loadTexture("res/hulking_knight.png") });
-	m_textures.push_back({ TextureType::MR_HOANG, TheResourceManager::Instance()->loadTexture("res/hoang.jpg") });
-
-
-
-
-
-
+	m_textures.push_back({ TextureType::EXIT_DOOR_ROOF, TheResourceManager::Instance()->loadTexture("res/city/exitDoorRoof.png") });*/
+	//m_textures.push_back({ TextureType::HULKING_KNIGHT, TheResourceManager::Instance()->loadTexture("res/hulking_knight.png") });
+	//m_textures.push_back({ TextureType::MR_HOANG, TheResourceManager::Instance()->loadTexture("res/hoang.jpg") });
 
 	m_textures.push_back({ TextureType::GOKU_FLYING_IDLE, TheResourceManager::Instance()->loadTexture("res/goku_flying_idle.png") });
 	m_textures.push_back({ TextureType::GOKU_IDLE, TheResourceManager::Instance()->loadTexture("res/goku_idle.png") });
@@ -69,7 +60,7 @@ void LoaderAssets::loadTextures()
 	m_textures.push_back({ TextureType::GOKU_TRANSFORM_01, TheResourceManager::Instance()->loadTexture("res/goku_transform/goku_transform_01.png") });
 	m_textures.push_back({ TextureType::GOKU_TRANSFORM_02, TheResourceManager::Instance()->loadTexture("res/goku_transform/goku_transform_02.png") });
 
-	m_textures.push_back({ TextureType::GOKU_RUN, TheResourceManager::Instance()->loadTexture("res/goku_run.png") });
+	//m_textures.push_back({ TextureType::GOKU_RUN, TheResourceManager::Instance()->loadTexture("res/goku_run.png") });
 	m_textures.push_back({ TextureType::GOKU_TELEPORT, TheResourceManager::Instance()->loadTexture("res/goku_teleport.png") });
 	m_textures.push_back({ TextureType::GOKU_JUMPING, TheResourceManager::Instance()->loadTexture("res/3.png") });
 	m_textures.push_back({ TextureType::GOKU_FALLING, TheResourceManager::Instance()->loadTexture("res/3.png") });
@@ -79,16 +70,15 @@ void LoaderAssets::loadTextures()
 	m_textures.push_back({ TextureType::GOKU_FLYING_DOWN, TheResourceManager::Instance()->loadTexture("res/goku_flying_down.png") });
 	m_textures.push_back({ TextureType::GOKU_LANDING, TheResourceManager::Instance()->loadTexture("res/goku_landing.png") });
 
-	m_textures.push_back({ TextureType::GOKU_ATTACK, TheResourceManager::Instance()->loadTexture("res/goku_attack.png") });
+	//m_textures.push_back({ TextureType::GOKU_ATTACK, TheResourceManager::Instance()->loadTexture("res/goku_attack.png") });
 	m_textures.push_back({ TextureType::GOKU_HEAVY_ATTACK, TheResourceManager::Instance()->loadTexture("res/goku_heavy_attack.png") });
-	m_textures.push_back({ TextureType::GOKU_FLYING_ATTACK, TheResourceManager::Instance()->loadTexture("res/goku_flying_attack.png") });
+	//m_textures.push_back({ TextureType::GOKU_FLYING_ATTACK, TheResourceManager::Instance()->loadTexture("res/goku_flying_attack.png") });
 	m_textures.push_back({ TextureType::GOKU_KICK, TheResourceManager::Instance()->loadTexture("res/goku_kick.png") });
 	m_textures.push_back({ TextureType::GOKU_DEFEND, TheResourceManager::Instance()->loadTexture("res/goku_defend.png") });
 	m_textures.push_back({ TextureType::GOKU_FLYING_DEFEND, TheResourceManager::Instance()->loadTexture("res/goku_flying_defend.png") });
 
-	m_textures.push_back({ TextureType::GOKU_KNOCKBACK, TheResourceManager::Instance()->loadTexture("res/goku_knockback.png") });
+	//m_textures.push_back({ TextureType::GOKU_KNOCKBACK, TheResourceManager::Instance()->loadTexture("res/goku_knockback.png") });
 	m_textures.push_back({ TextureType::GOKU_DEATH, TheResourceManager::Instance()->loadTexture("res/goku_death.png") });
-
 
 	m_textures.push_back({ TextureType::VAGABOND_IDLE, TheResourceManager::Instance()->loadTexture("res/vagabond/vagabond-idle.png") });
 	m_textures.push_back({ TextureType::VAGABOND_RUN, TheResourceManager::Instance()->loadTexture("res/vagabond/vagabond-run.png") });
