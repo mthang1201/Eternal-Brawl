@@ -1,11 +1,10 @@
 #pragma once
 
-#define texWidth 64
-#define texHeight 64
-#define mapWidth 24
-#define mapHeight 24
+#define TILE_SIZE 16
+#define MAP_WIDTH 80
+#define MAP_HEIGHT 45
 
-int worldMap[mapWidth][mapHeight] =
+int worldMap[MAP_HEIGHT][MAP_WIDTH] =
 {
   {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
   {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},

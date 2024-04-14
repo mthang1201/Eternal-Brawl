@@ -18,6 +18,12 @@ void Enemy::draw()
 
 void Enemy::update()
 {
+	void Player::jump() {
+		if (grounded) {
+			m_velocity.setY(m_velocity.getY() - 10);
+			grounded = false;
+		}
+	}
 	if (!grounded) {
 		m_velocity.setY(m_velocity.getY() + GRAVITY);
 		if (m_velocity.getY() > MAX_GRAVITY) m_velocity.setY(MAX_GRAVITY);
