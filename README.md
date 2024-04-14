@@ -57,9 +57,9 @@ And, voila, you have successfully built the source. Check the Game executable in
 - Pending...
 
 ## Third party tools
-- [SDL2 framework](https://github.com/libsdl-org/SDL/releases/tag/release-2.30.0) to handle all the low-level stuff
+- [SDL2 framework](https://github.com/libsdl-org/SDL/releases/tag/prerelease-2.29.2) to handle all the low-level stuff
 - [SDL_image](https://github.com/libsdl-org/SDL_image/releases/tag/release-2.8.2) for loading images
-- [SDL_ttf](https://github.com/libsdl-org/SDL_ttf/releases/tag/release-2.22.0) for rendering fonts
+<!-- - [SDL_ttf](https://github.com/libsdl-org/SDL_ttf/releases/tag/release-2.22.0) for rendering fonts -->
 - [SDL_mixer](https://github.com/libsdl-org/SDL_mixer/releases/tag/release-2.8.0) for loading sounds
 
 ## Acknowledgements
