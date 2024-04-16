@@ -7,6 +7,7 @@
 #include "vector2f.hpp"
 #include "inputHandler.hpp"
 #include "game.hpp"
+#include "map.hpp"
 
 bool zKeyCurrentlyPressed = false;
 bool xKeyCurrentlyPressed = false;
@@ -109,26 +110,90 @@ void Player::update()
 	}
 	else inAction = false;
 
-	if (healthPoints <= 0) {
-		m_state = PlayerState::DEATH;
-	}
-
 	if (!inAction)
 	{
 		m_state = PlayerState::IDLE;
 		if (m_pos.getY() < 550) m_state = PlayerState::FLYING_IDLE;
 	}
 
+	//rigidBody = { m_pos.getX(), m_pos.getY(), m_currentFrame.w / TILE_SIZE, m_currentFrame.h / TILE_SIZE };
+
+	//if (checkMapCollision(map, x, newY))
 	m_interactWithEnemy = PlayerState::NONE;
 
 	handleInput();
 
 	handleAnimation();
 
-	checkCollision();
-	//checkCollideTile()
-
 	Entity::update();
+	//checkCollideTile()
+	float newX = m_pos.getX() + m_velocity.getX();
+	float newY = m_pos.getY() + m_velocity.getY();
+
+	SDL_Rect tile1 = { 80, 508, 100, 100 };
+
+	/*if (checkCollideTile(m_pos.getX(), m_pos.getY() - m_velocity.getY(), tile1))
+	{
+		m_velocity.setX(0);
+	}
+	else
+	{
+		m_pos.setX(m_pos.getX() - m_velocity.getX());
+	}
+	if (checkCollideTile(m_pos.getX(), m_pos.getY(), tile1))
+	{
+		m_velocity.setY(0);
+	}
+	else
+	{
+		m_pos.setY(m_pos.getY() - m_velocity.getY());
+	}*/
+
+
+	checkCollision();
+
+	m_rigidBody = { static_cast<int>(m_pos.getX()), static_cast<int>(m_pos.getY()), 64, 64 };
+	std::vector<SDL_Rect> m_tiles;
+	/*m_tiles.push_back({ 80, 508, 100, 100 });
+	m_tiles.push_back({ 400, 350, 100, 80 });*/
+	for (SDL_Rect tile : tiles)
+	{
+		SDL_Rect modifiedTile = { tile.x + 18, tile.y + 18, tile.w - 18, tile.h - 18 };
+		SDL_bool isColliding = SDL_HasIntersection(&m_rigidBody, &modifiedTile);
+
+		if (isColliding)
+		{
+			m_pos.setX(m_pos.getX() - m_velocity.getX());
+			m_pos.setY(m_pos.getY() - m_velocity.getY());
+		}
+	}
+
+	//SDL_Rect e1 = m_enemies[0]->getRigidBody();
+	///*SDL_bool isColliding = SDL_HasIntersection(&m_player->getRigidBody(), &m_enemies[0]->getRigidBody());*/
+	//SDL_bool isColliding = SDL_HasIntersection(&p1, &e1);
+
+	/*if (isColliding)
+	{
+		m_player->healthPoints -= 100;
+		m_player->getPos().setX(m_player->getPos().getX() - m_player->getVelocity().getX());
+		m_player->getPos().setY(m_player->getPos().getY() - m_player->getVelocity().getY());
+
+		m_enemies[0]->getPos().setX(m_player->getPos().getX() - m_player->getVelocity().getX());
+		m_enemies[0]->getPos().setY(m_player->getPos().getY() - m_player->getVelocity().getY());
+	}*/
+	
+
+	//SDL_bool isColliding = SDL_HasIntersection(&collision, &tile1);
+
+	/*if (isColliding)
+	{
+		m_pos.setX(m_pos.getX() - m_velocity.getX());
+		m_pos.setY(m_pos.getY() - m_velocity.getY());
+	}*/
+
+	if (healthPoints <= 0) {
+		m_state = PlayerState::DEATH;
+	}
 }
 
 void Player::clean()
@@ -139,21 +204,47 @@ std::string Player::getObjectState()
 {
 	if (m_state == PlayerState::KI || m_state == PlayerState::TRANSFORM_02) return "KI";
 	if (m_state == PlayerState::DEATH) return "DEATH";
+	if (m_state == PlayerState::ATTACK || m_state == PlayerState::KICK) return "ATTACK";
+	if (m_state == PlayerState::HEAVY_ATTACK) return "HEAVY_ATTACK";
 	return "NONE";
 }
 
 void Player::checkCollision()
 {
-	if (m_pos.getX() < 0 || m_pos.getX() > 1280 - m_currentFrame.w)
+	if (m_pos.getX() < 0 || m_pos.getX() > 1280 - m_currentFrame.w + 18)
 	{
-		m_velocity.setX(0);
-		m_pos.setX((m_pos.getX() < 0) ? (m_pos.getX() + m_moveSpeed) : (m_pos.getX() - m_moveSpeed));
+		m_pos.setX(m_pos.getX() - m_velocity.getX());
 	}
-	if (m_pos.getY() < 0 || m_pos.getY() > 720 - m_currentFrame.h)
+	if (m_pos.getY() < 0 || m_pos.getY() > 720 - m_currentFrame.h + 18)
 	{
-		m_velocity.setY(0);
-		m_pos.setY((m_pos.getY() < 0) ? (m_pos.getY() + m_moveSpeed) : (m_pos.getY() - m_moveSpeed));
+		m_pos.setY(m_pos.getY() - m_velocity.getY());
 	}
+}
+
+bool Player::checkCollideTile(float newX, float newY, SDL_Rect tile)
+{
+	float leftA, leftB;
+	float rightA, rightB;
+	float topA, topB;
+	float bottomA, bottomB;
+
+	leftA = newX;
+	rightA = newX + m_currentFrame.w;
+	topA = newY;
+	bottomA = newY + m_currentFrame.h;
+
+	// Calculate the sides of rect B
+	leftB = tile.x;
+	rightB = tile.x + tile.w;
+	topB = tile.x;
+	bottomB = tile.y + tile.h;
+
+	SDL_Rect collision = { newX , newY, m_currentFrame.w, m_currentFrame.h };
+
+	SDL_bool isColliding = SDL_HasIntersection(&collision, &tile);
+
+	//if (isColliding) return true;
+	return false;
 }
 
 bool Player::checkCollideTile(Vector2f pos)

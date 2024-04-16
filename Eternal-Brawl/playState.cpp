@@ -13,6 +13,8 @@
 
 const std::string PlayState::s_playID = "PLAY";
 
+void doSth(Player* player, Enemy* enemy);
+
 void PlayState::update()
 {
 	// listen for ESC key to pause the game
@@ -28,23 +30,35 @@ void PlayState::update()
 
 	m_player->update();
 
-	for (int i = 0; i < (int)m_entities.size(); i++)
+	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
 		m_enemies[i]->update();
 	}
 
-	static bool check;
-	check = checkCollision(dynamic_cast<Player*>(m_player), dynamic_cast<Enemy*>(m_enemies[0]));
-	//if (checkCollision(dynamic_cast<Player*>(m_player), dynamic_cast<Enemy*>(m_enemies[0])))
-	if (check)
+	// collision
+
+	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
-		m_player->healthPoints -= 100;
-		check = false;
+		if (checkPlayerEnemyCollision(m_player, m_enemies[i]))
+		{
+			doSth(m_player, m_enemies[i]);
+		}
 	}
-	
-	if (m_player->getObjectState() == "DEATH" && !m_player->inAction)
+
+	// check alive or not
+
+	if (m_player->getObjectState() == "DEATH")
 	{
 		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
+	}
+
+	for (int i = 0; i < (int)m_enemies.size(); i++)
+	{
+		if (m_enemies[i]->healthPoints <= 0)
+		{
+			delete m_enemies[i];
+			m_enemies.erase(m_enemies.begin() + i);
+		}
 	}
 }
 
@@ -57,7 +71,12 @@ void PlayState::render()
 
 
 	SDL_Rect rect1 = { 100, 100, 100, 100 };
+	SDL_Rect tile1 = { 80, 508, 100, 100 };
+	SDL_Rect tile2 = { 400, 350, 100, 80 };
+	
 	TheResourceManager::Instance()->drawRect(rect1);
+	TheResourceManager::Instance()->drawRect(tile1);
+	TheResourceManager::Instance()->drawRect(tile2);
 
 
 
@@ -96,6 +115,9 @@ bool PlayState::onEnter()
 
 	m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
 	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(500, 395), {0, 0, 64, 64}, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 508), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(600, 95), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(300, 195), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr)));
 
@@ -164,4 +186,41 @@ bool PlayState::checkCollision(Player* p1, Enemy* p2)
 	}
 
 	return true;
+}
+
+bool PlayState::checkPlayerEnemyCollision(Player* player, Enemy* enemy)
+{
+	SDL_Rect p1 = player->getRigidBody();
+	SDL_Rect e1 = enemy->getRigidBody();
+	SDL_bool isColliding = SDL_HasIntersection(&p1, &e1);
+
+	if (isColliding) return true;
+	return false;
+}
+
+void doSth(Player* player, Enemy* enemy)
+{
+	/*if (enemy->getObjectState() == "ATTACK")
+	{
+		player->healthPoints -= 1;
+	}
+	else if (enemy->getObjectState() == "HEAVY_ATTACK")
+	{
+		player->healthPoints -= 5;
+	}*/
+	//player->healthPoints -= 1;
+	player->setXPos(player->getPos().getX() - player->getVelocity().getX());
+	player->setYPos(player->getPos().getY() - player->getVelocity().getY());
+
+	enemy->setXPos(enemy->getPos().getX() - enemy->getVelocity().getX());
+	enemy->setYPos(enemy->getPos().getY() - enemy->getVelocity().getY());
+
+	if (player->getObjectState() == "ATTACK")
+	{
+		enemy->healthPoints -= 1;
+	}
+	else if (player->getObjectState() == "HEAVY_ATTACK")
+	{
+		enemy->healthPoints -= 5;
+	}
 }

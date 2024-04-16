@@ -8,17 +8,14 @@
 #include "tileLayer.hpp"
 #include "vector2f.hpp"
 
-class CollisionManager
+namespace CollisionManager
 {
-public:
 	void checkPlayerEnemyBulletCollision(Player* pPlayer);
 	void checkPlayerEnemyCollision(Player* pPlayer, const std::vector<Enemy*>& enemies);
 	//void checkEnemyPlayerBulletCollision(const std::vector<GameObject*>& objects);
 	void checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers);
 	void setCollisionLayers(std::vector<TileLayer*>* layers) { m_pCollisionLayers = layers; }
 
-private:
-	std::vector<TileLayer*>* m_pCollisionLayers;
 };
 
 void CollisionManager::checkPlayerTileCollision(Player* pPlayer, const std::vector<TileLayer*>& collisionLayers)

@@ -145,6 +145,7 @@
     <ClCompile Include="loaderAssets.cpp" />
     <ClCompile Include="loaderParams.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
     <ClCompile Include="menuButton.cpp" />
     <ClCompile Include="menuState.cpp" />
     <ClCompile Include="pauseState.cpp" />

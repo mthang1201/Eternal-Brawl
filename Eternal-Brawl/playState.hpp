@@ -25,6 +25,7 @@ public:
 
 private:
 	static const std::string s_playID;
+	bool checkPlayerEnemyCollision(Player* player, Enemy* enemy);
 	std::vector<Entity*> m_entities;
 	Player* m_player;
 	//Enemy* m_enemy1, * m_enemy2, * m_enemy3;

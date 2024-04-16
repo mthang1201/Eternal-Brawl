@@ -48,12 +48,12 @@ public:
     virtual void clean();
     virtual void collision() {}
     virtual std::string getObjectState();
-    virtual Mix_Chunk* getSound() { return m_pSound; }
 
     int healthPoints;
     bool inAction = false;
 private:
     void checkCollision();
+    bool checkCollideTile(float newX, float newY, SDL_Rect tile);
     bool checkCollideTile(Vector2f pos);
     void handleInput();
     void handleMovement(Vector2f velocity);
@@ -69,7 +69,7 @@ private:
     PlayerState m_interactWithEnemy;
 
     float m_moveSpeed = 5;
-
+    SDL_Rect rigidBody;
     int kickCount = 0;
     int idleCounter = 0, walkCounter = 0, jumpCounter = 0, fallingCounter = 0, deathCounter = 0;
 
