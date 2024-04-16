@@ -49,7 +49,16 @@ public:
     virtual void collision() {}
     virtual std::string getObjectState();
 
-    int healthPoints;
+    float healthPoints;
+    SDL_Color healthColor;
+    SDL_Rect healthBarRect;
+    int healthBarWidth;
+    
+    float agilityPoints;
+    SDL_Color agilityColor;
+    SDL_Rect agilityBarRect;
+    int agilityBarWidth;
+
     bool inAction = false;
 private:
     void checkCollision();

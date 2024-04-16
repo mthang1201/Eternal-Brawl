@@ -29,10 +29,13 @@ public:
 	void clean();
 	void clear();
 
+	void setDrawColor(SDL_Color);
 
 	void draw(Entity& entity);
 	void drawFrame(Entity& entity);
 	void drawRect(SDL_Rect rect);
+	void drawBar(SDL_Rect bar, int realBarWidth, SDL_Color color);
+	void drawHealthBar(SDL_Rect healthBarBackground, int healthBarWidth, SDL_Color healthColor);
 	void drawPlayer(Player& player);
 	void drawPlayerKI(Player& player);
 	void drawEnemy1(Enemy& enemy);

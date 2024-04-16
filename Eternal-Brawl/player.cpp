@@ -21,6 +21,7 @@ Uint32 lastKeyPressTime = 0; // Track the time of the last key press
 Player::Player(const LoaderParams* pParams) : Entity(pParams), m_state(), m_interactWithEnemy()
 {
 	healthPoints = 300;
+	agilityPoints = 300;
 	frameTime = SDL_GetTicks();
 	startTime = SDL_GetTicks();
 	//jumpTime = SDL_GetTicks();
@@ -35,8 +36,33 @@ void Player::draw()
 {
 }
 
+
+const int HEALTHBAR_WIDTH = 200;
+const int HEALTHBAR_HEIGHT = 10;
+
+const int AGILITYBAR_WIDTH = 200;
+const int AGILITYBAR_HEIGHT = 10;
+
 void Player::update()
 {
+	healthBarRect = { 432, 10, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
+	healthBarWidth = static_cast<int>((static_cast<float>(healthPoints) / 300) * HEALTHBAR_WIDTH);
+
+	healthColor = { 0, 255, 0, 255 }; // Green by default
+	if (healthPoints < 50)
+		healthColor = { 255, 0, 0, 255 }; // Red if health is below 50
+
+
+
+
+	agilityBarRect = { 432, 25, AGILITYBAR_WIDTH, AGILITYBAR_HEIGHT };
+	agilityBarWidth = static_cast<int>((static_cast<float>(agilityPoints) / 300) * AGILITYBAR_WIDTH);
+
+	agilityColor = { 255, 165, 0, 255 }; // Orange by default
+	if (agilityPoints < 50)
+		agilityColor = { 255, 255, 0, 255 }; // Yellow if agility is below 50
+
+
 	//if (!m_bDying)
 	//{
 	//	// fell off the edge
@@ -181,7 +207,7 @@ void Player::update()
 		m_enemies[0]->getPos().setX(m_player->getPos().getX() - m_player->getVelocity().getX());
 		m_enemies[0]->getPos().setY(m_player->getPos().getY() - m_player->getVelocity().getY());
 	}*/
-	
+
 
 	//SDL_bool isColliding = SDL_HasIntersection(&collision, &tile1);
 
@@ -300,12 +326,14 @@ void Player::handleInput()
 		{
 			m_pos.setY(m_pos.getY() + 100);
 			m_state = PlayerState::TELEPORT;
+			agilityPoints--;
 		}
 
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
 		{
 			//if (!zKeyCurrentlyPressed) {
 			m_state = PlayerState::ATTACK;
+			agilityPoints--;
 			//}
 		}
 		/*else
@@ -318,6 +346,7 @@ void Player::handleInput()
 
 			//if (!xKeyCurrentlyPressed) {
 			m_state = PlayerState::KICK;
+			agilityPoints--;
 			//}
 		}
 		/*else
@@ -329,6 +358,8 @@ void Player::handleInput()
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_C))
 	{
 		m_state = PlayerState::KI;
+		healthPoints += 0.05f;
+		agilityPoints++;
 		inputLocked1 = true;
 	}
 	else

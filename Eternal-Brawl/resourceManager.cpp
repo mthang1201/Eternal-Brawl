@@ -120,6 +120,11 @@ void ResourceManager::clear()
 	SDL_RenderClear(m_pRenderer);
 }
 
+void ResourceManager::setDrawColor(SDL_Color)
+{
+	SDL_SetRenderDrawColor(m_pRenderer, 100, 100, 100, 255);
+}
+
 void ResourceManager::draw(Entity& entity)
 {
 	SDL_Rect src;
@@ -160,6 +165,28 @@ void ResourceManager::drawRect(SDL_Rect rect)
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &rect);
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+}
+
+void ResourceManager::drawBar(SDL_Rect bar, int realBarWidth, SDL_Color barColor)
+{
+	SDL_SetRenderDrawColor(m_pRenderer, 100, 100, 100, 255);
+	SDL_RenderFillRect(m_pRenderer, &bar);
+
+	// Render the actual health bar (green or red)
+	SDL_SetRenderDrawColor(m_pRenderer, barColor.r, barColor.g, barColor.b, barColor.a);
+	SDL_Rect realBar = { bar.x, bar.y, realBarWidth, bar.h };
+	SDL_RenderFillRect(m_pRenderer, &realBar);
+}
+
+void ResourceManager::drawHealthBar(SDL_Rect healthBarBackground, int healthBarWidth, SDL_Color healthColor)
+{
+	SDL_SetRenderDrawColor(m_pRenderer, 100, 100, 100, 255);
+	SDL_RenderFillRect(m_pRenderer, &healthBarBackground);
+
+	// Render the actual health bar (green or red)
+	SDL_SetRenderDrawColor(m_pRenderer, healthColor.r, healthColor.g, healthColor.b, healthColor.a);
+	SDL_Rect healthBar = { healthBarBackground.x, healthBarBackground.y, healthBarWidth, healthBarBackground.h };
+	SDL_RenderFillRect(m_pRenderer, &healthBar);
 }
 
 void ResourceManager::drawPlayer(Player& player)

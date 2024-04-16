@@ -26,21 +26,21 @@ void Enemy::update()
 			grounded = false;
 		}
 	}*/
-	if (!grounded) {
+	/*if (!grounded) {
 		m_velocity.setY(m_velocity.getY() + GRAVITY);
 		if (m_velocity.getY() > MAX_GRAVITY) m_velocity.setY(MAX_GRAVITY);
 	}
-	else m_velocity.setY(GRAVITY);
+	else m_velocity.setY(GRAVITY);*/
 
 
 	if (m_currentFrame.w == 64) m_currentFrame.x = int(((SDL_GetTicks() / 120) % 5));
 
-	if (m_pos.getX() < 500)
+	if (m_pos.getX() < 156)
 	{
 		m_velocity.setX(3);
 		m_bFlip = false;
 	}
-	else if (m_pos.getX() > 900)
+	else if (m_pos.getX() > 1048)
 	{
 		m_velocity.setX(-3);
 		m_bFlip = true;
@@ -63,6 +63,7 @@ void Enemy::update()
 		{
 			m_pos.setX(m_pos.getX() - m_velocity.getX());
 			m_pos.setY(m_pos.getY() - m_velocity.getY());
+			grounded = true;
 		}
 	}
 }

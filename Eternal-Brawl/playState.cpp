@@ -10,6 +10,7 @@
 #include "player.hpp"
 #include "enemy.hpp"
 #include "item.hpp"
+#include "map.hpp"
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -49,6 +50,13 @@ void PlayState::update()
 
 	if (m_player->getObjectState() == "DEATH")
 	{
+		if (m_lives > 0)
+		{
+			//revival();
+			delete m_player;
+			m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
+			m_lives--;
+		}
 		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
 	}
 
@@ -70,13 +78,18 @@ void PlayState::render()
 	}
 
 
-	SDL_Rect rect1 = { 100, 100, 100, 100 };
+	/*SDL_Rect rect1 = { 100, 100, 100, 100 };
 	SDL_Rect tile1 = { 80, 508, 100, 100 };
-	SDL_Rect tile2 = { 400, 350, 100, 80 };
-	
-	TheResourceManager::Instance()->drawRect(rect1);
-	TheResourceManager::Instance()->drawRect(tile1);
-	TheResourceManager::Instance()->drawRect(tile2);
+	SDL_Rect tile2 = { 400, 350, 100, 80 };*/
+	for (SDL_Rect tile : tiles)
+	{
+		TheResourceManager::Instance()->drawRect(tile);
+	}
+	//TheResourceManager::Instance()->drawRect(rect1);
+
+	TheResourceManager::Instance()->drawHealthBar(m_player->healthBarRect, m_player->healthBarWidth, m_player->healthColor);
+	TheResourceManager::Instance()->drawBar(m_player->agilityBarRect, m_player->agilityBarWidth, m_player->agilityColor);
+
 
 
 
@@ -113,11 +126,11 @@ bool PlayState::onEnter()
 		m_entities.push_back(new Item(new LoaderParams(Vector2f(x, 620), { 0, 0, 100, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GROUND_GRASS))));
 	}*/
 
-	m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
-	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(500, 395), {0, 0, 64, 64}, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
-	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 508), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
-	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(600, 95), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
-	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(300, 195), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	m_player = new Player(new LoaderParams(Vector2f(200, 192), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(463, 166), {0, 0, 64, 64}, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 192), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(700, 616), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 567), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr)));
 
@@ -208,12 +221,12 @@ void doSth(Player* player, Enemy* enemy)
 	{
 		player->healthPoints -= 5;
 	}*/
-	//player->healthPoints -= 1;
-	player->setXPos(player->getPos().getX() - player->getVelocity().getX());
+	player->healthPoints -= 1;
+	/*player->setXPos(player->getPos().getX() - player->getVelocity().getX());
 	player->setYPos(player->getPos().getY() - player->getVelocity().getY());
 
 	enemy->setXPos(enemy->getPos().getX() - enemy->getVelocity().getX());
-	enemy->setYPos(enemy->getPos().getY() - enemy->getVelocity().getY());
+	enemy->setYPos(enemy->getPos().getY() - enemy->getVelocity().getY());*/
 
 	if (player->getObjectState() == "ATTACK")
 	{

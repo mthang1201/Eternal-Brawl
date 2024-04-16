@@ -72,8 +72,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Minh Thang Bui\source\repos\Project1\SDL2_image-2.8.2\include;C:\Users\Minh Thang Bui\source\repos\Project1\SDL2-2.29.2\include;C:\Users\Minh Thang Bui\source\code\SDL_VC\SDL2_mixer-2.8.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Minh Thang Bui\source\repos\Project1\SDL2_image-2.8.2\lib\x64;C:\Users\Minh Thang Bui\source\repos\Project1\SDL2-2.29.2\lib\x64;C:\Users\Minh Thang Bui\source\code\SDL_VC\SDL2_mixer-2.8.0\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Minh Thang Bui\source\SDL_VC\SDL2_image-2.8.2\include;C:\Users\Minh Thang Bui\source\SDL_VC\SDL2-2.29.2\include;C:\Users\Minh Thang Bui\source\SDL_VC\SDL2_mixer-2.8.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Minh Thang Bui\source\SDL_VC\SDL2_image-2.8.2\lib\x64;C:\Users\Minh Thang Bui\source\SDL_VC\SDL2-2.29.2\lib\x64;C:\Users\Minh Thang Bui\source\SDL_VC\SDL2_mixer-2.8.0\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
