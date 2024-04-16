@@ -220,6 +220,8 @@ void Player::update()
 	if (healthPoints <= 0) {
 		m_state = PlayerState::DEATH;
 	}
+
+	if (agilityPoints > 300) agilityPoints = 300;
 }
 
 void Player::clean()
@@ -329,7 +331,7 @@ void Player::handleInput()
 			agilityPoints--;
 		}
 
-		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z))
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z) && agilityPoints > 0)
 		{
 			//if (!zKeyCurrentlyPressed) {
 			m_state = PlayerState::ATTACK;
@@ -341,7 +343,7 @@ void Player::handleInput()
 			zKeyCurrentlyPressed = false;
 		}*/
 
-		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_X))
+		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_X) && agilityPoints > 0)
 		{
 
 			//if (!xKeyCurrentlyPressed) {
