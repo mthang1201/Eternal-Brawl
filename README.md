@@ -1,5 +1,5 @@
 # Game
-A game written from scratch in C++ using the SDL2 development library. Apart from the core gameplay, the project also includes some extra features like <!--a ghost block to reduce misdrops, -->a simple main menu, and support for multiple resolutions. All sprites were created by me.
+A game written from scratch in C++ using the SDL2 development library. Apart from the core gameplay, the project also includes some extra features like <!--a ghost block to reduce misdrops, -->a simple main menu, and support for multiple resolutions. All sprites were created not by me.
 
 <!-- ![](gallery/gameplay.gif) -->
 
