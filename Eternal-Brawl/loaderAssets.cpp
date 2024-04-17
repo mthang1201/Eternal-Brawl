@@ -44,6 +44,7 @@ void LoaderAssets::loadTextures()
 	//m_textures.push_back({ TextureType::SKY, TheResourceManager::Instance()->loadTexture("res/skye_0.png") });
 
 	m_textures.push_back({ TextureType::MENU_BACKGROUND, TheResourceManager::Instance()->loadTexture("res/city/menu_background.png") });
+	m_textures.push_back({ TextureType::INSTRUCTION_BACKGROUND, TheResourceManager::Instance()->loadTexture("res/city/instruction_background.png") });
 	m_textures.push_back({ TextureType::BACKGROUND, TheResourceManager::Instance()->loadTexture("res/city/background.png") });
 	m_textures.push_back({ TextureType::BACKGROUND_BLUR, TheResourceManager::Instance()->loadTexture("res/city/background_blur.png") });
 	/*m_textures.push_back({ TextureType::TILED_LEFT, TheResourceManager::Instance()->loadTexture("res/city/tiled_left.png") });

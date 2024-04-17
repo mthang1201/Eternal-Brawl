@@ -92,7 +92,10 @@ void PlayState::render()
 
 	TheResourceManager::Instance()->drawHealthBar(m_player->healthBarRect, m_player->healthBarWidth, m_player->healthColor);
 	TheResourceManager::Instance()->drawBar(m_player->agilityBarRect, m_player->agilityBarWidth, m_player->agilityColor);
-
+	for (int i = 0; i < (int)m_enemies.size(); i++)
+	{
+		TheResourceManager::Instance()->drawHealthBar(m_enemies[i]->healthBarRect, m_enemies[i]->healthBarWidth, m_enemies[i]->healthColor);
+	}
 
 	/*std::cout << m_player->getPos().getX() << ", " << m_player->getPos().getY() << std::endl;*/
 	/*for (int i = 0; i < (int)m_enemies.size(); i++)
@@ -108,7 +111,6 @@ void PlayState::render()
 	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
 		TheResourceManager::Instance()->drawEnemy1(*m_enemies[i]);
-		TheResourceManager::Instance()->drawHealthBar(m_enemies[i]->healthBarRect, m_enemies[i]->healthBarWidth, m_enemies[i]->healthColor);
 	}
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy2);
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy3);
