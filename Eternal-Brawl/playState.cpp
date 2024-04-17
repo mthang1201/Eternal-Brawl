@@ -14,6 +14,10 @@
 
 const std::string PlayState::s_playID = "PLAY";
 
+//const Uint32 enemyGenerationInterval = 180000;
+const Uint32 enemyGenerationInterval = 10000;
+Uint32 lastEnemyGenerationTime = SDL_GetTicks();
+
 void doSth(Player* player, Enemy* enemy);
 
 void PlayState::update()
@@ -23,7 +27,15 @@ void PlayState::update()
 	{
 		TheGame::Instance()->getStateMachine()->pushState(new PauseState());
 	}
-
+	Uint32 currentTime = SDL_GetTicks();
+	if (currentTime - lastEnemyGenerationTime >= enemyGenerationInterval) {
+		if ((int)m_enemies.size() <= 15)
+		{
+			generateEnemies();
+		}
+		lastEnemyGenerationTime = currentTime;
+	}
+	
 	for (int i = 0; i < (int)m_entities.size(); i++)
 	{
 		m_entities[i]->update();
@@ -140,6 +152,7 @@ bool PlayState::onEnter()
 	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(463, 166), {0, 0, 64, 64}, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 192), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(700, 616), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	
 	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 567), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr)));
@@ -219,6 +232,17 @@ bool PlayState::checkPlayerEnemyCollision(Player* player, Enemy* enemy)
 
 	if (isColliding) return true;
 	return false;
+}
+
+void PlayState::generateEnemies()
+{
+	if (int((SDL_GetTicks() / 120) % 3) == 0)
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(463, 166), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 192), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	else if (int((SDL_GetTicks() / 120) % 3) == 1)
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(700, 616), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
+	else
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 567), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 }
 
 void doSth(Player* player, Enemy* enemy)

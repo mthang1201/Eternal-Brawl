@@ -45,7 +45,7 @@ const int AGILITYBAR_HEIGHT = 10;
 
 void Player::update()
 {
-	healthBarRect = { 432, 10, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
+	healthBarRect = { 180, 10, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
 	healthBarWidth = static_cast<int>((static_cast<float>(healthPoints) / 300) * HEALTHBAR_WIDTH);
 
 	healthColor = { 0, 255, 0, 255 }; // Green by default
@@ -55,7 +55,7 @@ void Player::update()
 
 
 
-	agilityBarRect = { 432, 25, AGILITYBAR_WIDTH, AGILITYBAR_HEIGHT };
+	agilityBarRect = { 180, 25, AGILITYBAR_WIDTH, AGILITYBAR_HEIGHT };
 	agilityBarWidth = static_cast<int>((static_cast<float>(agilityPoints) / 300) * AGILITYBAR_WIDTH);
 
 	agilityColor = { 255, 165, 0, 255 }; // Orange by default

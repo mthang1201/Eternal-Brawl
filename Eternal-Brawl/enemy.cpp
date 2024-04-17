@@ -23,7 +23,21 @@ const int HEALTHBAR_HEIGHT = 10;
 
 void Enemy::update()
 {
-	healthBarRect = { 650, (10 + m_indexInEnemyList * 15), HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT};
+	if (m_indexInEnemyList < 5)
+	{
+		healthBarRect = { 420, 10 + ((m_indexInEnemyList % 5) * 15), HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
+	}
+	else if (m_indexInEnemyList < 10)
+	{
+		healthBarRect = { 660, 10 + ((m_indexInEnemyList % 5) * 15), HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
+	}
+	else if (m_indexInEnemyList < 15)
+	{
+		healthBarRect = { 900, 10 + ((m_indexInEnemyList % 5) * 15), HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
+	}
+
+
+
 	healthBarWidth = static_cast<int>((static_cast<float>(healthPoints) / 300) * HEALTHBAR_WIDTH);
 
 	healthColor = { 0, 255, 0, 255 }; // Green by default
