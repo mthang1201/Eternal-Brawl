@@ -34,6 +34,7 @@ void PlayState::update()
 	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
 		m_enemies[i]->update();
+		m_enemies[i]->m_indexInEnemyList = i;
 	}
 
 	// collision
@@ -50,14 +51,16 @@ void PlayState::update()
 
 	if (m_player->getObjectState() == "DEATH")
 	{
-		if (m_lives > 0)
+		if (m_player->m_lives > 0)
 		{
 			//revival();
-			delete m_player;
-			m_player = new Player(new LoaderParams(Vector2f(0, 0), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
-			m_lives--;
+			//delete m_player;
+			m_player->revive();
 		}
-		TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
+		else
+		{
+			TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
+		}
 	}
 
 	for (int i = 0; i < (int)m_enemies.size(); i++)
@@ -91,7 +94,11 @@ void PlayState::render()
 	TheResourceManager::Instance()->drawBar(m_player->agilityBarRect, m_player->agilityBarWidth, m_player->agilityColor);
 
 
-
+	/*std::cout << m_player->getPos().getX() << ", " << m_player->getPos().getY() << std::endl;*/
+	/*for (int i = 0; i < (int)m_enemies.size(); i++)
+	{
+		std::cout << m_enemies[i]->getPos().getX() << ", " << m_enemies[i]->getPos().getY() << std::endl;
+	}*/
 
 	if (m_player->getObjectState() == "KI")
 		TheResourceManager::Instance()->drawPlayerKI(*m_player);
@@ -101,6 +108,7 @@ void PlayState::render()
 	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
 		TheResourceManager::Instance()->drawEnemy1(*m_enemies[i]);
+		TheResourceManager::Instance()->drawHealthBar(m_enemies[i]->healthBarRect, m_enemies[i]->healthBarWidth, m_enemies[i]->healthColor);
 	}
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy2);
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy3);
@@ -213,14 +221,14 @@ bool PlayState::checkPlayerEnemyCollision(Player* player, Enemy* enemy)
 
 void doSth(Player* player, Enemy* enemy)
 {
-	/*if (enemy->getObjectState() == "ATTACK")
+	if (enemy->getObjectState() == "ATTACK")
 	{
 		player->healthPoints -= 1;
 	}
 	else if (enemy->getObjectState() == "HEAVY_ATTACK")
 	{
 		player->healthPoints -= 5;
-	}*/
+	}
 	player->healthPoints -= 1;
 	/*player->setXPos(player->getPos().getX() - player->getVelocity().getX());
 	player->setYPos(player->getPos().getY() - player->getVelocity().getY());

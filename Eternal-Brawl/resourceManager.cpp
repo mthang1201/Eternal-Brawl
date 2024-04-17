@@ -200,8 +200,8 @@ void ResourceManager::drawPlayer(Player& player)
 	SDL_Rect dst;
 	dst.x = player.getPos().getX();
 	dst.y = player.getPos().getY();
-	dst.w = player.getCurrentFrame().w * 0.75;
-	dst.h = player.getCurrentFrame().h * 0.75;
+	dst.w = player.getCurrentFrame().w;
+	dst.h = player.getCurrentFrame().h;
 
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &dst);
@@ -221,9 +221,9 @@ void ResourceManager::drawPlayerKI(Player& player)
 
 	SDL_Rect dst;
 	dst.x = player.getPos().getX();
-	dst.y = player.getPos().getY() - 33;
-	dst.w = player.getCurrentFrame().w * 0.75;
-	dst.h = player.getCurrentFrame().h * 0.75;
+	dst.y = player.getPos().getY() - 40;
+	dst.w = player.getCurrentFrame().w;
+	dst.h = player.getCurrentFrame().h;
 
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &dst);

@@ -33,7 +33,7 @@ LoaderAssets::~LoaderAssets()
 void LoaderAssets::loadTextures()
 {
 	m_textures.push_back({ TextureType::PLAY_BUTTON, TheResourceManager::Instance()->loadTexture("res/button.png") });
-	//m_textures.push_back({ TextureType::INSTRUCTION_BUTTON, TheResourceManager::Instance()->loadTexture("res/instruction.png") });
+	m_textures.push_back({ TextureType::INSTRUCTION_BUTTON, TheResourceManager::Instance()->loadTexture("res/instruction.png") });
 	m_textures.push_back({ TextureType::EXIT_BUTTON, TheResourceManager::Instance()->loadTexture("res/exit.png") });
 	m_textures.push_back({ TextureType::MAIN_BUTTON, TheResourceManager::Instance()->loadTexture("res/main.png") });
 	m_textures.push_back({ TextureType::RESTART_BUTTON, TheResourceManager::Instance()->loadTexture("res/restart.png") });
@@ -42,7 +42,10 @@ void LoaderAssets::loadTextures()
 
 	//m_textures.push_back({ TextureType::GROUND_GRASS, TheResourceManager::Instance()->loadTexture("res/ground_grass_1.png") });
 	//m_textures.push_back({ TextureType::SKY, TheResourceManager::Instance()->loadTexture("res/skye_0.png") });
+
+	m_textures.push_back({ TextureType::MENU_BACKGROUND, TheResourceManager::Instance()->loadTexture("res/city/menu_background.png") });
 	m_textures.push_back({ TextureType::BACKGROUND, TheResourceManager::Instance()->loadTexture("res/city/background.png") });
+	m_textures.push_back({ TextureType::BACKGROUND_BLUR, TheResourceManager::Instance()->loadTexture("res/city/background_blur.png") });
 	/*m_textures.push_back({ TextureType::TILED_LEFT, TheResourceManager::Instance()->loadTexture("res/city/tiled_left.png") });
 	m_textures.push_back({ TextureType::TILED_RIGHT, TheResourceManager::Instance()->loadTexture("res/city/tiled_right.png") });
 	m_textures.push_back({ TextureType::TILED_UP, TheResourceManager::Instance()->loadTexture("res/city/tiled_up.png") });

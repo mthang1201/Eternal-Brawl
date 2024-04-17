@@ -49,6 +49,8 @@ public:
     virtual void collision() {}
     virtual std::string getObjectState();
 
+    int m_lives = 3;
+    void revive();
     float healthPoints;
     SDL_Color healthColor;
     SDL_Rect healthBarRect;
@@ -89,6 +91,7 @@ private:
     int m_kickTime;
     int m_dyingTime;
     int m_dyingCounter;
+    Uint32 m_deathTime;
 
     int frameTime;
     int startTime;

@@ -30,9 +30,10 @@ void MenuState::render()
 
 bool MenuState::onEnter()
 {
+	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 720 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MENU_BACKGROUND), nullptr)));
 	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 100), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::PLAY_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_menuToPlay));
-	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 300), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::PLAY_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_menuToInstruction));
-	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 300), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::EXIT_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_exitFromMenu));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 300), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::INSTRUCTION_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_menuToInstruction));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 500), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::EXIT_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_exitFromMenu));
 	//TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::ALLEY), -1);
 	//TheResourceManager::Instance()->playMusic(TheResourceManager::Instance()->loadMusic("res/music/Alley.mp3"), -1);
 

@@ -28,7 +28,6 @@ private:
 	bool checkPlayerEnemyCollision(Player* player, Enemy* enemy);
 	std::vector<Entity*> m_entities;
 	Player* m_player;
-	int m_lives = 3;
 	//Enemy* m_enemy1, * m_enemy2, * m_enemy3;
 	std::vector<Enemy*> m_enemies;
 };

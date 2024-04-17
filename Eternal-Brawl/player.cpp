@@ -13,7 +13,7 @@ bool zKeyCurrentlyPressed = false;
 bool xKeyCurrentlyPressed = false;
 bool cKeyCurrentlyPressed = false;
 const Uint32 COMBO_RESET_TIME = 3000;
-const Uint32 MAX_ACTION_TIME = 1000;
+const Uint32 MAX_ACTION_TIME = 3000;
 
 int comboStep = 0; // Track the current combo step
 Uint32 lastKeyPressTime = 0; // Track the time of the last key press
@@ -130,7 +130,7 @@ void Player::update()
 	m_velocity.setY(0);
 
 	Uint32 currentTime = SDL_GetTicks();
-	Uint32 timeElapsed = currentTime - lastKeyPressTime;
+	Uint32 timeElapsed = currentTime - m_deathTime;
 	if (timeElapsed < MAX_ACTION_TIME) {
 		inAction = true;
 	}
@@ -178,19 +178,51 @@ void Player::update()
 
 	checkCollision();
 
-	m_rigidBody = { static_cast<int>(m_pos.getX()), static_cast<int>(m_pos.getY()), 64, 64 };
+	m_rigidBody = { static_cast<int>(m_pos.getX() + 16), static_cast<int>(m_pos.getY() + 7), static_cast <int>(32), static_cast <int>(50) };
 	std::vector<SDL_Rect> m_tiles;
 	/*m_tiles.push_back({ 80, 508, 100, 100 });
 	m_tiles.push_back({ 400, 350, 100, 80 });*/
 	for (SDL_Rect tile : tiles)
 	{
-		SDL_Rect modifiedTile = { tile.x + 18, tile.y + 18, tile.w - 18, tile.h - 18 };
+		/*SDL_Rect modifiedTile = { tile.x + 18, tile.y + 18, tile.w - 18, tile.h - 18 };*/
+		SDL_Rect modifiedTile = { tile.x, tile.y, tile.w, tile.h };
 		SDL_bool isColliding = SDL_HasIntersection(&m_rigidBody, &modifiedTile);
 
 		if (isColliding)
 		{
-			m_pos.setX(m_pos.getX() - m_velocity.getX());
-			m_pos.setY(m_pos.getY() - m_velocity.getY());
+			// topLeftElevator
+			if (tile.x == 106 && tile.y == 194 && tile.w == 73 && tile.h == 62)
+			{
+				m_pos.setX(156 + m_moveSpeed * 3);
+				m_pos.setY(572);
+				m_velocity.setX(m_moveSpeed);
+			}
+			//bottomDownElevator
+			else if (tile.x == 106 && tile.y == 568 && tile.w == 50 && tile.h == 192)
+			{
+				m_pos.setX(179 + m_moveSpeed * 3);
+				m_pos.setY(197);
+				m_velocity.setX(m_moveSpeed * 5);
+			}
+			//topRightElevator
+			else if (tile.x == 1048 && tile.y == 399 && tile.w == 72 && tile.h == 60)
+			{
+				m_pos.setX(984 - m_moveSpeed * 3);
+				m_pos.setY(622);
+				m_velocity.setX(-m_moveSpeed * 5);
+			}
+			//bottomRightElevator
+			else if (tile.x == 1048 && tile.y == 629 && tile.w == 72 && tile.h == 51)
+			{
+				m_pos.setX(984 - m_moveSpeed * 3);
+				m_pos.setY(402);
+				m_velocity.setX(-m_moveSpeed * 5);
+			}
+			else
+			{
+				m_pos.setX(m_pos.getX() - m_velocity.getX());
+				m_pos.setY(m_pos.getY() - m_velocity.getY());
+			}
 		}
 	}
 
@@ -219,8 +251,10 @@ void Player::update()
 
 	if (healthPoints <= 0) {
 		m_state = PlayerState::DEATH;
+		Uint32 m_deathTime = SDL_GetTicks();
 	}
 
+	if (healthPoints > 300) healthPoints = 300;
 	if (agilityPoints > 300) agilityPoints = 300;
 }
 
@@ -235,6 +269,15 @@ std::string Player::getObjectState()
 	if (m_state == PlayerState::ATTACK || m_state == PlayerState::KICK) return "ATTACK";
 	if (m_state == PlayerState::HEAVY_ATTACK) return "HEAVY_ATTACK";
 	return "NONE";
+}
+
+void Player::revive()
+{
+	healthPoints = 300;
+	agilityPoints = 300;
+	setPos(0, 0);
+	m_lives--;
+	m_state = PlayerState::KI;
 }
 
 void Player::checkCollision()

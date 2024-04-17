@@ -29,7 +29,8 @@ void InstructionState::render()
 
 bool InstructionState::onEnter()
 {
-	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(1000, 100), { 0, 0, 200, 80 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MAIN_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_resumeMenu));
+	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 720 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MENU_BACKGROUND), nullptr)));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(540, 100), { 0, 0, 200, 80 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MAIN_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_resumeMenu));
 
 	std::cout << "entering InstructionState\n";
 

@@ -29,8 +29,9 @@ void PauseState::render()
 
 bool PauseState::onEnter()
 {
-	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(1000, 100), { 0, 0, 200, 80 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MAIN_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_pauseToMain));
-	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(1000, 300), { 0, 0, 200, 80 }, TheGame::Instance()->getAssets()->getTexture(TextureType::RESUME_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_resumePlay));
+	m_entities.push_back(new Item(new LoaderParams(Vector2f(0, 0), { 0, 0, 1280, 720 }, TheGame::Instance()->getAssets()->getTexture(TextureType::BACKGROUND_BLUR), nullptr)));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(540, 380), { 0, 0, 200, 80 }, TheGame::Instance()->getAssets()->getTexture(TextureType::MAIN_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_pauseToMain));
+	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(540, 180), { 0, 0, 200, 80 }, TheGame::Instance()->getAssets()->getTexture(TextureType::RESUME_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_resumePlay));
 
 	std::cout << "entering PauseState\n";
 
