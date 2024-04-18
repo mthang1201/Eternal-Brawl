@@ -250,15 +250,13 @@ void Enemy::moveTowardsPlayer()
 			currentPlayerPos = m_playerPos;
 			pathToPlayer.clear();
 			visited.clear();
-			for (int y = 0; y < MAP_HEIGHT; y++)
-			{
-				for (int x = 0; x < MAP_WIDTH; x++)
-				{
-					visited[y].push_back(false);
-				}
+			pathToPlayer.resize(100000);
+			visited.resize(MAP_HEIGHT);
+			for (int y = 0; y < MAP_HEIGHT; y++) {
+				visited[y].resize(MAP_WIDTH, false);
 			}
 			pathCount = 0;
-			/*if (findPath(x1, y1, x2, y2, pathToPlayer))
+			if (findPath(x1, y1, x2, y2))
 			{
 				pathStep = 0;
 				followCalculatedPath();
@@ -266,7 +264,7 @@ void Enemy::moveTowardsPlayer()
 				pathFound = true;
 			}
 			else
-			{*/
+			{
 				if (m_pos.getX() < 537)
 				{
 					m_velocity.setX(m_moveSpeed);
@@ -276,16 +274,16 @@ void Enemy::moveTowardsPlayer()
 					m_velocity.setX(-m_moveSpeed);
 				}
 				pathFound = false;
-			//}
+			}
 		}
-		/*else if (pathFound)
+		else if (pathFound)
 		{
 			followCalculatedPath();
 			pathStep++;
-		}*/
+		}
 		else
 		{
-			//std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
+			std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
 		}
 	//}
 }
@@ -340,12 +338,12 @@ bool Enemy::isValid(int x, int y)
 	return false;
 }
 
-bool Enemy::findPath(int x1, int y1, int x2, int y2, std::vector<int>& sol)
+bool Enemy::findPath(int x1, int y1, int x2, int y2)
 {
 	// print(sol, width, height);cout << endl;
 	if (x1 == x2 && y1 == y2)
 	{
-		sol[pathCount] = 0;
+		pathToPlayer[pathCount] = 0;
 		return true;
 	}
 
@@ -354,28 +352,30 @@ bool Enemy::findPath(int x1, int y1, int x2, int y2, std::vector<int>& sol)
 		if (!visited[y1][x1]) visited[y1][x1] = true;
 		else return false;
 
-		if (findPath(x1, y1 - 1, x2, y2, pathToPlayer))
+		if (findPath(x1, y1 - 1, x2, y2))
 		{
-			sol[pathCount++] = 1; // UP
+			pathToPlayer[pathCount++] = 1; // UP
 			return true;
 		}
-		if (findPath(x1, y1 + 1, x2, y2, pathToPlayer))
+		if (findPath(x1, y1 + 1, x2, y2))
 		{
-			sol[pathCount++] = 2; // DOWN
+			pathToPlayer[pathCount++] = 2; // DOWN
 			return true;
 		}
-		if (findPath(x1 - 1, y1, x2, y2, pathToPlayer))
+		if (findPath(x1 - 1, y1, x2, y2))
 		{
-			sol[pathCount++] = 3; // LEFT
+			pathToPlayer[pathCount++] = 3; // LEFT
 			return true;
 		}
-		if (findPath(x1 + 1, y1, x2, y2, pathToPlayer))
+		if (findPath(x1 + 1, y1, x2, y2))
 		{
-			sol[pathCount++] = 4; // RIGHT
+			pathToPlayer[pathCount++] = 4; // RIGHT
 			return true;
 		}
 
-		sol.pop_back();
+		if (!pathToPlayer.empty()) {
+			pathToPlayer.pop_back();
+		}
 		return false;
 	}
 
