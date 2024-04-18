@@ -1,4 +1,9 @@
 #include <SDL.h>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 
 #include "enemy.hpp"
 #include "inputHandler.hpp"
@@ -6,6 +11,9 @@
 
 const float GRAVITY = 0.5;
 const float MAX_GRAVITY = 15;
+
+bool isValid();
+bool findPath();
 
 Enemy::Enemy(const LoaderParams* pParams) : Entity(pParams)
 {
@@ -221,32 +229,136 @@ void Enemy::checkCollision()
 void Enemy::moveTowardsPlayer()
 {
 	float length = sqrt(pow(m_playerPos.getX() - m_pos.getX(), 2) + pow(m_playerPos.getY() - m_pos.getY(), 2));
-	if (length < 400)
-	{
-		if (m_pos.getX() < m_playerPos.getX()) {
-			m_velocity.setX(m_moveSpeed);
-		}
-		else if (m_pos.getX() > m_playerPos.getX()) {
-			m_velocity.setX(-m_moveSpeed);
-		}
+	int x1 = static_cast<int>(m_pos.getX() / TILE_SIZE);
+	int y1 = static_cast<int>(m_pos.getY() / TILE_SIZE);
+	int x2 = static_cast<int>(m_playerPos.getX() / TILE_SIZE);
+	int y2 = static_cast<int>(m_playerPos.getY() / TILE_SIZE);
 
-		if (m_pos.getY() < m_playerPos.getY()) {
-			m_velocity.setY(m_moveSpeed);
+	//if (length < 400)
+	//{
+		//calculatePlayerPosBriefly();
+		static Vector2f currentPlayerPos;
+		/*if (currentPlayerPos != m_playerPos)*/
+		/*if (currentPlayerPos.getX() != m_playerPos.getX() || currentPlayerPos.getY() != m_playerPos.getY())*/
+		if (true)
+		{
+			currentPlayerPos = m_playerPos;
+			pathToPlayer.clear();
+			pathCount = 0;
+			if (findPath(x1, y1, x2, y2, pathToPlayer))
+			{
+				pathStep = 0;
+				followCalculatedPath();
+				pathStep++;
+			}
+			else
+			{
+				if (m_pos.getX() < 537)
+				{
+					m_velocity.setX(m_moveSpeed);
+				}
+				else if (m_pos.getX() > 1048)
+				{
+					m_velocity.setX(-m_moveSpeed);
+				}
+			}
 		}
-		else if (m_pos.getY() > m_playerPos.getY()) {
-			m_velocity.setY(-m_moveSpeed);
+		else
+		{
+			followCalculatedPath();
+			pathStep++;
 		}
-	}
-
-	static Vector2f currentPlayerPos;
-	if (currentPlayerPos != m_playerPos)
-	{
-		currentPlayerPos = m_playerPos;
-
-	}
-	Map::print();
+	//}
 }
 
+void Enemy::followCalculatedPath()
+{
+	if (pathToPlayer[pathStep] == 1) //UP
+	{
+		m_dirX = 0;
+		m_dirY = -1;
+	}
+	else if (pathToPlayer[pathStep] == 2) //DOWN
+	{
+		m_dirX = 0;
+		m_dirY = 1;
+	}
+	else if (pathToPlayer[pathStep] == 3) //LEFT
+	{
+		m_dirX = -1;
+		m_dirY = 0;
+	}
+	else if (pathToPlayer[pathStep] == 4) //RIGHT
+	{
+		m_dirX = 1;
+		m_dirY = 0;
+	}
+	m_dirX = pathToPlayer[pathStep];
+	m_dirY = pathToPlayer[pathStep];
+	m_velocity.setX(m_moveSpeed * m_dirX);
+	m_velocity.setY(m_moveSpeed * m_dirY);
+}
+
+void Enemy::calculatePlayerPosBriefly()
+{
+	if (m_pos.getX() < m_playerPos.getX()) {
+		m_dirX = 1;
+	}
+	else if (m_pos.getX() > m_playerPos.getX()) {
+		m_dirX = -1;
+	}
+	if (m_pos.getY() < m_playerPos.getY()) {
+		m_dirY = -1;
+	}
+	else if (m_pos.getY() > m_playerPos.getY()) {
+		m_dirY = 1;
+	}
+}
+
+bool Enemy::isValid(int x, int y)
+{
+	if (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT && worldMap[y][x] != 1) return true;
+	return false;
+}
+
+bool Enemy::findPath(int x1, int y1, int x2, int y2, std::vector<int>& sol)
+{
+	// print(sol, width, height);cout << endl;
+	if (x1 == x2 && y1 == y2)
+	{
+		sol[pathCount] = 0;
+		return true;
+	}
+
+	if (isValid(x1, y1))
+	{
+		if (findPath(x1, y1 - 1, x2, y2, pathToPlayer))
+		{
+			sol[pathCount++] = 1; // UP
+			return true;
+		}
+		if (findPath(x1, y1 + 1, x2, y2, pathToPlayer))
+		{
+			sol[pathCount++] = 2; // DOWN
+			return true;
+		}
+		if (findPath(x1 - 1, y1, x2, y2, pathToPlayer))
+		{
+			sol[pathCount++] = 3; // LEFT
+			return true;
+		}
+		if (findPath(x1 + 1, y1, x2, y2, pathToPlayer))
+		{
+			sol[pathCount++] = 4; // RIGHT
+			return true;
+		}
+
+		sol.pop_back();
+		return false;
+	}
+
+	return false;
+}
 
 void Enemy::clean()
 {

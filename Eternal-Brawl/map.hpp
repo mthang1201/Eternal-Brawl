@@ -37,15 +37,15 @@
 
 
 extern std::vector<SDL_Rect> tiles;
-extern int worldMap[45][80];
+extern std::vector<std::vector<int>> worldMap;
 
-namespace Map
-{
-    void init();
-
-    void print();
-
-    void modify();
-
-    void calculateMap();
-}
+//namespace Map
+//{
+//    void init();
+//
+//    void print();
+//
+//    void modify();
+//
+//    void calculateMap();
+//}

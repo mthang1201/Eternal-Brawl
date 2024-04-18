@@ -28,13 +28,13 @@ void PlayState::update()
 		TheGame::Instance()->getStateMachine()->pushState(new PauseState());
 	}
 	Uint32 currentTime = SDL_GetTicks();
-	if (currentTime - lastEnemyGenerationTime >= enemyGenerationInterval) {
+	/*if (currentTime - lastEnemyGenerationTime >= enemyGenerationInterval) {
 		if ((int)m_enemies.size() <= 15)
 		{
 			generateEnemies();
 		}
 		lastEnemyGenerationTime = currentTime;
-	}
+	}*/
 	
 	for (int i = 0; i < (int)m_entities.size(); i++)
 	{
@@ -111,7 +111,7 @@ void PlayState::render()
 	}
 
 	//std::cout << m_enemies[0]->getPos().getX() << ", " << m_enemies[0]->getPos().getY() << std::endl;
-	std::cout << m_player->getPos().getX() << ", " << m_player->getPos().getY() << std::endl;
+	//std::cout << m_player->getPos().getX() << ", " << m_player->getPos().getY() << std::endl;
 	/*for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
 		std::cout << m_enemies[i]->getPos().getX() << ", " << m_enemies[i]->getPos().getY() << std::endl;
@@ -163,7 +163,7 @@ bool PlayState::onEnter()
 	//TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::HEROES_BATTLE), -1);
 	//TheResourceManager::Instance()->playMusic(TheResourceManager::Instance()->loadMusic("res/music/HeroesBattle.mp3"), -1);
 
-	Map::calculateMap();
+	//Map::calculateMap();
 
 
 	std::cout << "entering PlayState\n";

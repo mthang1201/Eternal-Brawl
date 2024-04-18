@@ -1,5 +1,10 @@
 #pragma once
 #include <SDL_mixer.h>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 
 #include "entity.hpp"
 
@@ -32,6 +37,17 @@ public:
 private:
 	void checkCollision();
 	void moveTowardsPlayer();
+
+	void followCalculatedPath();
+	void calculatePlayerPosBriefly();
+	bool isValid(int x, int y);
+	bool findPath(int x1, int y1, int x2, int y2, std::vector<int>& sol);
+	float m_dirX, m_dirY;
+	int pathStep;
+	int pathCount;
+	std::vector<int> pathToPlayer;
+
+
 
 	//EnemyState m_state;
 	EnemyState m_state;
