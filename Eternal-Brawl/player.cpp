@@ -218,6 +218,61 @@ void Player::update()
 				m_pos.setY(402);
 				m_velocity.setX(-m_moveSpeed * 5);
 			}
+			//stair
+			//stair 1
+			else if (tile.x == 647 && tile.y == 649 && tile.w == 9 && tile.h == 71 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 9);
+			}
+			else if (tile.x == 647 && tile.y == 649 && tile.w == 9 && tile.h == 71 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 10);
+			}
+			//stair 2
+			else if (tile.x == 656 && tile.y == 655 && tile.w == 8 && tile.h == 65 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 8);
+			}
+			else if (tile.x == 656 && tile.y == 655 && tile.w == 8 && tile.h == 65 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 6);
+			}
+			//stair 3
+			else if (tile.x == 664 && tile.y == 661 && tile.w == 8 && tile.h == 59 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 8);
+			}
+			else if (tile.x == 664 && tile.y == 661 && tile.w == 8 && tile.h == 59 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 6);
+			}
+			//stair 4
+			else if (tile.x == 672 && tile.y == 668 && tile.w == 8 && tile.h == 52 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 8);
+			}
+			else if (tile.x == 672 && tile.y == 668 && tile.w == 8 && tile.h == 52 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 7);
+			}
+			//stair 5
+			else if (tile.x == 680 && tile.y == 674 && tile.w == 3 && tile.h == 46 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 3);
+			}
+			else if (tile.x == 680 && tile.y == 674 && tile.w == 3 && tile.h == 46 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 6);
+			}
+			//stair 6
+			else if (tile.x == 683 && tile.y == 677 && tile.w == 5 && tile.h == 43 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 5);
+			}
+			else if (tile.x == 683 && tile.y == 677 && tile.w == 5 && tile.h == 43 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 3);
+			}
 			else
 			{
 				m_pos.setX(m_pos.getX() - m_velocity.getX());
@@ -275,7 +330,7 @@ void Player::revive()
 {
 	healthPoints = 300;
 	agilityPoints = 300;
-	setPos(0, 0);
+	setPos(200, 197);
 	m_lives--;
 	m_state = PlayerState::KI;
 }

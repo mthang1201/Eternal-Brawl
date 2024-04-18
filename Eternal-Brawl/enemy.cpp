@@ -4,7 +4,7 @@
 #include "inputHandler.hpp"
 #include "map.hpp"
 
-const float GRAVITY = 0.3;
+const float GRAVITY = 0.5;
 const float MAX_GRAVITY = 15;
 
 Enemy::Enemy(const LoaderParams* pParams) : Entity(pParams)
@@ -50,25 +50,44 @@ void Enemy::update()
 			grounded = false;
 		}
 	}*/
+
+	/*{ 647, 649, 9, 71 },
+	{ 656, 655, 8 , 65 },
+	{ 664, 661, 8 , 59 },
+	{ 672, 668, 8 , 52 },
+	{ 680, 674, 3 , 46 },
+	{ 683, 677, 5 , 43 },*/
+
+
+	/*if (m_pos.getX() >= 647 && m_pos.getX() <= 683)
+	{
+		grounded = true;
+	}*/
+
 	/*if (!grounded) {
 		m_velocity.setY(m_velocity.getY() + GRAVITY);
 		if (m_velocity.getY() > MAX_GRAVITY) m_velocity.setY(MAX_GRAVITY);
-	}
-	else m_velocity.setY(GRAVITY);*/
+	}*/
+	//else m_velocity.setY(GRAVITY);
 
 
 	if (m_currentFrame.w == 64) m_currentFrame.x = int(((SDL_GetTicks() / 120) % 5));
 
-	if (m_pos.getX() < 156)
+	moveTowardsPlayer();
+
+	/*if (m_pos.getX() < 537)
 	{
-		m_velocity.setX(3);
-		m_bFlip = false;
+		m_velocity.setX(m_moveSpeed);
 	}
 	else if (m_pos.getX() > 1048)
 	{
-		m_velocity.setX(-3);
+		m_velocity.setX(-m_moveSpeed);
+	}*/
+
+	if (m_velocity.getX() >= 0)
+		m_bFlip = false;
+	else
 		m_bFlip = true;
-	}
 
 	Entity::update();
 
@@ -90,36 +109,94 @@ void Enemy::update()
 			if (tile.x == 106 && tile.y == 194 && tile.w == 73 && tile.h == 62)
 			{
 				m_pos.setX(156 + m_moveSpeed * 3);
-				m_pos.setY(572 - 15);
+				m_pos.setY(572 - 15 + 4);
 				m_velocity.setX(m_moveSpeed);
 			}
 			//bottomDownElevator
 			else if (tile.x == 106 && tile.y == 568 && tile.w == 50 && tile.h == 192)
 			{
 				m_pos.setX(179 + m_moveSpeed * 3);
-				m_pos.setY(197 - 15);
-				m_velocity.setX(m_moveSpeed * 5);
+				m_pos.setY(197 - 15 + 4);
+				m_velocity.setX(m_moveSpeed);
 			}
 			//topRightElevator
 			else if (tile.x == 1048 && tile.y == 399 && tile.w == 72 && tile.h == 60)
 			{
 				m_pos.setX(984 - m_moveSpeed * 3);
-				m_pos.setY(622 - 15);
-				m_velocity.setX(-m_moveSpeed * 5);
+				m_pos.setY(622 - 15 + 4);
+				m_velocity.setX(-m_moveSpeed);
 			}
 			//bottomRightElevator
 			else if (tile.x == 1048 && tile.y == 629 && tile.w == 72 && tile.h == 51)
 			{
 				m_pos.setX(984 - m_moveSpeed * 3);
-				m_pos.setY(402 - 15);
-				m_velocity.setX(-m_moveSpeed * 5);
+				m_pos.setY(402 - 15 + 4);
+				m_velocity.setX(-m_moveSpeed);
 			}
+			//stair
+			//stair 1
+			else if (tile.x == 647 && tile.y == 649 && tile.w == 9 && tile.h == 71 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 9);
+			}
+			else if (tile.x == 647 && tile.y == 649 && tile.w == 9 && tile.h == 71 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 10);
+			}
+			//stair 2
+			else if (tile.x == 656 && tile.y == 655 && tile.w == 8 && tile.h == 65 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 8);
+			}
+			else if (tile.x == 656 && tile.y == 655 && tile.w == 8 && tile.h == 65 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 6);
+			}
+			//stair 3
+			else if (tile.x == 664 && tile.y == 661 && tile.w == 8 && tile.h == 59 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 8);
+			}
+			else if (tile.x == 664 && tile.y == 661 && tile.w == 8 && tile.h == 59 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 6);
+			}
+			//stair 4
+			else if (tile.x == 672 && tile.y == 668 && tile.w == 8 && tile.h == 52 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 8);
+			}
+			else if (tile.x == 672 && tile.y == 668 && tile.w == 8 && tile.h == 52 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 7);
+			}
+			//stair 5
+			else if (tile.x == 680 && tile.y == 674 && tile.w == 3 && tile.h == 46 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 3);
+			}
+			else if (tile.x == 680 && tile.y == 674 && tile.w == 3 && tile.h == 46 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 6);
+			}
+			//stair 6
+			else if (tile.x == 683 && tile.y == 677 && tile.w == 5 && tile.h == 43 && m_velocity.getX() > 0) //right
+			{
+				m_pos.setY(m_pos.getY() + 5);
+			}
+			else if (tile.x == 683 && tile.y == 677 && tile.w == 5 && tile.h == 43 && m_velocity.getX() < 0) //left
+			{
+				m_pos.setY(m_pos.getY() - 3);
+			}
+			/*else if (abs(tile.x - m_pos.getX()) < 10 && m_pos.getY() + m_currentFrame.h/2 + m_rigidBody.h/2 - tile.y < 10)
+			{
+				grounded = true;
+			}*/
 			else
 			{
 				m_pos.setX(m_pos.getX() - m_velocity.getX());
 				m_pos.setY(m_pos.getY() - m_velocity.getY());
 			}
-			grounded = true;
 		}
 	}
 
@@ -138,6 +215,34 @@ void Enemy::checkCollision()
 	if (m_pos.getY() < 0 || m_pos.getY() > 720 - m_currentFrame.h + 18)
 	{
 		m_pos.setY(m_pos.getY() - m_velocity.getY());
+	}
+}
+
+void Enemy::moveTowardsPlayer()
+{
+	float length = sqrt(pow(m_playerPos.getX() - m_pos.getX(), 2) + pow(m_playerPos.getY() - m_pos.getY(), 2));
+	if (length < 400)
+	{
+		if (m_pos.getX() < m_playerPos.getX()) {
+			m_velocity.setX(m_moveSpeed);
+		}
+		else if (m_pos.getX() > m_playerPos.getX()) {
+			m_velocity.setX(-m_moveSpeed);
+		}
+
+		if (m_pos.getY() < m_playerPos.getY()) {
+			m_velocity.setY(m_moveSpeed);
+		}
+		else if (m_pos.getY() > m_playerPos.getY()) {
+			m_velocity.setY(-m_moveSpeed);
+		}
+	}
+
+	static Vector2f currentPlayerPos;
+	if (currentPlayerPos != m_playerPos)
+	{
+		currentPlayerPos = m_playerPos;
+
 	}
 }
 
