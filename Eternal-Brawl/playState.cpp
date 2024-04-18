@@ -163,6 +163,9 @@ bool PlayState::onEnter()
 	//TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::HEROES_BATTLE), -1);
 	//TheResourceManager::Instance()->playMusic(TheResourceManager::Instance()->loadMusic("res/music/HeroesBattle.mp3"), -1);
 
+	Map::calculateMap();
+
+
 	std::cout << "entering PlayState\n";
 	return true;
 }

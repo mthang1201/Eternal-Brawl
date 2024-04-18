@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <vector>
+#include <iostream>
 
 #define TILE_SIZE 16
 #define MAP_WIDTH 80
@@ -36,5 +37,15 @@
 
 
 extern std::vector<SDL_Rect> tiles;
+extern int worldMap[45][80];
 
-//std::vector<SDL_Rect> getTiles() { return tiles; }
+namespace Map
+{
+    void init();
+
+    void print();
+
+    void modify();
+
+    void calculateMap();
+}

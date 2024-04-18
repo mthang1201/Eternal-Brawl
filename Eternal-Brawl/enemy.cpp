@@ -244,6 +244,7 @@ void Enemy::moveTowardsPlayer()
 		currentPlayerPos = m_playerPos;
 
 	}
+	Map::print();
 }
 
 
