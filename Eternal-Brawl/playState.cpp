@@ -46,7 +46,7 @@ void PlayState::update()
 	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
 		m_enemies[i]->m_indexInEnemyList = i;
-		m_enemies[i]->m_playerPos = m_player->getPos();
+		m_enemies[i]->m_playerPos.setPos(m_player->getPos().getX(), m_player->getPos().getY());
 		m_enemies[i]->update();
 	}
 
@@ -110,7 +110,7 @@ void PlayState::render()
 		TheResourceManager::Instance()->drawHealthBar(m_enemies[i]->healthBarRect, m_enemies[i]->healthBarWidth, m_enemies[i]->healthColor);
 	}
 
-	//std::cout << m_enemies[0]->getPos().getX() << ", " << m_enemies[0]->getPos().getY() << std::endl;
+	std::cout << m_enemies[0]->m_playerPos.getX() << ", " << m_enemies[0]->m_playerPos.getY() << std::endl;
 	//std::cout << m_player->getPos().getX() << ", " << m_player->getPos().getY() << std::endl;
 	/*for (int i = 0; i < (int)m_enemies.size(); i++)
 	{

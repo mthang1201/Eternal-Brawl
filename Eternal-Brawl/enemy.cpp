@@ -19,6 +19,8 @@ Enemy::Enemy(const LoaderParams* pParams) : Entity(pParams)
 {
 	m_velocity.setX(3);
 	m_velocity.setY(0);
+	m_playerPos = Vector2f(200, 197);
+	pathFound = false;
 	healthPoints = 300;
 }
 
@@ -83,6 +85,10 @@ void Enemy::update()
 
 	moveTowardsPlayer();
 
+
+
+
+
 	/*if (m_pos.getX() < 537)
 	{
 		m_velocity.setX(m_moveSpeed);
@@ -101,6 +107,22 @@ void Enemy::update()
 
 	checkCollision();
 
+	if (healthPoints <= 0) {
+		m_state = EnemyState::DEATH;
+		Uint32 m_deathTime = SDL_GetTicks();
+	}
+}
+
+void Enemy::checkCollision()
+{
+	if (m_pos.getX() < 0 || m_pos.getX() > 1280 - m_currentFrame.w + 18)
+	{
+		m_pos.setX(m_pos.getX() - m_velocity.getX());
+	}
+	if (m_pos.getY() < 0 || m_pos.getY() > 720 - m_currentFrame.h + 18)
+	{
+		m_pos.setY(m_pos.getY() - m_velocity.getY());
+	}
 	m_rigidBody = { static_cast<int>(m_pos.getX()), static_cast<int>(m_pos.getY() + 22), static_cast <int>(42), static_cast <int>(42) };
 	std::vector<SDL_Rect> m_tiles;
 	/*m_tiles.push_back({ 80, 508, 100, 100 });
@@ -207,23 +229,6 @@ void Enemy::update()
 			}
 		}
 	}
-
-	if (healthPoints <= 0) {
-		m_state = EnemyState::DEATH;
-		Uint32 m_deathTime = SDL_GetTicks();
-	}
-}
-
-void Enemy::checkCollision()
-{
-	if (m_pos.getX() < 0 || m_pos.getX() > 1280 - m_currentFrame.w + 18)
-	{
-		m_pos.setX(m_pos.getX() - m_velocity.getX());
-	}
-	if (m_pos.getY() < 0 || m_pos.getY() > 720 - m_currentFrame.h + 18)
-	{
-		m_pos.setY(m_pos.getY() - m_velocity.getY());
-	}
 }
 
 void Enemy::moveTowardsPlayer()
@@ -238,21 +243,30 @@ void Enemy::moveTowardsPlayer()
 	//{
 		//calculatePlayerPosBriefly();
 		static Vector2f currentPlayerPos;
-		/*if (currentPlayerPos != m_playerPos)*/
+		if (currentPlayerPos != m_playerPos)
 		/*if (currentPlayerPos.getX() != m_playerPos.getX() || currentPlayerPos.getY() != m_playerPos.getY())*/
-		if (true)
+		//if (true)
 		{
 			currentPlayerPos = m_playerPos;
 			pathToPlayer.clear();
+			visited.clear();
+			for (int y = 0; y < MAP_HEIGHT; y++)
+			{
+				for (int x = 0; x < MAP_WIDTH; x++)
+				{
+					visited[y].push_back(false);
+				}
+			}
 			pathCount = 0;
-			if (findPath(x1, y1, x2, y2, pathToPlayer))
+			/*if (findPath(x1, y1, x2, y2, pathToPlayer))
 			{
 				pathStep = 0;
 				followCalculatedPath();
 				pathStep++;
+				pathFound = true;
 			}
 			else
-			{
+			{*/
 				if (m_pos.getX() < 537)
 				{
 					m_velocity.setX(m_moveSpeed);
@@ -261,12 +275,17 @@ void Enemy::moveTowardsPlayer()
 				{
 					m_velocity.setX(-m_moveSpeed);
 				}
-			}
+				pathFound = false;
+			//}
 		}
-		else
+		/*else if (pathFound)
 		{
 			followCalculatedPath();
 			pathStep++;
+		}*/
+		else
+		{
+			//std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
 		}
 	//}
 }
@@ -332,6 +351,9 @@ bool Enemy::findPath(int x1, int y1, int x2, int y2, std::vector<int>& sol)
 
 	if (isValid(x1, y1))
 	{
+		if (!visited[y1][x1]) visited[y1][x1] = true;
+		else return false;
+
 		if (findPath(x1, y1 - 1, x2, y2, pathToPlayer))
 		{
 			sol[pathCount++] = 1; // UP

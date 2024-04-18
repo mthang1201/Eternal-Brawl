@@ -14,6 +14,12 @@ public:
 	void setX(float x);
 	void setY(float y);
 
+	void setPos(float x, float y)
+	{
+		this->m_x = x;
+		this->m_y = y;
+	}
+
 	float length();
 	// Vector2f operator+(const Vector2f &v2) const;
 	Vector2f operator=(const Vector2f& v2);
