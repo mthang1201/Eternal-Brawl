@@ -73,6 +73,8 @@ And, voila, you have successfully built the source. Check the Eternal-Brawl exec
 - Player's transformation
 - Two player mode
 - Enemy's flip and dash
+- Climbing ladder animation
+- Construction elevator in the middle of the map
 
 ## Third party tools
 - [SDL 2.29.2](https://github.com/libsdl-org/SDL/releases/tag/prerelease-2.29.2) to handle all the low-level stuff
