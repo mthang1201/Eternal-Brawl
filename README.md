@@ -67,7 +67,7 @@ And, voila, you have successfully built the source. Check the Eternal-Brawl exec
 - Generate enemies
 
 ## Features to add
-- Enemy move to player
+- Enemy move to player (Backtracking)
 
 ## Third party tools
 - [SDL 2.29.2](https://github.com/libsdl-org/SDL/releases/tag/prerelease-2.29.2) to handle all the low-level stuff
