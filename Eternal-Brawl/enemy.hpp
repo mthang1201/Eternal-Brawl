@@ -7,12 +7,16 @@
 #include <algorithm>
 
 #include "entity.hpp"
+#include "game.hpp"
 
 enum EnemyState
 {
+	IDLE,
 	RUN,
 	DASH,
 	ATTACK,
+	HEAVY_ATTACK,
+	KNOCKBACK,
 	DEATH
 };
 
@@ -34,6 +38,9 @@ public:
 	int m_indexInEnemyList;
 
 	Vector2f m_playerPos;
+
+	EnemyState m_state;
+	void immovable();
 private:
 	void checkCollision();
 	void moveTowardsPlayer();
@@ -49,10 +56,9 @@ private:
 	std::vector<int> pathToPlayer;
 	std::vector<std::vector<bool>> visited;
 
+	void handleMovement();
+	void handleAnimation();
 
-
-	//EnemyState m_state;
-	EnemyState m_state;
 	float m_moveSpeed = 5;
 	int idleCounter = 0, walkCounter = 0, fallingCounter = 0, attackingCounter = 0, beingHitCounter = 0;
 	bool grounded = true, walking = false, idling = true, falling = false, attacking = false, beingHit = false, dead = false;

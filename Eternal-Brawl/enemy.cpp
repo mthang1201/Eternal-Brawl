@@ -8,18 +8,16 @@
 #include "enemy.hpp"
 #include "inputHandler.hpp"
 #include "map.hpp"
+#include "game.hpp"
 
 const float GRAVITY = 0.5;
 const float MAX_GRAVITY = 15;
 
-bool isValid();
-bool findPath();
-
 Enemy::Enemy(const LoaderParams* pParams) : Entity(pParams)
 {
 	m_velocity.setX(3);
+	//m_velocity.setX(0);
 	m_velocity.setY(0);
-	m_playerPos = Vector2f(200, 197);
 	pathFound = false;
 	healthPoints = 300;
 }
@@ -33,6 +31,7 @@ const int HEALTHBAR_HEIGHT = 10;
 
 void Enemy::update()
 {
+	// draw health bar
 	if (m_indexInEnemyList < 5)
 	{
 		healthBarRect = { 420, 10 + ((m_indexInEnemyList % 5) * 15), HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
@@ -46,10 +45,7 @@ void Enemy::update()
 		healthBarRect = { 900, 10 + ((m_indexInEnemyList % 5) * 15), HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
 	}
 
-
-
 	healthBarWidth = static_cast<int>((static_cast<float>(healthPoints) / 300) * HEALTHBAR_WIDTH);
-
 	healthColor = { 0, 255, 0, 255 }; // Green by default
 	if (healthPoints < 50)
 		healthColor = { 255, 0, 0, 255 }; // Red if health is below 50
@@ -68,45 +64,27 @@ void Enemy::update()
 	{ 680, 674, 3 , 46 },
 	{ 683, 677, 5 , 43 },*/
 
-
 	/*if (m_pos.getX() >= 647 && m_pos.getX() <= 683)
 	{
 		grounded = true;
 	}*/
 
-	/*if (!grounded) {
+	if (!grounded) {
 		m_velocity.setY(m_velocity.getY() + GRAVITY);
 		if (m_velocity.getY() > MAX_GRAVITY) m_velocity.setY(MAX_GRAVITY);
-	}*/
-	//else m_velocity.setY(GRAVITY);
-
-
-	if (m_currentFrame.w == 64) m_currentFrame.x = int(((SDL_GetTicks() / 120) % 5));
+	}
+	else m_velocity.setY(GRAVITY);
 
 	moveTowardsPlayer();
 
-
-
-
-
-	/*if (m_pos.getX() < 537)
-	{
-		m_velocity.setX(m_moveSpeed);
-	}
-	else if (m_pos.getX() > 1048)
-	{
-		m_velocity.setX(-m_moveSpeed);
-	}*/
-
-	if (m_velocity.getX() >= 0)
-		m_bFlip = false;
-	else
-		m_bFlip = true;
+	handleMovement();
+	handleAnimation();
 
 	Entity::update();
 
 	checkCollision();
 
+	// doDyingAnimation()
 	if (healthPoints <= 0) {
 		m_state = EnemyState::DEATH;
 		Uint32 m_deathTime = SDL_GetTicks();
@@ -224,7 +202,7 @@ void Enemy::checkCollision()
 			}*/
 			else
 			{
-				m_pos.setX(m_pos.getX() - m_velocity.getX());
+				//m_pos.setX(m_pos.getX() - m_velocity.getX());
 				m_pos.setY(m_pos.getY() - m_velocity.getY());
 			}
 		}
@@ -233,59 +211,69 @@ void Enemy::checkCollision()
 
 void Enemy::moveTowardsPlayer()
 {
-	float length = sqrt(pow(m_playerPos.getX() - m_pos.getX(), 2) + pow(m_playerPos.getY() - m_pos.getY(), 2));
-	int x1 = static_cast<int>(m_pos.getX() / TILE_SIZE);
-	int y1 = static_cast<int>(m_pos.getY() / TILE_SIZE);
-	int x2 = static_cast<int>(m_playerPos.getX() / TILE_SIZE);
-	int y2 = static_cast<int>(m_playerPos.getY() / TILE_SIZE);
+	if (m_pos.getX() < 537)
+	{
+		m_velocity.setX(m_moveSpeed);
+	}
+	else if (m_pos.getX() > 1048)
+	{
+		m_velocity.setX(-m_moveSpeed);
+	}
 
-	//if (length < 400)
-	//{
-		//calculatePlayerPosBriefly();
-		static Vector2f currentPlayerPos;
-		if (currentPlayerPos != m_playerPos)
-		/*if (currentPlayerPos.getX() != m_playerPos.getX() || currentPlayerPos.getY() != m_playerPos.getY())*/
-		//if (true)
-		{
-			currentPlayerPos = m_playerPos;
-			pathToPlayer.clear();
-			visited.clear();
-			pathToPlayer.resize(100000);
-			visited.resize(MAP_HEIGHT);
-			for (int y = 0; y < MAP_HEIGHT; y++) {
-				visited[y].resize(MAP_WIDTH, false);
-			}
-			pathCount = 0;
-			if (findPath(x1, y1, x2, y2))
-			{
-				pathStep = 0;
-				followCalculatedPath();
-				pathStep++;
-				pathFound = true;
-			}
-			else
-			{
-				if (m_pos.getX() < 537)
-				{
-					m_velocity.setX(m_moveSpeed);
-				}
-				else if (m_pos.getX() > 1048)
-				{
-					m_velocity.setX(-m_moveSpeed);
-				}
-				pathFound = false;
-			}
-		}
-		else if (pathFound)
-		{
-			followCalculatedPath();
-			pathStep++;
-		}
-		else
-		{
-			std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
-		}
-	//}
+	//float length = sqrt(pow(m_playerPos.getX() - m_pos.getX(), 2) + pow(m_playerPos.getY() - m_pos.getY(), 2));
+	//int x1 = static_cast<int>(m_pos.getX() / TILE_SIZE);
+	//int y1 = static_cast<int>(m_pos.getY() / TILE_SIZE);
+	//int x2 = static_cast<int>(m_playerPos.getX() / TILE_SIZE);
+	//int y2 = static_cast<int>(m_playerPos.getY() / TILE_SIZE);
+
+	////if (length < 400)
+	////{
+	//	//calculatePlayerPosBriefly();
+	//	static Vector2f currentPlayerPos;
+	//	//if (currentPlayerPos != m_playerPos)
+	//	/*if (currentPlayerPos.getX() != m_playerPos.getX() || currentPlayerPos.getY() != m_playerPos.getY())*/
+	//	if (true)
+	//	{
+	//		currentPlayerPos = m_playerPos;
+	//		pathToPlayer.clear();
+	//		visited.clear();
+	//		pathToPlayer.resize(100000);
+	//		visited.resize(MAP_HEIGHT);
+	//		for (int y = 0; y < MAP_HEIGHT; y++) {
+	//			visited[y].resize(MAP_WIDTH, false);
+	//		}
+	//		pathCount = 0;
+	//		//if (findPath(x1, y1, x2, y2))
+	//		if (!true)
+	//		{
+	//			pathStep = 0;
+	//			followCalculatedPath();
+	//			pathStep++;
+	//			pathFound = true;
+	//		}
+	//		else
+	//		{
+	//			if (m_pos.getX() < 537)
+	//			{
+	//				m_velocity.setX(m_moveSpeed);
+	//			}
+	//			else if (m_pos.getX() > 1048)
+	//			{
+	//				m_velocity.setX(-m_moveSpeed);
+	//			}
+	//			pathFound = false;
+	//		}
+	//	}
+	//	else if (pathFound)
+	//	{
+	//		followCalculatedPath();
+	//		pathStep++;
+	//	}
+	//	else
+	//	{
+	//		std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
+	//	}
+	////}
 }
 
 void Enemy::followCalculatedPath()
@@ -314,6 +302,8 @@ void Enemy::followCalculatedPath()
 	m_dirY = pathToPlayer[pathStep];
 	m_velocity.setX(m_moveSpeed * m_dirX);
 	m_velocity.setY(m_moveSpeed * m_dirY);
+	/*m_pos.setX(m_moveSpeed * m_dirX);
+	m_pos.setY(m_moveSpeed * m_dirY);*/
 }
 
 void Enemy::calculatePlayerPosBriefly()
@@ -338,6 +328,12 @@ bool Enemy::isValid(int x, int y)
 	return false;
 }
 
+void Enemy::immovable()
+{
+	m_velocity.setX(0);
+	m_velocity.setY(0);
+}
+
 bool Enemy::findPath(int x1, int y1, int x2, int y2)
 {
 	// print(sol, width, height);cout << endl;
@@ -357,21 +353,21 @@ bool Enemy::findPath(int x1, int y1, int x2, int y2)
 			pathToPlayer[pathCount++] = 1; // UP
 			return true;
 		}
-		if (findPath(x1, y1 + 1, x2, y2))
-		{
-			pathToPlayer[pathCount++] = 2; // DOWN
-			return true;
-		}
+		//if (findPath(x1, y1 + 1, x2, y2))
+		//{
+		//	pathToPlayer[pathCount++] = 2; // DOWN
+		//	return true;
+		//}
 		if (findPath(x1 - 1, y1, x2, y2))
 		{
 			pathToPlayer[pathCount++] = 3; // LEFT
 			return true;
 		}
-		if (findPath(x1 + 1, y1, x2, y2))
-		{
-			pathToPlayer[pathCount++] = 4; // RIGHT
-			return true;
-		}
+		//if (findPath(x1 + 1, y1, x2, y2))
+		//{
+		//	pathToPlayer[pathCount++] = 4; // RIGHT
+		//	return true;
+		//}
 
 		if (!pathToPlayer.empty()) {
 			pathToPlayer.pop_back();
@@ -388,9 +384,77 @@ void Enemy::clean()
 
 std::string Enemy::getObjectState()
 {
-	/*if (m_state == EnemyState::KI || m_state == EnemyState::TRANSFORM_02) return "KI";
 	if (m_state == EnemyState::DEATH) return "DEATH";
-	if (m_state == EnemyState::ATTACK || m_state == EnemyState::KICK) return "ATTACK";
-	if (m_state == EnemyState::HEAVY_ATTACK) return "HEAVY_ATTACK";*/
+	if (m_state == EnemyState::ATTACK) return "ATTACK";
+	if (m_state == EnemyState::HEAVY_ATTACK) return "HEAVY_ATTACK";
 	return "NONE";
+}
+
+void Enemy::handleMovement()
+{
+	if (m_velocity.getX() != 0)
+	{
+		m_state == EnemyState::RUN;
+	}
+	else if (m_velocity.getX() == 0)
+	{
+		m_state == EnemyState::IDLE;
+	}
+
+	if (m_velocity.getX() >= 0)
+		m_bFlip = false;
+	else
+		m_bFlip = true;
+}
+
+void Enemy::handleAnimation()
+{
+	if (m_state == EnemyState::IDLE)
+	{
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_IDLE);
+		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 2));
+
+		m_currentFrame.w = 64;
+		m_currentFrame.h = 64;
+	}
+	else if (m_state == EnemyState::RUN)
+	{
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN);
+		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 8));
+
+		m_currentFrame.w = 64;
+		m_currentFrame.h = 64;
+	}
+	else if (m_state == EnemyState::ATTACK)
+	{
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_ATTACK);
+		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 15));
+
+		m_currentFrame.w = 256;
+		m_currentFrame.h = 128;
+	}
+	else if (m_state == EnemyState::HEAVY_ATTACK)
+	{
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_HEAVY_ATTACK);
+		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 13));
+
+		m_currentFrame.w = 352;
+		m_currentFrame.h = 176;
+	}
+	else if (m_state == EnemyState::KNOCKBACK)
+	{
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_KNOCKBACK);
+		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 4));
+
+		m_currentFrame.w = 64;
+		m_currentFrame.h = 64;
+	}
+	else if (m_state == EnemyState::DEATH)
+	{
+		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DEATH);
+		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 7));
+
+		m_currentFrame.w = 128;
+		m_currentFrame.h = 64;
+	}
 }

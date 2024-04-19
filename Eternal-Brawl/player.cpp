@@ -281,29 +281,6 @@ void Player::update()
 		}
 	}
 
-	//SDL_Rect e1 = m_enemies[0]->getRigidBody();
-	///*SDL_bool isColliding = SDL_HasIntersection(&m_player->getRigidBody(), &m_enemies[0]->getRigidBody());*/
-	//SDL_bool isColliding = SDL_HasIntersection(&p1, &e1);
-
-	/*if (isColliding)
-	{
-		m_player->healthPoints -= 100;
-		m_player->getPos().setX(m_player->getPos().getX() - m_player->getVelocity().getX());
-		m_player->getPos().setY(m_player->getPos().getY() - m_player->getVelocity().getY());
-
-		m_enemies[0]->getPos().setX(m_player->getPos().getX() - m_player->getVelocity().getX());
-		m_enemies[0]->getPos().setY(m_player->getPos().getY() - m_player->getVelocity().getY());
-	}*/
-
-
-	//SDL_bool isColliding = SDL_HasIntersection(&collision, &tile1);
-
-	/*if (isColliding)
-	{
-		m_pos.setX(m_pos.getX() - m_velocity.getX());
-		m_pos.setY(m_pos.getY() - m_velocity.getY());
-	}*/
-
 	if (healthPoints <= 0) {
 		m_state = PlayerState::DEATH;
 		Uint32 m_deathTime = SDL_GetTicks();

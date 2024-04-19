@@ -18,15 +18,14 @@ const std::string PlayState::s_playID = "PLAY";
 const Uint32 enemyGenerationInterval = 1000;
 Uint32 lastEnemyGenerationTime = SDL_GetTicks();
 
-void doSth(Player* player, Enemy* enemy);
-
 void PlayState::update()
 {
-	// listen for ESC key to pause the game
+	// Press ESCAPE to pause game
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
 		TheGame::Instance()->getStateMachine()->pushState(new PauseState());
 	}
+
 	Uint32 currentTime = SDL_GetTicks();
 	/*if (currentTime - lastEnemyGenerationTime >= enemyGenerationInterval) {
 		if ((int)m_enemies.size() <= 15)
@@ -35,39 +34,34 @@ void PlayState::update()
 		}
 		lastEnemyGenerationTime = currentTime;
 	}*/
-	
+
+	// entites update
 	for (int i = 0; i < (int)m_entities.size(); i++)
 	{
 		m_entities[i]->update();
 	}
-
+	// player update
 	m_player->update();
-
+	// enemies update
 	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
 		m_enemies[i]->m_indexInEnemyList = i;
-		m_enemies[i]->m_playerPos.setPos(m_player->getPos().getX(), m_player->getPos().getY());
+		//m_enemies[i]->m_playerPos.setPos(m_player->getPos().getX(), m_player->getPos().getY());
+		m_enemies[i]->m_playerPos = m_player->getPos();
 		m_enemies[i]->update();
 	}
 
 	// collision
-
 	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
-		if (checkPlayerEnemyCollision(m_player, m_enemies[i]))
-		{
-			doSth(m_player, m_enemies[i]);
-		}
+		interactionBetweenPlayerAndEnemy(m_player, m_enemies[i]);
 	}
 
-	// check alive or not
-
+	// check player alive or not
 	if (m_player->getObjectState() == "DEATH")
 	{
 		if (m_player->m_lives > 0)
 		{
-			//revival();
-			//delete m_player;
 			m_player->revive();
 		}
 		else
@@ -75,7 +69,7 @@ void PlayState::update()
 			TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
 		}
 	}
-
+	// check enemies alive or not
 	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
 		if (m_enemies[i]->healthPoints <= 0)
@@ -151,8 +145,8 @@ bool PlayState::onEnter()
 	}*/
 
 	m_player = new Player(new LoaderParams(Vector2f(200, 197), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::GOKU_IDLE), nullptr));
-	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(820, 616), {0, 0, 64, 64}, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
-	
+	/*m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(820, 616), {0, 0, 64, 64}, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));*/
+	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(820, 316), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 192), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(700, 616), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	
@@ -230,7 +224,7 @@ bool PlayState::checkCollision(Player* p1, Enemy* p2)
 	return true;
 }
 
-bool PlayState::checkPlayerEnemyCollision(Player* player, Enemy* enemy)
+bool PlayState::checkPlayerEnemyCollision(Player * player, Enemy* enemy)
 {
 	SDL_Rect p1 = player->getRigidBody();
 	SDL_Rect e1 = enemy->getRigidBody();
@@ -251,29 +245,41 @@ void PlayState::generateEnemies()
 	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(820, 616), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 }
 
-void doSth(Player* player, Enemy* enemy)
+void PlayState::interactionBetweenPlayerAndEnemy(Player* player, Enemy* enemy)
 {
-	if (enemy->getObjectState() == "ATTACK")
+	if (checkPlayerEnemyCollision(player, enemy))
 	{
-		player->healthPoints -= 1;
-	}
-	else if (enemy->getObjectState() == "HEAVY_ATTACK")
-	{
-		player->healthPoints -= 5;
-	}
-	//player->healthPoints -= 1;
-	/*player->setXPos(player->getPos().getX() - player->getVelocity().getX());
-	player->setYPos(player->getPos().getY() - player->getVelocity().getY());
+		enemy->m_state = EnemyState::ATTACK;
+		enemy->immovable();
+		if (enemy->getObjectState() == "ATTACK")
+		{
+			player->healthPoints -= 1;
+		}
+		else if (enemy->getObjectState() == "HEAVY_ATTACK")
+		{
+			player->healthPoints -= 5;
+		}
+		//player->healthPoints -= 1;
+		/*player->setXPos(player->getPos().getX() - player->getVelocity().getX());
+		player->setYPos(player->getPos().getY() - player->getVelocity().getY());
 
-	enemy->setXPos(enemy->getPos().getX() - enemy->getVelocity().getX());
-	enemy->setYPos(enemy->getPos().getY() - enemy->getVelocity().getY());*/
+		enemy->setXPos(enemy->getPos().getX() - enemy->getVelocity().getX());
+		enemy->setYPos(enemy->getPos().getY() - enemy->getVelocity().getY());*/
 
-	if (player->getObjectState() == "ATTACK")
-	{
-		enemy->healthPoints -= 1;
+		if (player->getObjectState() == "ATTACK")
+		{
+			enemy->healthPoints -= 1;
+		}
+		else if (player->getObjectState() == "HEAVY_ATTACK")
+		{
+			enemy->healthPoints -= 5;
+		}
 	}
-	else if (player->getObjectState() == "HEAVY_ATTACK")
+	else
 	{
-		enemy->healthPoints -= 5;
+		//enemy->m_state = EnemyState::DEATH;
+		//enemy->m_state = EnemyState::KNOCKBACK;
+		enemy->m_state = EnemyState::HEAVY_ATTACK;
+		enemy->m_state = EnemyState::RUN;
 	}
 }

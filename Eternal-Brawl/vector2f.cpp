@@ -14,7 +14,9 @@ void Vector2f::setY(float y) { m_y = y; }
 
 Vector2f Vector2f::operator=(const Vector2f& v2)
 {
-	return Vector2f(v2.m_x, v2.m_y);
+	this->m_x = v2.getX();
+	this->m_y = v2.getY();
+	return *this;
 }
 
 Vector2f& Vector2f::operator+=(const Vector2f& v2)
@@ -26,7 +28,7 @@ Vector2f& Vector2f::operator+=(const Vector2f& v2)
 
 bool Vector2f::operator==(const Vector2f& v2)
 {
-	return m_x == v2.getX() && m_y == v2.getY();
+	return (this->m_x == v2.getX() && this->m_y == v2.getY());
 }
 
 bool Vector2f::operator!=(const Vector2f& v2)
