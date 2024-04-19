@@ -1,9 +1,12 @@
 # Eternal Brawl
-A game written from scratch in C++ using the SDL2 development library. Apart from the core gameplay, the project also includes some extra features like Enemy AI, a simple main menu, music and sound effects. All sprites were created not by me.
+A game written from scratch in C++ using the SDL2 development library. Apart from the core gameplay, the project also includes some extra features like a simple main menu, music and sound effects, Enemy AI. All sprites were created not by me.
 
+## Gallery
 <!-- ![](gallery/gameplay.gif) -->
-
-<!-- ## Gallery
+<!--<img src="Eternal-Brawl/res/city/gameplay.gif" width = "310">-->
+<img src="Eternal-Brawl/res/city/background.png" width = "310">
+<img src="Eternal-Brawl/res/city/menu_background.png" width = "310">
+<!-- 
 <img src="gallery/mainmenu.png" width = "310"> <img src="gallery/options.png" width = "310"> <img src="gallery/pausemenu.png" width = "310"> -->
 
 ## Installation
@@ -45,6 +48,7 @@ And, voila, you have successfully built the source. Check the Eternal-Brawl exec
 - C: Ki
 - Esc: Pause the game
 - Mouse click: Menu
+<img src="Eternal-Brawl/res/city/instruction_background.png" width = "310">
 
 ## List of features
 - Create sprites for all objects
