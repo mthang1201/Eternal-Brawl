@@ -14,7 +14,7 @@ If you just want to try the game on your PC, go to the [Releases](https://github
 - You may need the [Microsoft Visual C++ Redistributables](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) if you don't have them already installed.
 
 ## Build Instructions
-I built this C++ SDL2 Game project with Visual Studio 2022. However, to compile the game, you only need [SDL packages](https://cmake.org/download/) and [g++](https://www.mingw-w64.org/downloads/).
+I built this C++ SDL2 Game project with Visual Studio 2022. However, to compile the game, you only need [SDL packages](https://github.com/mthang1201/Eternal-Brawl/blob/master/README.md#third-party-tools) and [g++](https://www.mingw-w64.org/downloads/).
 
 First of all, clone the repository to your Windows machine.
 ```
@@ -22,11 +22,17 @@ git clone https://github.com/mthang1201/Eternal-Brawl.git -b master
 ```
 - Alternatively, you can install the zip file and extract it to a desired location.
 
-Secondly, install SDL packages and g++(through MinGW). Remember to install MinGW using the installer, or you may need to add the environment variables manually.
+Secondly, install [SDL packages](https://github.com/mthang1201/Eternal-Brawl/blob/master/README.md#third-party-tools) and [g++](https://www.mingw-w64.org/downloads/)(through MinGW). Remember to install MinGW using the installer, or you may need to add the environment variables manually.
 
 Thirdly, extract SDL packages and create include and lib folders in the root directory.
 
-Then move all files from SDL packages to these folders: header files to include folder, lib files to lib folder, dll files to Eternal-Brawl folder in the root directory.
+Then move all files from SDL packages to these folders:
+```
+header files to include folder
+lib files to lib folder
+dll files to Eternal-Brawl folder
+```
+in the root directory.
 
 You shoud have files tree like this:
 ```
