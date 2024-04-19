@@ -68,6 +68,11 @@ And, voila, you have successfully built the source. Check the Eternal-Brawl exec
 
 ## Features to add
 - Enemy move to player (Backtracking)
+- Press a button twice to get different attack move
+- Enemy's heavy attack
+- Player's transformation
+- Two player mode
+- Enemy's flip and dash
 
 ## Third party tools
 - [SDL 2.29.2](https://github.com/libsdl-org/SDL/releases/tag/prerelease-2.29.2) to handle all the low-level stuff
