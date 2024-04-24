@@ -69,11 +69,11 @@ void Enemy::update()
 		grounded = true;
 	}*/
 
-	if (!grounded) {
+	/*if (!grounded) {
 		m_velocity.setY(m_velocity.getY() + GRAVITY);
 		if (m_velocity.getY() > MAX_GRAVITY) m_velocity.setY(MAX_GRAVITY);
 	}
-	else m_velocity.setY(GRAVITY);
+	else m_velocity.setY(GRAVITY);*/
 
 	moveTowardsPlayer();
 
@@ -202,7 +202,7 @@ void Enemy::checkCollision()
 			}*/
 			else
 			{
-				//m_pos.setX(m_pos.getX() - m_velocity.getX());
+				m_pos.setX(m_pos.getX() - m_velocity.getX());
 				m_pos.setY(m_pos.getY() - m_velocity.getY());
 			}
 		}
@@ -211,68 +211,69 @@ void Enemy::checkCollision()
 
 void Enemy::moveTowardsPlayer()
 {
-	if (m_pos.getX() < 537)
+	/*if (m_pos.getX() < 537)
 	{
 		m_velocity.setX(m_moveSpeed);
 	}
 	else if (m_pos.getX() > 1048)
 	{
 		m_velocity.setX(-m_moveSpeed);
-	}
+	}*/
 
 	//float length = sqrt(pow(m_playerPos.getX() - m_pos.getX(), 2) + pow(m_playerPos.getY() - m_pos.getY(), 2));
-	//int x1 = static_cast<int>(m_pos.getX() / TILE_SIZE);
-	//int y1 = static_cast<int>(m_pos.getY() / TILE_SIZE);
-	//int x2 = static_cast<int>(m_playerPos.getX() / TILE_SIZE);
-	//int y2 = static_cast<int>(m_playerPos.getY() / TILE_SIZE);
+	int x1 = static_cast<int>(m_pos.getX() / TILE_SIZE);
+	int y1 = static_cast<int>(m_pos.getY() / TILE_SIZE);
+	int x2 = static_cast<int>(m_playerPos.getX() / TILE_SIZE);
+	int y2 = static_cast<int>(m_playerPos.getY() / TILE_SIZE);
 
 	////if (length < 400)
 	////{
-	//	//calculatePlayerPosBriefly();
-	//	static Vector2f currentPlayerPos;
-	//	//if (currentPlayerPos != m_playerPos)
-	//	/*if (currentPlayerPos.getX() != m_playerPos.getX() || currentPlayerPos.getY() != m_playerPos.getY())*/
-	//	if (true)
-	//	{
-	//		currentPlayerPos = m_playerPos;
-	//		pathToPlayer.clear();
-	//		visited.clear();
-	//		pathToPlayer.resize(100000);
-	//		visited.resize(MAP_HEIGHT);
-	//		for (int y = 0; y < MAP_HEIGHT; y++) {
-	//			visited[y].resize(MAP_WIDTH, false);
-	//		}
-	//		pathCount = 0;
-	//		//if (findPath(x1, y1, x2, y2))
-	//		if (!true)
-	//		{
-	//			pathStep = 0;
-	//			followCalculatedPath();
-	//			pathStep++;
-	//			pathFound = true;
-	//		}
-	//		else
-	//		{
-	//			if (m_pos.getX() < 537)
-	//			{
-	//				m_velocity.setX(m_moveSpeed);
-	//			}
-	//			else if (m_pos.getX() > 1048)
-	//			{
-	//				m_velocity.setX(-m_moveSpeed);
-	//			}
-	//			pathFound = false;
-	//		}
-	//	}
-	//	else if (pathFound)
-	//	{
-	//		followCalculatedPath();
-	//		pathStep++;
-	//	}
-	//	else
-	//	{
-	//		std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
-	//	}
+		//calculatePlayerPosBriefly();
+		static Vector2f currentPlayerPos;
+		//if (currentPlayerPos != m_playerPos)
+		/*if (currentPlayerPos.getX() != m_playerPos.getX() || currentPlayerPos.getY() != m_playerPos.getY())*/
+		if (true)
+		{
+			currentPlayerPos = m_playerPos;
+			pathToPlayer.clear();
+			visited.clear();
+			pathToPlayer.resize(100000);
+			visited.resize(MAP_HEIGHT);
+			for (int y = 0; y < MAP_HEIGHT; y++) {
+				visited[y].resize(MAP_WIDTH, false);
+			}
+			pathCount = 0;
+			if (findPath(x1, y1, x2, y2))
+			//if (!true)
+			{
+				pathStep = 0;
+				followCalculatedPath();
+				pathStep++;
+				pathFound = true;
+			}
+			else
+			{
+				/*if (m_pos.getX() < 537)
+				{
+					m_velocity.setX(m_moveSpeed);
+				}
+				else if (m_pos.getX() > 1048)
+				{
+					m_velocity.setX(-m_moveSpeed);
+				}*/
+				pathFound = false;
+			}
+		}
+		else if (pathFound)
+		{
+			//followCalculatedPath();
+			std::cout << pathToPlayer[pathStep];
+			pathStep++;
+		}
+		else
+		{
+			std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
+		}
 	////}
 }
 
@@ -331,6 +332,12 @@ bool Enemy::isValid(int x, int y)
 void Enemy::immovable()
 {
 	m_velocity.setX(0);
+	m_velocity.setY(0);
+}
+
+void Enemy::movable()
+{
+	m_velocity.setX(-3);
 	m_velocity.setY(0);
 }
 

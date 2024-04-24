@@ -40,6 +40,8 @@ public:
 	void drawPlayerKI(Player& player);
 	void drawEnemy1(Enemy& enemy);
 	void drawEnemy2(Enemy& enemy);
+	void drawEnemyAttack(Enemy& enemy);
+	void drawEnemyHeavyAttack(Enemy& enemy);
 
 	void playMusic(Mix_Music* pMusic, int loop);
 	void playSound(Mix_Chunk* pSound, int loop);

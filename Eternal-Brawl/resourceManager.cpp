@@ -277,6 +277,50 @@ void ResourceManager::drawEnemy2(Enemy& enemy)
 	else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);
 }
 
+void ResourceManager::drawEnemyAttack(Enemy& enemy)
+{
+	SDL_Rect src;
+	src.x = enemy.getCurrentFrame().w * enemy.getCurrentFrame().x;
+	src.y = enemy.getCurrentFrame().h * enemy.getCurrentFrame().y;
+	src.w = enemy.getCurrentFrame().w;
+	src.h = enemy.getCurrentFrame().h;
+
+	SDL_Rect dst;
+	dst.x = enemy.getPos().getX() - 70;
+	dst.y = enemy.getPos().getY() - 45;
+	dst.w = enemy.getCurrentFrame().w * 0.88;
+	dst.h = enemy.getCurrentFrame().h * 0.88;
+
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	SDL_RenderDrawRect(m_pRenderer, &dst);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+
+	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+	else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);
+}
+
+void ResourceManager::drawEnemyHeavyAttack(Enemy& enemy)
+{
+	SDL_Rect src;
+	src.x = enemy.getCurrentFrame().w * enemy.getCurrentFrame().x;
+	src.y = enemy.getCurrentFrame().h * enemy.getCurrentFrame().y;
+	src.w = enemy.getCurrentFrame().w;
+	src.h = enemy.getCurrentFrame().h;
+
+	SDL_Rect dst;
+	dst.x = enemy.getPos().getX();
+	dst.y = enemy.getPos().getY();
+	dst.w = enemy.getCurrentFrame().w;
+	dst.h = enemy.getCurrentFrame().h;
+
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	SDL_RenderDrawRect(m_pRenderer, &dst);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+
+	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
+	else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);
+}
+
 void ResourceManager::playMusic(Mix_Music* pMusic, int loop)
 {
 	if (pMusic == nullptr)

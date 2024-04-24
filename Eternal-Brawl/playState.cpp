@@ -104,7 +104,7 @@ void PlayState::render()
 		TheResourceManager::Instance()->drawHealthBar(m_enemies[i]->healthBarRect, m_enemies[i]->healthBarWidth, m_enemies[i]->healthColor);
 	}
 
-	std::cout << m_enemies[0]->m_playerPos.getX() << ", " << m_enemies[0]->m_playerPos.getY() << std::endl;
+	//std::cout << m_enemies[0]->m_playerPos.getX() << ", " << m_enemies[0]->m_playerPos.getY() << std::endl;
 	//std::cout << m_player->getPos().getX() << ", " << m_player->getPos().getY() << std::endl;
 	/*for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
@@ -118,7 +118,12 @@ void PlayState::render()
 
 	for (int i = 0; i < (int)m_enemies.size(); i++)
 	{
-		TheResourceManager::Instance()->drawEnemy1(*m_enemies[i]);
+		if (m_enemies[i]->getObjectState() == "ATTACK")
+			TheResourceManager::Instance()->drawEnemyAttack(*m_enemies[i]);
+		else if (m_enemies[i]->getObjectState() == "HEAVY_ATTACK")
+			TheResourceManager::Instance()->drawEnemyHeavyAttack(*m_enemies[i]);
+		else
+			TheResourceManager::Instance()->drawEnemy1(*m_enemies[i]);
 	}
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy2);
 	//TheResourceManager::Instance()->drawEnemy2(*m_enemy3);
@@ -279,7 +284,9 @@ void PlayState::interactionBetweenPlayerAndEnemy(Player* player, Enemy* enemy)
 	{
 		//enemy->m_state = EnemyState::DEATH;
 		//enemy->m_state = EnemyState::KNOCKBACK;
-		enemy->m_state = EnemyState::HEAVY_ATTACK;
+		//enemy->m_state = EnemyState::HEAVY_ATTACK;
 		enemy->m_state = EnemyState::RUN;
+		enemy->movable();
 	}
+	enemy->immovable();
 }

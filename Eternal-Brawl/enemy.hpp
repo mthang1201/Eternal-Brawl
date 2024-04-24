@@ -41,6 +41,7 @@ public:
 
 	EnemyState m_state;
 	void immovable();
+	void movable();
 private:
 	void checkCollision();
 	void moveTowardsPlayer();
