@@ -142,7 +142,7 @@ bool PlayState::onEnter()
 	}*/
 	//m_entities.push_back(new Item(new LoaderParams(Vector2f(120, 300), { 0, 0, 19, 720 }, TheGame::Instance()->getAssets()->getTexture(TextureType::LEFT_WALL))));
 	//m_entities.push_back(new Item(new LoaderParams(Vector2f(140, 300), { 0, 0, 83, 73 }, TheGame::Instance()->getAssets()->getTexture(TextureType::EXIT_DOOR_ROOF))));
-	
+
 	/*for (int i = 0; i < 13; i++)
 	{
 		float x = (i <= 10) ? (i * 100) : (1000 + 100 * (i - 10));
@@ -154,7 +154,7 @@ bool PlayState::onEnter()
 	m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(820, 316), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 192), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(700, 616), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
-	
+
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(200, 567), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_RUN), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_AIR_DASH), nullptr)));
 	//m_enemies.push_back(new Enemy(new LoaderParams(Vector2f(1000, 200), { 0, 0, 64, 64 }, TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_DASH), nullptr)));
@@ -175,13 +175,20 @@ bool PlayState::onExit()
 	{
 		delete m_entities.back();
 		m_entities.pop_back();
-
 	}
 
 	if (!m_entities.empty() && m_entities.back() != nullptr)
 	{
 		std::cerr << "Error: Failed to delete entity\n";
 		return false;
+	}
+
+	delete m_player;
+
+	while (!m_enemies.empty())
+	{
+		delete m_enemies.back();
+		m_enemies.pop_back();
 	}
 
 	Mix_HaltMusic();
@@ -229,7 +236,7 @@ bool PlayState::checkCollision(Player* p1, Enemy* p2)
 	return true;
 }
 
-bool PlayState::checkPlayerEnemyCollision(Player * player, Enemy* enemy)
+bool PlayState::checkPlayerEnemyCollision(Player* player, Enemy* enemy)
 {
 	SDL_Rect p1 = player->getRigidBody();
 	SDL_Rect e1 = enemy->getRigidBody();
