@@ -15,13 +15,15 @@ bool cKeyCurrentlyPressed = false;
 const Uint32 COMBO_RESET_TIME = 3000;
 const Uint32 MAX_ACTION_TIME = 3000;
 
+const int maxHealthPoints = 3000;
+const int maxAgilityPoints = 3000;
 int comboStep = 0; // Track the current combo step
 Uint32 lastKeyPressTime = 0; // Track the time of the last key press
 
 Player::Player(const LoaderParams* pParams) : Entity(pParams), m_state(), m_interactWithEnemy()
 {
-	healthPoints = 300;
-	agilityPoints = 300;
+	healthPoints = maxHealthPoints;
+	agilityPoints = maxAgilityPoints;
 	frameTime = SDL_GetTicks();
 	startTime = SDL_GetTicks();
 	//jumpTime = SDL_GetTicks();
@@ -46,7 +48,7 @@ const int AGILITYBAR_HEIGHT = 10;
 void Player::update()
 {
 	healthBarRect = { 180, 10, HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT };
-	healthBarWidth = static_cast<int>((static_cast<float>(healthPoints) / 300) * HEALTHBAR_WIDTH);
+	healthBarWidth = static_cast<int>((static_cast<float>(healthPoints) / maxHealthPoints) * HEALTHBAR_WIDTH);
 
 	healthColor = { 0, 255, 0, 255 }; // Green by default
 	if (healthPoints < 50)
@@ -56,7 +58,7 @@ void Player::update()
 
 
 	agilityBarRect = { 180, 25, AGILITYBAR_WIDTH, AGILITYBAR_HEIGHT };
-	agilityBarWidth = static_cast<int>((static_cast<float>(agilityPoints) / 300) * AGILITYBAR_WIDTH);
+	agilityBarWidth = static_cast<int>((static_cast<float>(agilityPoints) / maxAgilityPoints) * AGILITYBAR_WIDTH);
 
 	agilityColor = { 255, 165, 0, 255 }; // Orange by default
 	if (agilityPoints < 50)
@@ -286,8 +288,8 @@ void Player::update()
 		Uint32 m_deathTime = SDL_GetTicks();
 	}
 
-	if (healthPoints > 300) healthPoints = 300;
-	if (agilityPoints > 300) agilityPoints = 300;
+	if (healthPoints > maxHealthPoints) healthPoints = maxHealthPoints;
+	if (agilityPoints > maxAgilityPoints) agilityPoints = maxAgilityPoints;
 }
 
 void Player::clean()
@@ -305,8 +307,8 @@ std::string Player::getObjectState()
 
 void Player::revive()
 {
-	healthPoints = 300;
-	agilityPoints = 300;
+	healthPoints = maxHealthPoints;
+	agilityPoints = maxAgilityPoints;
 	setPos(200, 197);
 	m_lives--;
 	m_state = PlayerState::KI;
@@ -357,7 +359,7 @@ bool Player::checkCollideTile(Vector2f pos)
 
 void Player::handleInput()
 {
-	if (!inputLocked1 && !inputLocked2 && !inputLocked3 && m_state != PlayerState::DEATH)
+	if (!inputLocked1 && /*!inputLocked2 && !inputLocked3 && */m_state != PlayerState::DEATH)
 	{
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP))
 		{
@@ -443,7 +445,7 @@ void Player::handleInput()
 	{
 		inputLocked1 = false;
 	}
-	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_V))
+	/*if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_V))
 	{
 		m_state = PlayerState::TRANSFORM_01;
 		inputLocked2 = true;
@@ -460,7 +462,7 @@ void Player::handleInput()
 	else
 	{
 		inputLocked3 = false;
-	}
+	}*/
 }
 
 void Player::handleMovement(Vector2f velocity)

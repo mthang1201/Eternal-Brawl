@@ -22,7 +22,7 @@ void MenuButton::update()
 		{
 			m_currentFrame.x = CLICKED;
 			//TheResourceManager::Instance()->playSound(m_pSound, 0);
-			//TheResourceManager::Instance()->playSound(TheResourceManager::Instance()->loadSound("res/sound/MenuOK.wav"), 0);
+			TheResourceManager::Instance()->playSound(TheResourceManager::Instance()->loadSound("res/sound/MenuOK.wav"), 0);
 			m_callback();
 			m_bReleased = false;
 		}

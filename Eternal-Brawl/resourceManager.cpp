@@ -203,9 +203,9 @@ void ResourceManager::drawPlayer(Player& player)
 	dst.w = player.getCurrentFrame().w;
 	dst.h = player.getCurrentFrame().h;
 
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &dst);
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (player.getFlip()) SDL_RenderCopyEx(m_pRenderer, player.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
 	else SDL_RenderCopy(m_pRenderer, player.getTex(), &src, &dst);
@@ -225,9 +225,9 @@ void ResourceManager::drawPlayerKI(Player& player)
 	dst.w = player.getCurrentFrame().w;
 	dst.h = player.getCurrentFrame().h;
 
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &dst);
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (player.getFlip()) SDL_RenderCopyEx(m_pRenderer, player.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
 	else SDL_RenderCopy(m_pRenderer, player.getTex(), &src, &dst);
@@ -247,9 +247,9 @@ void ResourceManager::drawEnemy1(Enemy& enemy)
 	dst.w = enemy.getCurrentFrame().w;
 	dst.h = enemy.getCurrentFrame().h;
 
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &dst);
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
 	else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);
@@ -269,9 +269,9 @@ void ResourceManager::drawEnemy2(Enemy& enemy)
 	dst.w = enemy.getCurrentFrame().w * 4;
 	dst.h = enemy.getCurrentFrame().h * 4;
 
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &dst);
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
 	else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);
@@ -287,13 +287,13 @@ void ResourceManager::drawEnemyAttack(Enemy& enemy)
 
 	SDL_Rect dst;
 	dst.x = enemy.getPos().getX() - 70;
-	dst.y = enemy.getPos().getY() - 45;
+	dst.y = enemy.getPos().getY() - 52;
 	dst.w = enemy.getCurrentFrame().w * 0.88;
 	dst.h = enemy.getCurrentFrame().h * 0.88;
 
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &dst);
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
 	else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);
@@ -313,9 +313,9 @@ void ResourceManager::drawEnemyHeavyAttack(Enemy& enemy)
 	dst.w = enemy.getCurrentFrame().w;
 	dst.h = enemy.getCurrentFrame().h;
 
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 	SDL_RenderDrawRect(m_pRenderer, &dst);
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
 	else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);

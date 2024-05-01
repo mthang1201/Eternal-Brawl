@@ -35,7 +35,7 @@ bool MenuState::onEnter()
 	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 300), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::INSTRUCTION_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_menuToInstruction));
 	m_entities.push_back(new MenuButton(new LoaderParams(Vector2f(100, 500), { 0, 0, 400, 100 }, TheGame::Instance()->getAssets()->getTexture(TextureType::EXIT_BUTTON), TheGame::Instance()->getAssets()->getSound(SoundType::MENU_OK)), s_exitFromMenu));
 	//TheResourceManager::Instance()->playMusic(TheGame::Instance()->getAssets()->getMusic(MusicType::ALLEY), -1);
-	//TheResourceManager::Instance()->playMusic(TheResourceManager::Instance()->loadMusic("res/music/Alley.mp3"), -1);
+	TheResourceManager::Instance()->playMusic(TheResourceManager::Instance()->loadMusic("res/music/Alley.mp3"), -1);
 
 	std::cout << "entering MenuState\n";
 

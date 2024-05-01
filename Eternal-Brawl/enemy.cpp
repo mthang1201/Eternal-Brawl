@@ -15,7 +15,7 @@ const float MAX_GRAVITY = 15;
 
 Enemy::Enemy(const LoaderParams* pParams) : Entity(pParams)
 {
-	m_velocity.setX(3);
+	m_velocity.setX(1);
 	//m_velocity.setX(0);
 	m_velocity.setY(0);
 	pathFound = false;
@@ -221,59 +221,68 @@ void Enemy::moveTowardsPlayer()
 	}*/
 
 	//float length = sqrt(pow(m_playerPos.getX() - m_pos.getX(), 2) + pow(m_playerPos.getY() - m_pos.getY(), 2));
-	int x1 = static_cast<int>(m_pos.getX() / TILE_SIZE);
+	/*int x1 = static_cast<int>(m_pos.getX() / TILE_SIZE);
 	int y1 = static_cast<int>(m_pos.getY() / TILE_SIZE);
 	int x2 = static_cast<int>(m_playerPos.getX() / TILE_SIZE);
-	int y2 = static_cast<int>(m_playerPos.getY() / TILE_SIZE);
+	int y2 = static_cast<int>(m_playerPos.getY() / TILE_SIZE);*/
 
+	float dirX, dirY;
+	if (m_pos.getX() - m_playerPos.getX() > 0) dirX = -1;
+	else dirX = 1;
+	if (m_pos.getY() - m_playerPos.getY() > 0) dirY = -1;
+	else dirY = 1;
+
+	m_velocity.setPos(dirX * m_moveSpeed, dirY * m_moveSpeed);
+	//Vector2f diff = Vector2f(m_pos.getX() - m_playerPos.getX(), m_pos.getY() - m_playerPos.getY());
+	//diff.normalize();
 	////if (length < 400)
 	////{
 		//calculatePlayerPosBriefly();
-		static Vector2f currentPlayerPos;
+		//static Vector2f currentPlayerPos;
 		//if (currentPlayerPos != m_playerPos)
 		/*if (currentPlayerPos.getX() != m_playerPos.getX() || currentPlayerPos.getY() != m_playerPos.getY())*/
-		if (true)
-		{
-			currentPlayerPos = m_playerPos;
-			pathToPlayer.clear();
-			visited.clear();
-			pathToPlayer.resize(100000);
-			visited.resize(MAP_HEIGHT);
-			for (int y = 0; y < MAP_HEIGHT; y++) {
-				visited[y].resize(MAP_WIDTH, false);
-			}
-			pathCount = 0;
-			if (findPath(x1, y1, x2, y2))
-			//if (!true)
-			{
-				pathStep = 0;
-				followCalculatedPath();
-				pathStep++;
-				pathFound = true;
-			}
-			else
-			{
-				/*if (m_pos.getX() < 537)
-				{
-					m_velocity.setX(m_moveSpeed);
-				}
-				else if (m_pos.getX() > 1048)
-				{
-					m_velocity.setX(-m_moveSpeed);
-				}*/
-				pathFound = false;
-			}
-		}
-		else if (pathFound)
-		{
-			//followCalculatedPath();
-			std::cout << pathToPlayer[pathStep];
-			pathStep++;
-		}
-		else
-		{
-			std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
-		}
+		//if (!true)
+		//{
+		//	//currentPlayerPos = m_playerPos;
+		//	pathToPlayer.clear();
+		//	visited.clear();
+		//	pathToPlayer.resize(100000);
+		//	visited.resize(MAP_HEIGHT);
+		//	for (int y = 0; y < MAP_HEIGHT; y++) {
+		//		visited[y].resize(MAP_WIDTH, false);
+		//	}
+		//	pathCount = 0;
+		//	if (findPath(x1, y1, x2, y2))
+		//	//if (!true)
+		//	{
+		//		pathStep = 0;
+		//		followCalculatedPath();
+		//		pathStep++;
+		//		pathFound = true;
+		//	}
+		//	else
+		//	{
+		//		/*if (m_pos.getX() < 537)
+		//		{
+		//			m_velocity.setX(m_moveSpeed);
+		//		}
+		//		else if (m_pos.getX() > 1048)
+		//		{
+		//			m_velocity.setX(-m_moveSpeed);
+		//		}*/
+		//		pathFound = false;
+		//	}
+		//}
+		//else if (pathFound)
+		//{
+		//	//followCalculatedPath();
+		//	std::cout << pathToPlayer[pathStep];
+		//	pathStep++;
+		//}
+		//else
+		//{
+		//	//std::cout << /*"error" << MAP_HEIGHT << MAP_WIDTH << std::endl << x1 << " " <<*/ /*x2 << std::endl <<*/ y1 << " " << y2 << std::endl;
+		//}
 	////}
 }
 
@@ -436,17 +445,17 @@ void Enemy::handleAnimation()
 	{
 		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_ATTACK);
 		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 15));
-
 		m_currentFrame.w = 256;
 		m_currentFrame.h = 128;
+		m_velocity.setPos(0, 0);
 	}
 	else if (m_state == EnemyState::HEAVY_ATTACK)
 	{
 		m_pTex = TheGame::Instance()->getAssets()->getTexture(TextureType::VAGABOND_HEAVY_ATTACK);
 		m_currentFrame.x = int(((SDL_GetTicks() / 120) % 13));
-
 		m_currentFrame.w = 352;
 		m_currentFrame.h = 176;
+		m_velocity.setPos(0, 0);
 	}
 	else if (m_state == EnemyState::KNOCKBACK)
 	{
