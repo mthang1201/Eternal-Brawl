@@ -3,7 +3,7 @@ A game written from scratch in C++ using the SDL2 development library. Apart fro
 
 ## Gallery
 <!-- ![](gallery/gameplay.gif) -->
-<!--<img src="Eternal-Brawl/res/city/gameplay.gif" width = "310">-->
+<img src="Eternal-Brawl/res/city/gameplay.png" width = "310">
 <img src="Eternal-Brawl/res/city/background.png" width = "310">
 <img src="Eternal-Brawl/res/city/menu_background.png" width = "310">
 <!-- 
