@@ -4,8 +4,9 @@ A game written from scratch in C++ using the SDL2 development library. Apart fro
 ## Gallery
 <!-- ![](gallery/gameplay.gif) -->
 <img src="Eternal-Brawl/res/gameplay.png" width = "310">
-<img src="Eternal-Brawl/res/city/background.png" width = "310">
-<img src="Eternal-Brawl/res/city/menu_background.png" width = "310">
+<img src="Eternal-Brawl/res/menuScreen.png" width = "310">
+<!--<img src="Eternal-Brawl/res/city/background.png" width = "310">-->
+<!--<img src="Eternal-Brawl/res/city/menu_background.png" width = "310">-->
 <!-- 
 <img src="gallery/mainmenu.png" width = "310"> <img src="gallery/options.png" width = "310"> <img src="gallery/pausemenu.png" width = "310"> -->
 
@@ -32,12 +33,12 @@ header files to include folder
 lib files to lib folder
 dll files to Eternal-Brawl folder
 ```
-in the root directory.
 
+<!--
 You shoud have files tree like this:
 ```
 ```
-
+-->
 Open a terminal window in the root directory of the cloned repository and run these command:
 ```
 cd Eternal-Brawl
@@ -65,6 +66,7 @@ And, voila, you have successfully built the source. Check the Eternal-Brawl exec
 - Interact between Player and Enemy
 - Create health bar, agility bar
 - Generate enemies
+- Enemy move to player (basic movement)
 
 ## Features to add
 - Enemy move to player (Backtracking)
