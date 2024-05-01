@@ -61,7 +61,7 @@ private:
 	void handleMovement();
 	void handleAnimation();
 
-	float m_moveSpeed = 2;
+	float m_moveSpeed = 3;
 	int idleCounter = 0, walkCounter = 0, fallingCounter = 0, attackingCounter = 0, beingHitCounter = 0;
 	bool grounded = true, walking = false, idling = true, falling = false, attacking = false, beingHit = false, dead = false;
 };

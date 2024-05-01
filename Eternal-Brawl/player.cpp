@@ -384,7 +384,7 @@ void Player::handleInput()
 			m_state = PlayerState::FLYING_HORIZONTAL;
 		}
 
-		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D))
+		/*if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D))
 		{
 			m_pos.setX(m_pos.getX() + 100);
 			m_bFlip = false;
@@ -406,7 +406,7 @@ void Player::handleInput()
 			m_pos.setY(m_pos.getY() + 100);
 			m_state = PlayerState::TELEPORT;
 			agilityPoints--;
-		}
+		}*/
 
 		if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z) && agilityPoints > 0)
 		{

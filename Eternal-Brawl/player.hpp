@@ -79,7 +79,7 @@ private:
     PlayerState m_state;
     PlayerState m_interactWithEnemy;
 
-    float m_moveSpeed = 3;
+    float m_moveSpeed = 5;
     SDL_Rect rigidBody;
     int kickCount = 0;
     int idleCounter = 0, walkCounter = 0, jumpCounter = 0, fallingCounter = 0, deathCounter = 0;
