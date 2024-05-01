@@ -96,5 +96,11 @@ And, voila, you have successfully built the source. Check the Eternal-Brawl exec
 
 ## License
 - The source code is licensed under the [MIT License](https://tldrlegal.com/license/mit-license).
-- Still working on...
+<!-- - Still working on... -->
 <!-- - The Munro fonts are licensed under the [SIL Open Font License](http://scripts.sil.org/OFL). -->
+
+## Credits
+- Son Goku by [PeculiarDoc](https://www.deviantart.com/peculiardoc/gallery)
+- Vagabond by [Pixramen](https://pixramen.itch.io)
+- Musics, sound effects and background by [MythoLogic Interactive](https://mythologicinteractive.com)
+- Menu button by [Shaun Mitchell](https://books.google.com.vn/books/about/SDL_Game_Development.html?id=SbmfrHIlhK4C&source=kp_book_description&redir_esc=y)
