@@ -17,6 +17,10 @@ void InstructionState::update()
 	{
 		m_entities[i]->update();
 	}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
+	{
+		TheGame::Instance()->getStateMachine()->popState();
+	}
 }
 
 void InstructionState::render()
