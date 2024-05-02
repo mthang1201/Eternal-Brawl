@@ -32,6 +32,7 @@ Player::Player(const LoaderParams* pParams) : Entity(pParams), m_state(), m_inte
 	m_kickTime = SDL_GetTicks();
 	//transformTime = SDL_GetTicks();
 	//throwingObjectTime = SDL_GetTicks();
+	m_scores = 0;
 }
 
 void Player::draw()

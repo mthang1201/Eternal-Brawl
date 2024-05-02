@@ -76,8 +76,10 @@ void PlayState::update()
 		{
 			delete m_enemies[i];
 			m_enemies.erase(m_enemies.begin() + i);
+			m_player->m_scores += 300;
 		}
 	}
+	//std::cout << m_player->m_scores << std::endl;
 }
 
 void PlayState::render()
@@ -96,6 +98,9 @@ void PlayState::render()
 		TheResourceManager::Instance()->drawRect(tile);
 	}*/
 	//TheResourceManager::Instance()->drawRect(rect1);
+	
+	TheResourceManager::Instance()->drawLives(m_player->m_lives);
+	TheResourceManager::Instance()->drawScores(m_player->m_scores);
 
 	TheResourceManager::Instance()->drawHealthBar(m_player->healthBarRect, m_player->healthBarWidth, m_player->healthColor);
 	TheResourceManager::Instance()->drawBar(m_player->agilityBarRect, m_player->agilityBarWidth, m_player->agilityColor);

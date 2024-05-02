@@ -1,7 +1,9 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
 #include <iostream>
+#include <string>
 
 #include "resourceManager.hpp"
 #include "entity.hpp"
@@ -42,6 +44,11 @@ bool ResourceManager::init(const char* title, int width, int height)
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		std::cout << "Failed to initialize SDL_mixer: " << Mix_GetError() << std::endl;
 		SDL_Quit();
+		return false;
+	}
+
+	if (TTF_Init() == -1) {
+		std::cerr << "SDL_ttf could not initialize! SDL_ttf Error: " << TTF_GetError() << std::endl;
 		return false;
 	}
 
@@ -176,6 +183,28 @@ void ResourceManager::drawBar(SDL_Rect bar, int realBarWidth, SDL_Color barColor
 	SDL_SetRenderDrawColor(m_pRenderer, barColor.r, barColor.g, barColor.b, barColor.a);
 	SDL_Rect realBar = { bar.x, bar.y, realBarWidth, bar.h };
 	SDL_RenderFillRect(m_pRenderer, &realBar);
+}
+
+void ResourceManager::drawLives(int lives)
+{
+	TTF_Font* font = TTF_OpenFont("res/pixelFontOld.ttf", 16);
+	SDL_Color textColor = { 255, 255, 255 }; // white color
+	std::string res = "Your lives: " + std::to_string(lives);
+	SDL_Surface* textSurface = TTF_RenderText_Solid(font, res.c_str(), textColor);
+	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(m_pRenderer, textSurface);
+	SDL_Rect renderQuad = { 180, 40, textSurface->w, textSurface->h };
+	SDL_RenderCopy(m_pRenderer, textTexture, nullptr, &renderQuad);
+}
+
+void ResourceManager::drawScores(int scores)
+{
+	TTF_Font* font = TTF_OpenFont("res/pixelFontOld.ttf", 16);
+	SDL_Color textColor = { 255, 255, 255 }; // white color
+	std::string res = "Your scores: " + std::to_string(scores);
+	SDL_Surface* textSurface = TTF_RenderText_Solid(font, res.c_str(), textColor);
+	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(m_pRenderer, textSurface);
+	SDL_Rect renderQuad = { 180, 60, textSurface->w, textSurface->h };
+	SDL_RenderCopy(m_pRenderer, textTexture, nullptr, &renderQuad);
 }
 
 void ResourceManager::drawHealthBar(SDL_Rect healthBarBackground, int healthBarWidth, SDL_Color healthColor)

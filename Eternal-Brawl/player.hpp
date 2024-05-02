@@ -62,6 +62,7 @@ public:
     int agilityBarWidth;
 
     bool inAction = false;
+    int m_scores;
 private:
     void checkCollision();
     bool checkCollideTile(float newX, float newY, SDL_Rect tile);
