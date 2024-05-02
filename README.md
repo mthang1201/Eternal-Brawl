@@ -65,7 +65,7 @@ And, voila, you have successfully built the source. Check the Eternal-Brawl exec
 - Check collision
 - Handle movement, animation
 - Interact between Player and Enemy
-- Create health bar, agility bar
+- Create health bar, agility bar, lives and scores text
 - Generate enemies
 - Enemy move to player (basic movement)
 
