@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AnimatedGraphic" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAIAAAAAAAAAAAAAABBAAAAEAAA=</HashCode>
+      <FileName>animatedGraphic.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAJABhiJAQADGEKABhoBAACAwYAAAEAIAABEECBGgAA=</HashCode>
+      <FileName>enemy.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAIAKUCAAIlBAAioIBAAASCAAIAAQAAARAAAAHAAA=</HashCode>
+      <FileName>entity.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game" Collapsed="true">
+    <Position X="9.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACAAABBAAAAAAACAwAkAAAIAUAFBAAAUIAA=</HashCode>
+      <FileName>game.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameOverState" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAQAEABMAACUAAA=</HashCode>
+      <FileName>gameOverState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameState" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAABAAACUAAA=</HashCode>
+      <FileName>gameState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameStateMachine" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAQAAIAAAgAAAAAAAAAAAAAUAQA=</HashCode>
+      <FileName>gameStateMachine.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputHandler" Collapsed="true">
+    <Position X="5.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAQAAAAAAAAAAAAgAAgCoAAAAAAAABAQAlCAAAHAAA=</HashCode>
+      <FileName>inputHandler.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InstructionState" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAABAAAAAAAAAAEABAEACUAAA=</HashCode>
+      <FileName>instructionState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAABAAAAEAAA=</HashCode>
+      <FileName>item.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoaderAssets" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEDAAAAgAAAAAAAAEAEgAAAAAABAgCAAAAAAg=</HashCode>
+      <FileName>loaderAssets.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoaderParams" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAACAAAAIAAAAAQCAAIAAAAAAQAAAADAAA=</HashCode>
+      <FileName>loaderParams.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuButton" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAgAAAIAAAAAAAAAAAAAAABAABAEAAA=</HashCode>
+      <FileName>menuButton.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuState" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAABAAAAEAIAAAEABAACCUAAA=</HashCode>
+      <FileName>menuState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PauseState" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAIAAAEABAAAC0AQA=</HashCode>
+      <FileName>pauseState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IJBIhBgJEACBEFSAxxohgQTMAYwECAAMAABgAQBOggA=</HashCode>
+      <FileName>player.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayState" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAQAAAAAAAAACAIAEABAAAIAAAAAAEIBAAACUAAA=</HashCode>
+      <FileName>playState.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ResourceManager" Collapsed="true">
+    <Position X="1.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAMAQADAAAQAAoAQoAEAAAQAEqAEIIQAFAMYCAAAQ=</HashCode>
+      <FileName>resourceManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TileLayer" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAABAAAAEAAA=</HashCode>
+      <FileName>tileLayer.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vector2f" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAQAAAAAEAGAQEAQAAAAAAAAAAgQGAAAAA=</HashCode>
+      <FileName>vector2f.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Typedef Name="TheGame" Collapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game.hpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="TheInputHandler" Collapsed="true">
+    <Position X="5.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>inputHandler.hpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="TheResourceManager" Collapsed="true">
+    <Position X="1.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>resourceManager.hpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="EnemyState" Collapsed="true">
+    <Position X="14.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAgAAAAACgAAgAAAAACAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>enemy.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="mouse_buttons" Collapsed="true">
+    <Position X="16.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAABAgAAAAAAAAAAA=</HashCode>
+      <FileName>inputHandler.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TextureType" Collapsed="true">
+    <Position X="18" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>A1ADAQIAyEDAAyQQEAAGgUJUEAAiwCxCAAIRmkJCAAo=</HashCode>
+      <FileName>loaderAssets.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MusicType" Collapsed="true">
+    <Position X="18" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAACAAAAAAAAAAAAAAAQIAAAAAAAAAAAA=</HashCode>
+      <FileName>loaderAssets.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SoundType" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAQCAAAAAAAAAAA=</HashCode>
+      <FileName>loaderAssets.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PlayerState" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEIACgAQgACQAACwoAgEgAAACAAAAAAAgAAAAgQqA=</HashCode>
+      <FileName>player.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
