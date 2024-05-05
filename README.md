@@ -6,6 +6,7 @@ A game written from scratch in C++ using the SDL2 development library. Apart fro
 <!-- ![](gallery/gameplay.gif) -->
 <img src="Eternal-Brawl/res/gameplay.png" width = "310">
 <img src="Eternal-Brawl/res/menuScreen.png" width = "310">
+<img src="Eternal-Brawl/res/classDiagram.png">
 <!--<img src="Eternal-Brawl/res/city/background.png" width = "310">-->
 <!--<img src="Eternal-Brawl/res/city/menu_background.png" width = "310">-->
 <!-- 
