@@ -99,6 +99,7 @@ And, voila, you have successfully built the source. Check the Eternal-Brawl exec
 
 ## License
 - The source code is licensed under the [MIT License](https://tldrlegal.com/license/mit-license).
+- [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
 <!-- - Still working on... -->
 <!-- - The Munro fonts are licensed under the [SIL Open Font License](http://scripts.sil.org/OFL). -->
 
