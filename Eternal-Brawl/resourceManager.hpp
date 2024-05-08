@@ -37,6 +37,7 @@ public:
 	void drawBar(SDL_Rect bar, int realBarWidth, SDL_Color color);
 	void drawLives(int lives);
 	void drawScores(int scores);
+	void drawScores2(int scores);
 	void drawHealthBar(SDL_Rect healthBarBackground, int healthBarWidth, SDL_Color healthColor);
 	void drawPlayer(Player& player);
 	void drawPlayerKI(Player& player);

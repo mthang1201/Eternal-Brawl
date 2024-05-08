@@ -16,6 +16,9 @@ public:
     virtual bool onExit();
 
     virtual std::string getStateID() const { return s_gameOverID; }
+    GameOverState(int scores) {
+        m_scores = scores;
+    }
 
 private:
     static void s_gameOverToMain();
@@ -24,4 +27,6 @@ private:
     static const std::string s_gameOverID;
 
     std::vector<Entity *> m_entities;
+
+    int m_scores;
 };

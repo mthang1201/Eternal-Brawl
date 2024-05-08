@@ -26,6 +26,7 @@ void GameOverState::render()
 	{
 		TheResourceManager::Instance()->drawFrame(*m_entities[i]);
 	}
+	TheResourceManager::Instance()->drawScores2(m_scores);
 }
 
 bool GameOverState::onEnter()

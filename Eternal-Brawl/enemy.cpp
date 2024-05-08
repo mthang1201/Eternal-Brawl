@@ -13,6 +13,9 @@
 const float GRAVITY = 0.5;
 const float MAX_GRAVITY = 15;
 
+const Uint32 knockbackInterval = 20000;
+Uint32 lastKnockbackTime = SDL_GetTicks();
+
 Enemy::Enemy(const LoaderParams* pParams) : Entity(pParams)
 {
 	m_velocity.setX(1);
@@ -75,9 +78,16 @@ void Enemy::update()
 	}
 	else m_velocity.setY(GRAVITY);*/
 
-	moveTowardsPlayer();
-
-	handleMovement();
+	Uint32 currentTime = SDL_GetTicks();
+	if (m_state == EnemyState::KNOCKBACK && currentTime - lastKnockbackTime < knockbackInterval) {
+		lastKnockbackTime = currentTime;
+		//std::cout << "Knockback" << std::endl;
+	}
+	else {
+		moveTowardsPlayer();
+		handleMovement();
+		//std::cout << "Run or attack" << std::endl;
+	}
 	handleAnimation();
 
 	Entity::update();
@@ -348,6 +358,17 @@ void Enemy::movable()
 {
 	m_velocity.setX(-3);
 	m_velocity.setY(0);
+}
+
+void Enemy::knockback()
+{
+	bool firstTime = true;
+	static int dir;
+	if (firstTime) {
+		int dir = (abs(m_velocity.getX()) / m_velocity.getX());
+		firstTime = false;
+	}
+	m_velocity.setX(m_velocity.getX() + 30 * dir);
 }
 
 bool Enemy::findPath(int x1, int y1, int x2, int y2)

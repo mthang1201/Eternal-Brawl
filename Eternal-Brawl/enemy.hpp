@@ -42,6 +42,7 @@ public:
 	EnemyState m_state;
 	void immovable();
 	void movable();
+	void knockback();
 	int test;
 private:
 	void checkCollision();

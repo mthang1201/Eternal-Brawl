@@ -66,7 +66,7 @@ void PlayState::update()
 		}
 		else
 		{
-			TheGame::Instance()->getStateMachine()->changeState(new GameOverState());
+			TheGame::Instance()->getStateMachine()->changeState(new GameOverState(m_player->m_scores));
 		}
 	}
 	// check enemies alive or not
@@ -276,10 +276,12 @@ void PlayState::interactionBetweenPlayerAndEnemy(Player* player, Enemy* enemy)
 		if (enemy->getObjectState() == "ATTACK")
 		{
 			player->healthPoints -= 1;
+			//player->knockback();
 		}
 		else if (enemy->getObjectState() == "HEAVY_ATTACK")
 		{
 			player->healthPoints -= 5;
+			//player->knockback();
 		}
 		//player->healthPoints -= 1;
 		/*player->setXPos(player->getPos().getX() - player->getVelocity().getX());
@@ -291,10 +293,14 @@ void PlayState::interactionBetweenPlayerAndEnemy(Player* player, Enemy* enemy)
 		if (player->getObjectState() == "ATTACK")
 		{
 			enemy->healthPoints -= 1;
+			enemy->m_state = EnemyState::KNOCKBACK;
+			enemy->knockback();
 		}
 		else if (player->getObjectState() == "HEAVY_ATTACK")
 		{
 			enemy->healthPoints -= 5;
+			enemy->m_state = EnemyState::KNOCKBACK;
+			enemy->knockback();
 		}
 	}
 	else

@@ -315,6 +315,12 @@ void Player::revive()
 	m_state = PlayerState::KI;
 }
 
+void Player::knockback()
+{
+	m_state = PlayerState::KNOCKBACK;
+	m_velocity.setX(-3 * m_velocity.getX());
+}
+
 void Player::checkCollision()
 {
 	if (m_pos.getX() < 0 || m_pos.getX() > 1280 - m_currentFrame.w + 18)

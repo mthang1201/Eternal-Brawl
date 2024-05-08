@@ -63,6 +63,9 @@ public:
 
     bool inAction = false;
     int m_scores;
+
+    void knockback();
+
 private:
     void checkCollision();
     bool checkCollideTile(float newX, float newY, SDL_Rect tile);

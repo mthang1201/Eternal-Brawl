@@ -207,6 +207,17 @@ void ResourceManager::drawScores(int scores)
 	SDL_RenderCopy(m_pRenderer, textTexture, nullptr, &renderQuad);
 }
 
+void ResourceManager::drawScores2(int scores)
+{
+	TTF_Font* font = TTF_OpenFont("res/pixelFontOld.ttf", 24);
+	SDL_Color textColor = { 255, 255, 255 }; // white color
+	std::string res = "Your scores: " + std::to_string(scores);
+	SDL_Surface* textSurface = TTF_RenderText_Solid(font, res.c_str(), textColor);
+	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(m_pRenderer, textSurface);
+	SDL_Rect renderQuad = { 205, 380, textSurface->w, textSurface->h };
+	SDL_RenderCopy(m_pRenderer, textTexture, nullptr, &renderQuad);
+}
+
 void ResourceManager::drawHealthBar(SDL_Rect healthBarBackground, int healthBarWidth, SDL_Color healthColor)
 {
 	SDL_SetRenderDrawColor(m_pRenderer, 100, 100, 100, 255);
@@ -232,8 +243,9 @@ void ResourceManager::drawPlayer(Player& player)
 	dst.w = player.getCurrentFrame().w;
 	dst.h = player.getCurrentFrame().h;
 
-	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
-	SDL_RenderDrawRect(m_pRenderer, &dst);
+	/*SDL_Rect rigidBody = player.getRigidBody();
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	SDL_RenderDrawRect(m_pRenderer, &rigidBody);
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (player.getFlip()) SDL_RenderCopyEx(m_pRenderer, player.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
@@ -276,8 +288,9 @@ void ResourceManager::drawEnemy1(Enemy& enemy)
 	dst.w = enemy.getCurrentFrame().w;
 	dst.h = enemy.getCurrentFrame().h;
 
-	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
-	SDL_RenderDrawRect(m_pRenderer, &dst);
+	/*SDL_Rect rigidBody = enemy.getRigidBody();
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	SDL_RenderDrawRect(m_pRenderer, &rigidBody);
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
@@ -320,8 +333,9 @@ void ResourceManager::drawEnemyAttack(Enemy& enemy)
 	dst.w = enemy.getCurrentFrame().w * 0.88;
 	dst.h = enemy.getCurrentFrame().h * 0.88;
 
-	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
-	SDL_RenderDrawRect(m_pRenderer, &dst);
+	/*SDL_Rect rigidBody = enemy.getRigidBody();
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	SDL_RenderDrawRect(m_pRenderer, &rigidBody);
 	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
 
 	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
@@ -342,9 +356,10 @@ void ResourceManager::drawEnemyHeavyAttack(Enemy& enemy)
 	dst.w = enemy.getCurrentFrame().w;
 	dst.h = enemy.getCurrentFrame().h;
 
-	/*SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
-	SDL_RenderDrawRect(m_pRenderer, &dst);
-	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);*/
+	SDL_Rect rigidBody = enemy.getRigidBody();
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+	SDL_RenderDrawRect(m_pRenderer, &rigidBody);
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
 	if (enemy.getFlip()) SDL_RenderCopyEx(m_pRenderer, enemy.getTex(), &src, &dst, 0, 0, SDL_FLIP_HORIZONTAL);
 	else SDL_RenderCopy(m_pRenderer, enemy.getTex(), &src, &dst);

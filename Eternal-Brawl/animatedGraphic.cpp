@@ -12,7 +12,7 @@ void AnimatedGraphic::draw()
 
 void AnimatedGraphic::update()
 {
-	 m_currentFrame.x = int(((SDL_GetTicks() / (1000 / m_animSpeed)) % 6/*m_numFrames*/));
+	 m_currentFrame.x = int(((SDL_GetTicks() / (1000 / m_animSpeed)) % 2/*m_numFrames*/));
 }
 
 void AnimatedGraphic::clean()
