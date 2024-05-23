@@ -2,7 +2,7 @@
 A game written from scratch in C++ using the SDL2 development library. Apart from the core gameplay, the project also includes some extra features like a simple main menu, music and sound effects, Enemy AI. All sprites were created not by me.
 
 ## Gallery
-[Youtube](https://youtu.be/FvJ71eq94bc)
+[Youtube](https://youtu.be/HuOJRRjUhOs)
 <!-- ![](gallery/gameplay.gif) -->
 <img src="Eternal-Brawl/res/gameplay.png" width = "310">
 <img src="Eternal-Brawl/res/menuScreen.png" width = "310">
